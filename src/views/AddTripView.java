@@ -17,7 +17,7 @@ public class AddTripView implements View {
 	 * @author Oussama Fahchouch
 	 */
 	public AddTripView() {
-		this.setScene(this.createView());
+		this.scene = this.createView();
 	}
 	
 	/**
@@ -36,14 +36,6 @@ public class AddTripView implements View {
 	 */
 	@Override
 	public void updateView(){};
-	
-	/**
-	 * @author Oussama Fahchouch
-	 */
-	@Override
-	public void setScene(Scene scene){ 
-		scene = scene;
-	};
 	
 	/**
 	 * @author Oussama Fahchouch

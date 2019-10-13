@@ -21,9 +21,4 @@ public interface View {
 	 * @return Scene 
 	 */
 	Scene getScene();
-	
-	/**
-	 * @author Oussama Fahchouch
-	 */
-	void setScene(Scene sceneToSet);
 }

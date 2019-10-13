@@ -26,7 +26,7 @@ public class TripOverviewView implements View {
 	 * @author Oussama Fahchouch
 	 */
 	public TripOverviewView() {
-		this.setScene(this.createView());
+		this.scene = createView();
 	}
 
 	/**
@@ -217,20 +217,11 @@ public class TripOverviewView implements View {
 		return headerLabel;
 	}
 	
-	
 	/**
 	 * @author Oussama Fahchouch
 	 */
 	@Override
 	public void updateView(){}
-	
-	/**
-	 * @author Oussama Fahchouch
-	 */
-	@Override
-	public void setScene(Scene sceneToSet) {	
-		this.scene = sceneToSet;
-	}
 	
 	/**
 	 * @author Oussama Fahchouch

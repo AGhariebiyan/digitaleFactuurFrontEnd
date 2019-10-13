@@ -73,6 +73,7 @@ public class DashboardView implements View {
 		
 		Image image = new Image("file:src/resources/imgs/user_icon.png");
 		ImageView imageView = new ImageView(image); 
+		imageView.setTranslateY(5);
 		
 	    userHBox.getChildren().addAll(imageView, usernameLabel);
 		
@@ -130,7 +131,7 @@ public class DashboardView implements View {
         dashboardButton.setMaxSize(300, 50);
 		
 		//create trip button 
-		Image tripImage = new Image("file:src/resources/imgs/dashboard.png");
+		Image tripImage = new Image("file:src/resources/imgs/road.png");
         Button tripButton = new Button("                 Ritten");
         ImageView tripImageView = new ImageView(tripImage);
         tripImageView.setTranslateX(0);
@@ -141,7 +142,7 @@ public class DashboardView implements View {
         tripButton.setMaxSize(300, 50);
 
 		//create vehicle button 
-        Image vehicleImage = new Image("file:src/resources/imgs/dashboard.png");
+        Image vehicleImage = new Image("file:src/resources/imgs/vehicle.png");
         Button vehicleButton = new Button("0");
         ImageView vehicleImageView = new ImageView(vehicleImage);
         tripImageView.setTranslateX(0);
@@ -152,7 +153,7 @@ public class DashboardView implements View {
         vehicleButton.setStyle("-fx-background-color: #FFFFFF");
 
 		//create project button 
-        Image projectImage = new Image("file:src/resources/imgs/dashboard.png");
+        Image projectImage = new Image("file:src/resources/imgs/projects.png");
         Button projectButton = new Button("0");
         ImageView projectImageView = new ImageView(projectImage);
         projectImageView.setTranslateX(0);
