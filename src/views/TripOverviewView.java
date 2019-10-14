@@ -62,7 +62,7 @@ public class TripOverviewView implements View {
 		headerLabel.setTranslateX(50);
 		headerLabel.setTranslateY(25);
 		
-		tripsOverviewPane.getChildren().addAll(headerLabel, addTripButtonPane(), tripOverviewTablePane());
+		tripsOverviewPane.getChildren().addAll(headerLabel, addTripButtonPane());
 		
 		return tripsOverviewPane;
 	}
@@ -80,127 +80,6 @@ public class TripOverviewView implements View {
 		addTripButtonPane.setTranslateY(-37.50);
 		
 		return addTripButtonPane;
-	}
-	
-	/**
-	 * @author Oussama Fahchouch
-	 * @return addTripButtonPane
-	 */
-	private Pane tripOverviewTablePane() {
-		Pane tripOverviewTablePane = new Pane();
-		
-		tripOverviewTablePane.setMinSize(1245, 450);
-		tripOverviewTablePane.setBorder(blackBorder);
-		tripOverviewTablePane.setTranslateX(50);
-		tripOverviewTablePane.setTranslateY(100);
-		
-		tripOverviewTablePane.getChildren().addAll(startLocationPane(), endLocationPane(), drivenKilometersPane(), licenseplatePane(), projectPane(), deleteButtonPane());
-		
-		return tripOverviewTablePane;
-	}
-	
-	/**
-	 * @author Oussama Fahchouch
-	 * @return startLocationPane
-	 */
-	private Pane startLocationPane() {
-		Pane startLocationPane = new Pane();
-
-		
-		startLocationPane.setMinSize(203, 450);
-//		startLocationPane.setBorder(blackBorder);
-		startLocationPane.setTranslateX(0);
-		startLocationPane.setTranslateY(0);
-		
-		startLocationPane.getChildren().addAll(tripOverviewTableHeaderLabels("start location"));
-
-		
-		return startLocationPane;
-	}
-	
-	/**
-	 * @author Oussama Fahchouch
-	 * @return endLocationPane
-	 */
-	private Pane endLocationPane() {
-		Pane endLocationPane = new Pane();
-		
-		endLocationPane.setMinSize(203, 450);
-//		endLocationPane.setBorder(blackBorder);
-		endLocationPane.setTranslateX(203);
-		endLocationPane.setTranslateY(0);
-		
-		endLocationPane.getChildren().addAll(tripOverviewTableHeaderLabels("end location"));
-
-		return endLocationPane;
-	}
-	
-	/**
-	 * @author Oussama Fahchouch
-	 * @return ridenKilometersPane
-	 */
-	private Pane drivenKilometersPane() {
-		Pane drivenKilometersPane = new Pane();
-		
-		drivenKilometersPane.setMinSize(203, 450);
-//		drivenKilometersPane.setBorder(blackBorder);
-		drivenKilometersPane.setTranslateX(406);
-		drivenKilometersPane.setTranslateY(0);
-		
-		drivenKilometersPane.getChildren().addAll(tripOverviewTableHeaderLabels("driven kilometers"));
-		
-		return drivenKilometersPane;
-	}
-	
-	/**
-	 * @author Oussama Fahchouch
-	 * @return licenseplatePane
-	 */
-	private Pane licenseplatePane() {
-		Pane licenseplatePane = new Pane();
-		
-		licenseplatePane.setMinSize(203, 450);
-//		licenseplatePane.setBorder(blackBorder);
-		licenseplatePane.setTranslateX(609);
-		licenseplatePane.setTranslateY(0);
-
-		licenseplatePane.getChildren().addAll(tripOverviewTableHeaderLabels("licenseplate"));
-		
-		return licenseplatePane;
-	}
-	
-	/**
-	 * @author Oussama Fahchouch
-	 * @return projectPane
-	 */
-	private Pane projectPane() {
-		Pane projectPane = new Pane();
-		
-		projectPane.setMinSize(203, 450);
-//		projectPane.setBorder(blackBorder);
-		projectPane.setTranslateX(812);
-		projectPane.setTranslateY(0);
-		
-		projectPane.getChildren().addAll(tripOverviewTableHeaderLabels("project number"));
-		
-		return projectPane;
-	}
-	
-	/**
-	 * @author Oussama Fahchouch
-	 * @return deleteButtonPane
-	 */
-	private Pane deleteButtonPane() {
-		Pane deleteButtonPane = new Pane();
-		
-		deleteButtonPane.setMinSize(203, 450);
-//		deleteButtonPane.setBorder(blackBorder);
-		deleteButtonPane.setTranslateX(1040);
-		deleteButtonPane.setTranslateY(0);
-
-		deleteButtonPane.getChildren().addAll(tripOverviewTableHeaderLabels("delete"));
-
-		return deleteButtonPane;
 	}
 	
 	/**
