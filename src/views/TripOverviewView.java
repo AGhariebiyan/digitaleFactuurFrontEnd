@@ -3,6 +3,9 @@ package views;
 import controllers.TripController;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.Border;
 import javafx.scene.layout.BorderStroke;
 import javafx.scene.layout.BorderStrokeStyle;
@@ -17,7 +20,6 @@ import models.TripModel;
  * @author Oussama Fahchouch
  */
 public class TripOverviewView implements View {
-	private TripModel tripModel;
 	private TripController tripController;
 	private Scene scene;
 	private Border blackBorder = new Border(new BorderStroke(Color.BLACK, BorderStrokeStyle.SOLID, CornerRadii.EMPTY, BorderWidths.DEFAULT));
@@ -26,6 +28,7 @@ public class TripOverviewView implements View {
 	 * @author Oussama Fahchouch
 	 */
 	public TripOverviewView() {
+		this.tripController = new TripController();
 		this.scene = createView();
 	}
 
@@ -62,7 +65,7 @@ public class TripOverviewView implements View {
 		headerLabel.setTranslateX(50);
 		headerLabel.setTranslateY(25);
 		
-		tripsOverviewPane.getChildren().addAll(headerLabel, addTripButtonPane());
+		tripsOverviewPane.getChildren().addAll(headerLabel, addTripButtonPane(), TripOverviewTableView());
 		
 		return tripsOverviewPane;
 	}
@@ -97,6 +100,47 @@ public class TripOverviewView implements View {
 	}
 	
 	/**
+     * @author Oussama Fahchouch
+     * @return tableView
+     */
+    private TableView TripOverviewTableView() {
+        TableView tableView = new TableView();
+
+        TableColumn<String, TripModel> column1 = new TableColumn<>("Start locatie");
+        column1.setCellValueFactory(new PropertyValueFactory<>("startLocation"));
+        
+        TableColumn<String, TripModel> column2 = new TableColumn<>("Eind locatie");
+        column2.setCellValueFactory(new PropertyValueFactory<>("endLocation"));
+        
+        TableColumn<String, TripModel> column3 = new TableColumn<>("Gereden kilometers");
+        column3.setCellValueFactory(new PropertyValueFactory<>("drivenKilometers"));
+        
+        TableColumn<String, TripModel> column4 = new TableColumn<>("Kenteken");
+        column4.setCellValueFactory(new PropertyValueFactory<>("licenseplate"));
+        
+        TableColumn<String, TripModel> column5 = new TableColumn<>("Project");
+        column5.setCellValueFactory(new PropertyValueFactory<>("projectId"));
+
+        tableView.getColumns().add(column1);
+        tableView.getColumns().add(column2);
+        tableView.getColumns().add(column3);
+        tableView.getColumns().add(column4);
+        tableView.getColumns().add(column5);
+
+//        for (int i = 0; i < tripController.getTrips().size(); i++){
+//            tableView.getItems().add(tripController.getTrips().get(i));
+//            System.out.println(tripController.getTrips().get(i).getTotalTrips());
+//        }
+
+        tableView.setMinSize(1245, 450);
+        tableView.setTranslateX(50);
+        tableView.setTranslateY(100);
+        tableView.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
+
+        return tableView;
+    }
+	
+	/**
 	 * @author Oussama Fahchouch
 	 */
 	@Override
@@ -104,6 +148,7 @@ public class TripOverviewView implements View {
 	
 	/**
 	 * @author Oussama Fahchouch
+	 * @return Scene
 	 */
 	@Override
 	public Scene getScene() {

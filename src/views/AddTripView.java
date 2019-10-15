@@ -9,7 +9,6 @@ import models.TripModel;
  * @author Oussama Fahchouch
  */
 public class AddTripView implements View {
-	private TripModel tripModel;
 	private TripController tripController;
 	private Scene scene;
 	
