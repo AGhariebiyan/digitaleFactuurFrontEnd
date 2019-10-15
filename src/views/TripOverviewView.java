@@ -2,10 +2,13 @@ package views;
 
 import controllers.TripController;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.Border;
 import javafx.scene.layout.BorderStroke;
 import javafx.scene.layout.BorderStrokeStyle;
@@ -13,6 +16,7 @@ import javafx.scene.layout.BorderWidths;
 import javafx.scene.layout.CornerRadii;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
+import javafx.scene.shape.Circle;
 import javafx.scene.text.Font;
 import models.TripModel;
 
@@ -78,9 +82,19 @@ public class TripOverviewView implements View {
 		Pane addTripButtonPane = new Pane();
 		
 		addTripButtonPane.setMinSize(75, 75);
-		addTripButtonPane.setBorder(blackBorder);
 		addTripButtonPane.setTranslateX(1295);
 		addTripButtonPane.setTranslateY(-37.50);
+		
+		Button addButton = new Button("+");
+		
+		double r = 1.5;
+		addButton.setShape(new Circle(r));
+		addButton.setMinSize(50*r, 50*r);
+		addButton.setMaxSize(50*r, 50*r);
+		addButton.setStyle("-fx-background-color: #4fb04f; -fx-font-size: 30px; -fx-text-fill: white;");
+		
+		
+		addTripButtonPane.getChildren().addAll(addButton);
 		
 		return addTripButtonPane;
 	}
@@ -128,8 +142,7 @@ public class TripOverviewView implements View {
         tableView.getColumns().add(column5);
 
 //        for (int i = 0; i < tripController.getTrips().size(); i++){
-//            tableView.getItems().add(tripController.getTrips().get(i));
-//            System.out.println(tripController.getTrips().get(i).getTotalTrips());
+//            tableView.getItems().add(tripController.getTripsMadeByUser().get(i));
 //        }
 
         tableView.setMinSize(1245, 450);

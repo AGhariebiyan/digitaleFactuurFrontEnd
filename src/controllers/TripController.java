@@ -1,5 +1,7 @@
 package controllers;
 
+import java.util.ArrayList;
+
 import models.TripModel;
 import views.View;
 
@@ -43,5 +45,14 @@ public class TripController implements Controller {
 	 */
 	private double calculateDistance(double startKilometergauge, double endKilometergauge) {
 		return 0.0;
+	}
+	
+	/**
+	 * @author Oussama Fahchouch
+	 * @return ArrayList<String> fetchedTrips
+	 */
+	private ArrayList<String> getTripsMadeByUser() {
+		ArrayList<String> fetchedTrips = new ArrayList<String>();
+		return fetchedTrips;
 	}
 }
