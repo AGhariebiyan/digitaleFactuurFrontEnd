@@ -59,9 +59,9 @@ public class TripOverviewView implements View {
 		Pane tripsOverviewPane = new Pane();
 		
 		tripsOverviewPane.setMinSize(1345, 650);
-		tripsOverviewPane.setBorder(blackBorder);
 		tripsOverviewPane.setTranslateX(450);
 		tripsOverviewPane.setTranslateY(200);
+		tripsOverviewPane.setStyle("-fx-background-color: white; -fx-background-radius: 10px;");
 		
 		Label headerLabel = new Label("Trips");	
 		
@@ -134,12 +134,16 @@ public class TripOverviewView implements View {
         
         TableColumn<String, TripModel> column5 = new TableColumn<>("Project");
         column5.setCellValueFactory(new PropertyValueFactory<>("projectId"));
+        
+        TableColumn<String, TripModel> column6 = new TableColumn<>("Verwijderen");
+        column6.setCellValueFactory(new PropertyValueFactory<>("deleteTrip"));
 
         tableView.getColumns().add(column1);
         tableView.getColumns().add(column2);
         tableView.getColumns().add(column3);
         tableView.getColumns().add(column4);
         tableView.getColumns().add(column5);
+        tableView.getColumns().add(column6);
 
 //        for (int i = 0; i < tripController.getTrips().size(); i++){
 //            tableView.getItems().add(tripController.getTripsMadeByUser().get(i));
