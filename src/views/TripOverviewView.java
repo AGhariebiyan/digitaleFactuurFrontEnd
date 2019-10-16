@@ -26,7 +26,6 @@ import models.TripModel;
 public class TripOverviewView implements View {
 	private TripController tripController;
 	private Scene scene;
-	private Border blackBorder = new Border(new BorderStroke(Color.BLACK, BorderStrokeStyle.SOLID, CornerRadii.EMPTY, BorderWidths.DEFAULT));
 	
 	/**
 	 * @author Oussama Fahchouch
@@ -63,7 +62,7 @@ public class TripOverviewView implements View {
 		tripsOverviewPane.setTranslateY(200);
 		tripsOverviewPane.setStyle("-fx-background-color: white; -fx-background-radius: 10px;");
 		
-		Label headerLabel = new Label("Trips");	
+		Label headerLabel = new Label("Ritten");	
 		
 		headerLabel.setFont(Font.font(24));
 		headerLabel.setTranslateX(50);
