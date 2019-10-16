@@ -27,6 +27,10 @@ public class TripOverviewView implements View {
 	private TripController tripController;
 	private Scene scene;
 	
+	public Pane loadMenu() {
+		return null;
+	}
+	
 	/**
 	 * @author Oussama Fahchouch
 	 */
@@ -44,7 +48,7 @@ public class TripOverviewView implements View {
 		
 		rootPane.getChildren().addAll(createTripsOverviewPane());	
 		
-		Scene scene = new Scene(rootPane,1920, 1080);
+		Scene scene = new Scene(rootPane, 1280, 720);
 		
 		return scene;
 	};
@@ -57,9 +61,9 @@ public class TripOverviewView implements View {
 	private Pane createTripsOverviewPane() {
 		Pane tripsOverviewPane = new Pane();
 		
-		tripsOverviewPane.setMinSize(1345, 650);
-		tripsOverviewPane.setTranslateX(450);
-		tripsOverviewPane.setTranslateY(200);
+		tripsOverviewPane.setMinSize(400, 550);
+		tripsOverviewPane.setTranslateX(50);
+		tripsOverviewPane.setTranslateY(50);
 		tripsOverviewPane.setStyle("-fx-background-color: white; -fx-background-radius: 10px;");
 		
 		Label headerLabel = new Label("Ritten");	

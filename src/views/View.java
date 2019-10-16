@@ -1,6 +1,7 @@
 package views;
 
 import javafx.scene.Scene;
+import javafx.scene.layout.Pane;
 
 /**
  * @author Oussama Fahchouch
@@ -21,4 +22,6 @@ public interface View {
 	 * @return Scene 
 	 */
 	Scene getScene();
+	
+	public Pane loadMenu();
 }

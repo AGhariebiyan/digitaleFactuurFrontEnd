@@ -9,15 +9,14 @@ import views.AddTripView;
 import views.DashboardView;
 import views.TripOverviewView;
 
+
 public class Main extends Application {
 	
 	@Override
 	public void start(Stage primaryStage) {
 		try {
-			AppController appController = new AppController(primaryStage);
-			AddTripView aTView = new AddTripView();
-			
-			AppController.getInstance().loadView(aTView);
+			AppController.getInstance().setPrimaryStage(primaryStage);
+			AppController.getInstance().loadView("views.DashboardView", "createView");
 		} catch(Exception e) {
 			e.printStackTrace();
 		}

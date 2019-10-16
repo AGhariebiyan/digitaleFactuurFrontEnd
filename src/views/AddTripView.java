@@ -43,6 +43,10 @@ public class AddTripView implements View {
 		this.scene = createView();
 	}
 	
+	public Pane loadMenu() {
+		return null;
+	}
+	
 	/**
 	 * @author Oussama Fahchouch
 	 * @return Scene
@@ -197,7 +201,7 @@ public class AddTripView implements View {
 		createTripButton.setTranslateX(510);
 		DashboardView dView = new DashboardView();
 		
-		createTripButton.setOnAction(e -> this.tripController.appController.loadView(dView));
+//		createTripButton.setOnAction(e -> this.tripController.appController.loadView(dView));
 		inputFieldsHBoxRow5.getChildren().addAll(createTripButton);
 		
 		return inputFieldsAddTripVBox;
