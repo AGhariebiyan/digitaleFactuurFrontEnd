@@ -2,12 +2,14 @@ package views;
 
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Hyperlink;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.Border;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
 
@@ -23,7 +25,6 @@ public class LoginView implements View{
 
     @Override
     public Scene createView(){
-
         TextField username = new TextField();
         username.setPromptText("Gebruikersnaam");
 
@@ -41,14 +42,27 @@ public class LoginView implements View{
 //
 //            }
 //        });
+
+        // Logo
+        VBox vBoxLogo = new VBox();
+        vBoxLogo.setAlignment(Pos.CENTER);
+        vBoxLogo.setId("logo");
+
         // FORMULIER
-        VBox vBox = new VBox(username, password, btnLogin, btnRegistreren);
-        vBox.setId("login_form");
-        vBox.setSpacing(10);
+        VBox vBoxForm = new VBox(username, password, btnLogin, btnRegistreren);
+        vBoxForm.setAlignment(Pos.CENTER);
+        vBoxForm.setId("login_form");
+        vBoxForm.setSpacing(10);
+
+        VBox form = new VBox(vBoxLogo, vBoxForm);
+        form.setId("form");
+        form.setSpacing(25);
+        VBox.setMargin(vBoxLogo, new Insets(0,0,0,150));
+
 
         BorderPane rootPane = new BorderPane();
         rootPane.setId("login_root");
-        rootPane.setCenter(vBox);
+        rootPane.setCenter(form);
 
         Scene scene = new Scene(rootPane, 1280, 720);
         scene.getStylesheets().addAll(css);
