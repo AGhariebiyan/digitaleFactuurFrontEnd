@@ -1,5 +1,7 @@
 #login_root {
     -fx-background-image: url("../imgs/homepageBackground.png");
+    -fx-background-repeat: no-repeat;
+    -fx-background-size: cover, auto;
 }
 
 #form{
