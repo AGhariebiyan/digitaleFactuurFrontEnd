@@ -7,6 +7,7 @@ import javafx.scene.Scene;
 import javafx.scene.layout.BorderPane;
 import views.AddTripView;
 import views.DashboardView;
+import views.LoginView;
 import views.TripOverviewView;
 
 public class Main extends Application {
@@ -15,7 +16,7 @@ public class Main extends Application {
 	public void start(Stage primaryStage) {
 		try {
 //			TripOverviewView tView = new TripOverviewView();
-			AddTripView aTView = new AddTripView();
+			LoginView aTView = new LoginView();
 			AppController.getInstance().loadView(aTView, primaryStage);
 		} catch(Exception e) {
 			e.printStackTrace();

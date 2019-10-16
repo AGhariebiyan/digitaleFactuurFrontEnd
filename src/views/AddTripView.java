@@ -43,7 +43,7 @@ public class AddTripView implements View {
 	
 	/**
 	 * @author Oussama Fahchouch
-	 * @return Scene
+	 * @return Scene michiel was hier
 	 */
 	@Override
 	public Scene createView(){
@@ -54,7 +54,7 @@ public class AddTripView implements View {
 		Scene scene = new Scene(rootPane,1920, 1080);
 		
 		return scene;
-	};
+	}
 	
 	/**
 	 * @author Oussama Fahchouch
@@ -198,5 +198,5 @@ public class AddTripView implements View {
 	@Override
 	public Scene getScene() {
 		return this.scene;
-	};
+	}
 }
