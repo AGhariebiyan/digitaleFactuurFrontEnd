@@ -1,22 +1,14 @@
 package views;
 
 import controllers.ProjectController;
-import controllers.TripController;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.layout.Border;
-import javafx.scene.layout.BorderStroke;
-import javafx.scene.layout.BorderStrokeStyle;
-import javafx.scene.layout.BorderWidths;
-import javafx.scene.layout.CornerRadii;
 import javafx.scene.layout.Pane;
-import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import models.ProjectModel;
-import models.TripModel;
 
 /**
  * @author Mike van Es
@@ -31,15 +23,11 @@ public class ProjectOverviewView implements View {
      */
     public ProjectOverviewView() {
         this.projectController = new ProjectController();
-
-        this.setScene(this.createView());
-        this.scene.getStylesheets().add("/resources/application.css");
-        this.scene.getStylesheets().add("/resources/project.css");
-
     }
 
     /**
      * @author Mike van Es
+     * @return
      */
     @Override
     public Scene createView(){
@@ -48,7 +36,9 @@ public class ProjectOverviewView implements View {
         rootPane.getChildren().addAll(createProjectOverviewPane());
         rootPane.setId("mainBackground");
         Scene scene = new Scene(rootPane,1920, 1080);
-
+        this.scene = scene;
+        this.scene.getStylesheets().add("/resources/application.css");
+        this.scene.getStylesheets().add("/resources/project.css");
         return scene;
     };
 
@@ -85,14 +75,17 @@ public class ProjectOverviewView implements View {
     private TableView ProjectOverviewTablePane() {
         TableView tableView = new TableView();
 
-        TableColumn<String, ProjectModel> column1 = new TableColumn<>("Project naam");
-        column1.setCellValueFactory(new PropertyValueFactory<>("projectName"));
+        TableColumn<String, ProjectModel> column1 = new TableColumn<>("Project id");
+        column1.setCellValueFactory(new PropertyValueFactory<>("projectId"));
 
-        TableColumn<String, ProjectModel> column2 = new TableColumn<>("Aantal ritten");
-        column2.setCellValueFactory(new PropertyValueFactory<>("totalTrips"));
+        TableColumn<String, ProjectModel> column2 = new TableColumn<>("Project naam");
+        column2.setCellValueFactory(new PropertyValueFactory<>("projectName"));
 
-        TableColumn<String, ProjectModel> column3 = new TableColumn<>("Gereden kilometers");
-        column3.setCellValueFactory(new PropertyValueFactory<>("totalKilometers"));
+        TableColumn<String, ProjectModel> column3 = new TableColumn<>("Aantal ritten");
+        column3.setCellValueFactory(new PropertyValueFactory<>("totalTrips"));
+
+        TableColumn<String, ProjectModel> column4 = new TableColumn<>("Gereden kilometers");
+        column4.setCellValueFactory(new PropertyValueFactory<>("totalKilometers"));
 
         tableView.getColumns().add(column1);
         tableView.getColumns().add(column2);
@@ -100,7 +93,6 @@ public class ProjectOverviewView implements View {
 
         for (int i = 0; i < projectController.getProjects().size(); i++){
             tableView.getItems().add(projectController.getProjects().get(i));
-            System.out.println(projectController.getProjects().get(i).getTotalTrips());
         }
 
         tableView.setMinSize(1245, 450);

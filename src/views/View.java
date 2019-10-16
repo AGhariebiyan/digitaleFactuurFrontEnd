@@ -8,6 +8,7 @@ import javafx.scene.Scene;
 public interface View {	
 	/**
 	 * @author Oussama Fahchouch
+	 * @return
 	 */
 	Scene createView();
 	
@@ -16,14 +17,11 @@ public interface View {
 	 */
 	public void updateView();
 
-	/**
+    void setScene(Scene sceneToSet);
+
+    /**
 	 * @author Oussama Fahchouch
 	 * @return Scene 
 	 */
 	Scene getScene();
-	
-	/**
-	 * @author Oussama Fahchouch
-	 */
-	void setScene(Scene sceneToSet);
 }

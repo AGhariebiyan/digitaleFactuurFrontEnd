@@ -140,7 +140,4 @@ public class TripModel {
 	public void setEndKilometergauge(double endKilometergauge) {
 		this.endKilometergauge = endKilometergauge;
 	}
-
-	
-	
 }
