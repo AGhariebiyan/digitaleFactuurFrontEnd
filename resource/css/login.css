@@ -3,10 +3,8 @@
 }
 
 #form{
-    -fx-min-width: 50px;
-    -fx-min-height: 50px;
     -fx-max-height: 200px;
-    -fx-max-width: 500px;
+    -fx-max-width: 300px;
 }
 
 #logo{

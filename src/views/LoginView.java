@@ -59,7 +59,6 @@ public class LoginView implements View{
         form.setSpacing(25);
         VBox.setMargin(vBoxLogo, new Insets(0,0,0,150));
 
-
         BorderPane rootPane = new BorderPane();
         rootPane.setId("login_root");
         rootPane.setCenter(form);
