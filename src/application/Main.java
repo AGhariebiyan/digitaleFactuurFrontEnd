@@ -14,9 +14,10 @@ public class Main extends Application {
 	@Override
 	public void start(Stage primaryStage) {
 		try {
-//			TripOverviewView tView = new TripOverviewView();
+			AppController appController = new AppController(primaryStage);
 			AddTripView aTView = new AddTripView();
-			AppController.getInstance().loadView(aTView, primaryStage);
+			
+			AppController.getInstance().loadView(aTView);
 		} catch(Exception e) {
 			e.printStackTrace();
 		}

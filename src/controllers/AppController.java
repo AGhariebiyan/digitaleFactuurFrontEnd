@@ -15,10 +15,16 @@ public class AppController {
 	
 	/**
 	 * @author Oussama Fahchouch
+	 */
+	public AppController(Stage primaryStage) {
+		this.primaryStage = primaryStage;
+	}
+
+	/**
+	 * @author Oussama Fahchouch
 	 * @return AppController
 	 */
 	public static AppController getInstance() {
-		if (appController == null) { appController = new AppController(); }
         return appController; 
 	}
 	
@@ -26,7 +32,7 @@ public class AppController {
 	 * @author Oussama Fahchouch
 	 * @param view
 	 */
-	public static void loadView(View view, Stage primaryStage){
+	public static void loadView(View view){
 		primaryStage.setScene(view.getScene());
 		primaryStage.show();
 	}
