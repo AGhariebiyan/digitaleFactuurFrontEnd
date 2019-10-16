@@ -53,7 +53,7 @@ public class AddTripView implements View {
 		
 		rootPane.getChildren().addAll(createAddTripsPane());	
 		
-		Scene scene = new Scene(rootPane,1920, 1080);
+		Scene scene = new Scene(rootPane, 1080, 720);
 		
 		return scene;
 	};
@@ -65,7 +65,7 @@ public class AddTripView implements View {
 	private Node createAddTripsPane() {
 		Pane addTripsPane = new Pane();
 		
-		addTripsPane.setMinSize(1345, 650);
+		addTripsPane.setMinSize(770, 580);
 		addTripsPane.setTranslateX(450);
 		addTripsPane.setTranslateY(200);
 		addTripsPane.setStyle("-fx-background-color: white; -fx-background-radius: 10px;");
@@ -75,6 +75,7 @@ public class AddTripView implements View {
 		headerLabel.setFont(Font.font(24));
 		headerLabel.setTranslateX(50);
 		headerLabel.setTranslateY(25);
+		
 				
 		addTripsPane.getChildren().addAll(headerLabel, addTripButtonPane(), inputFieldsAddTripVBox());
 		
