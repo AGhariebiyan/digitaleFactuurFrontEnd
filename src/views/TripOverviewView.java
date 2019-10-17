@@ -48,7 +48,7 @@ public class TripOverviewView implements View {
 		
 		rootPane.getChildren().addAll(createTripsOverviewPane());	
 		
-		Scene scene = new Scene(rootPane, 1280, 720);
+		Scene scene = new Scene(rootPane, (1920/1.5), (1080/1.5));
 		
 		return scene;
 	};
@@ -60,17 +60,17 @@ public class TripOverviewView implements View {
 	 */
 	private Pane createTripsOverviewPane() {
 		Pane tripsOverviewPane = new Pane();
-		
-		tripsOverviewPane.setMinSize(400, 550);
-		tripsOverviewPane.setTranslateX(50);
-		tripsOverviewPane.setTranslateY(50);
+
+		tripsOverviewPane.setMinSize((1345/1.5), (750/1.5));
+		tripsOverviewPane.setTranslateX((450/1.5));
+		tripsOverviewPane.setTranslateY((200/1.5));
 		tripsOverviewPane.setStyle("-fx-background-color: white; -fx-background-radius: 10px;");
 		
 		Label headerLabel = new Label("Ritten");	
 		
-		headerLabel.setFont(Font.font(24));
-		headerLabel.setTranslateX(50);
-		headerLabel.setTranslateY(25);
+		headerLabel.setFont(Font.font((24/1.5)));
+		headerLabel.setTranslateX((50/1.5));
+		headerLabel.setTranslateY((25/1.5));
 		
 		tripsOverviewPane.getChildren().addAll(headerLabel, addTripButtonPane(), TripOverviewTableView());
 		
@@ -84,17 +84,17 @@ public class TripOverviewView implements View {
 	private Pane addTripButtonPane() {
 		Pane addTripButtonPane = new Pane();
 		
-		addTripButtonPane.setMinSize(75, 75);
-		addTripButtonPane.setTranslateX(1295);
-		addTripButtonPane.setTranslateY(-37.50);
+		addTripButtonPane.setMinSize((125/1.5), (125/1.5));
+		addTripButtonPane.setTranslateX((1295/1.5));
+		addTripButtonPane.setTranslateY((-37.50/1.5));
 		
 		Button addButton = new Button("+");
 		
-		double r = 1.5;
+		double r = (1.5/1.5);
 		addButton.setShape(new Circle(r));
-		addButton.setMinSize(50*r, 50*r);
-		addButton.setMaxSize(50*r, 50*r);
-		addButton.setStyle("-fx-background-color: #4fb04f; -fx-font-size: 30px; -fx-text-fill: white;");
+		addButton.setMinSize((75/1.5)*r, (75/1.5)*r);
+		addButton.setMaxSize((75/1.5)*r, (75/1.5)*r);
+		addButton.setStyle("-fx-background-color: #4fb04f; -fx-font-size: 21px; -fx-text-fill: white;");
 		
 		
 		addTripButtonPane.getChildren().addAll(addButton);
@@ -109,8 +109,8 @@ public class TripOverviewView implements View {
 	private Label tripOverviewTableHeaderLabels(String labelContent) {
 		Label headerLabel = new Label(labelContent);	
 		
-		headerLabel.setFont(Font.font(18));
-		headerLabel.setTranslateX(5);
+		headerLabel.setFont(Font.font((18/1.5)));
+		headerLabel.setTranslateX((5/1.5));
 		headerLabel.setTranslateY(0);
 		
 		return headerLabel;
@@ -151,10 +151,10 @@ public class TripOverviewView implements View {
 //        for (int i = 0; i < tripController.getTrips().size(); i++){
 //            tableView.getItems().add(tripController.getTripsMadeByUser().get(i));
 //        }
-
-        tableView.setMinSize(1245, 450);
-        tableView.setTranslateX(50);
-        tableView.setTranslateY(100);
+        
+        tableView.setMinSize((1245/1.5), (450/1.5));
+        tableView.setTranslateX((50/1.5));
+        tableView.setTranslateY((100/1.5));
         tableView.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
 
         return tableView;
