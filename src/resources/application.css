@@ -48,3 +48,7 @@
     -fx-text-alignment: center;
     -fx-alignment: CENTER
 }
+
+.text-field{
+    -fx-background-color: -fx-text-box-border, -fx-control-inner-background;
+}
