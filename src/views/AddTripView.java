@@ -42,7 +42,7 @@ public class AddTripView implements View {
 	public Scene createView(){
 		Pane rootPane = new Pane();
 		
-		rootPane.getChildren().addAll(createAddTripsPane());	
+		rootPane.getChildren().addAll(this.tripController.getMenuPane(), this.tripController.getHeaderPane(), createAddTripsPane());	
 		
 		Scene scene = new Scene(rootPane, (1920/1.5), (1080/1.5));
 		

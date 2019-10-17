@@ -40,7 +40,7 @@ public class TripOverviewView implements View {
 	public Scene createView(){
 		Pane rootPane = new Pane();
 		
-		rootPane.getChildren().addAll(createTripsOverviewPane());	
+		rootPane.getChildren().addAll(this.tripController.getMenuPane(), this.tripController.getHeaderPane(), createTripsOverviewPane());	
 		
 		Scene scene = new Scene(rootPane, (1920/1.5), (1080/1.5));
 		

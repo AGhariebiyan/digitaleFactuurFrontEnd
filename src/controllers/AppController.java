@@ -2,6 +2,7 @@ package controllers;
 
 
 import javafx.scene.Scene;
+import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
 import java.lang.reflect.Constructor;
@@ -14,6 +15,8 @@ import java.lang.reflect.Method;
 public class AppController extends ClassLoader {
 	public static AppController appController;
 	private Stage primaryStage;
+	private Pane headerPane;
+	private Pane menuPane;
 
 	/**
 	 * @author Oussama Fahchouch
@@ -60,5 +63,35 @@ public class AppController extends ClassLoader {
 	 */
 	public void setPrimaryStage(Stage primaryStage) {
 		appController.primaryStage = primaryStage;
+	}
+	
+	/**
+	 * @author Oussama Fahchouch
+	 * @return headerPane
+	 */
+	public Pane getHeaderPane() {
+		return headerPane;
+	}
+	
+	/**
+	 * @author Oussama Fahchouch
+	 */
+	public void setHeaderPane(Pane headerPane) {
+		this.headerPane = headerPane;
+	}
+	
+	/**
+	 * @author Oussama Fahchouch
+	 * @return headerPane
+	 */
+	public Pane getMenuPane() {
+		return menuPane;
+	}
+	
+	/**
+	 * @author Oussama Fahchouch
+	 */
+	public void setMenuPane(Pane menuPane) {
+		this.menuPane = menuPane;
 	}
 }

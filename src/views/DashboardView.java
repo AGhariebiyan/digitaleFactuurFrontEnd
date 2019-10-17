@@ -1,6 +1,7 @@
 package views;
 
 import controllers.AppController;
+import controllers.DashboardController;
 import javafx.geometry.Insets;
 import javafx.scene.Node;
 import javafx.scene.Scene;
@@ -26,11 +27,12 @@ import javafx.stage.Stage;
 public class DashboardView implements View {
 	private Scene scene;
 	private Border blackBorder = new Border(new BorderStroke(Color.BLACK, BorderStrokeStyle.SOLID, CornerRadii.EMPTY, BorderWidths.DEFAULT));
-	private Stage primaryStage;	
+	private Stage primaryStage;
+	private DashboardController dashboardController;
 	
 	public DashboardView() {
 		this.scene = createView();
-//		dashboardController = new DashboardController();
+
 	}
 	
 	/**
@@ -64,6 +66,10 @@ public class DashboardView implements View {
 		
 		Scene scene = new Scene(rootPane, (1920/1.5), (1080/1.5));
 		
+		this.dashboardController = new DashboardController();
+		this.dashboardController.setMenuPane(createLeftBoardViewPane());
+		this.dashboardController.setHeaderPane(createHeaderPane());
+		
 		return scene;
 	}
 	
@@ -90,7 +96,7 @@ public class DashboardView implements View {
 	 * @author fifi
 	 * @return userHBox
 	 */
-	private Node createUserHBox() {
+	private HBox createUserHBox() {
 		HBox userHBox = new HBox();
 		userHBox.setPadding(new Insets(15, 12, 15, 12));
 	    userHBox.setSpacing(10);
@@ -115,7 +121,7 @@ public class DashboardView implements View {
 	 * @author fifi
 	 * @return logoPane
 	 */
-	private Node createLogoPane() {
+	private Pane createLogoPane() {
 		Pane logoPane = new Pane();
 		
 		Image image = new Image("file:src/resources/imgs/logo.jpg");
@@ -135,7 +141,7 @@ public class DashboardView implements View {
 	 * @author fifi
 	 * @return dashBoardViewPane
 	 */
-	private Node createLeftBoardViewPane() {
+	private Pane createLeftBoardViewPane() {
 		Pane dashBoardViewPane = new Pane();
 		
 		dashBoardViewPane.setMinSize((300/1.5), (1080/1.5));
@@ -152,7 +158,7 @@ public class DashboardView implements View {
 	 * @author fifi
 	 * @return buttonVBox
 	 */
-	private Node createButtonVBox() {
+	private VBox createButtonVBox() {
 		VBox menuVBox = new VBox();
 		
 		menuVBox.setPadding(new Insets(0, 0, 0, 0));
@@ -219,7 +225,7 @@ public class DashboardView implements View {
 	 * @author fifi
 	 * @return logoutPane
 	 */
-	private Node createLogoutPane() {
+	private Pane createLogoutPane() {
 		Pane logoutPane = new Pane();
 
 		logoutPane.setMinSize((300/1.5), (70/1.5));

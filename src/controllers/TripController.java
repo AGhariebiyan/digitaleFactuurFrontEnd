@@ -2,6 +2,7 @@ package controllers;
 
 import java.util.ArrayList;
 
+import javafx.scene.layout.Pane;
 import models.TripModel;
 import views.View;
 
@@ -54,5 +55,21 @@ public class TripController implements Controller {
 	private ArrayList<String> getTripsMadeByUser() {
 		ArrayList<String> fetchedTrips = new ArrayList<String>();
 		return fetchedTrips;
+	}
+	
+	/**
+	 * @author Oussama Fahchouch
+	 * @return headerPane
+	 */
+	public Pane getHeaderPane() {
+		return this.appController.getHeaderPane();
+	}
+	
+	/**
+	 * @author Oussama Fahchouch
+	 * @return headerPane
+	 */
+	public Pane getMenuPane() {
+		return this.appController.getMenuPane();
 	}
 }
