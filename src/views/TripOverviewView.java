@@ -66,7 +66,7 @@ public class TripOverviewView implements View {
 		tripsOverviewPane.setTranslateY((200/1.5));
 		tripsOverviewPane.setStyle("-fx-background-color: white; -fx-background-radius: 10px;");
 		
-		Label headerLabel = new Label("Ritten");	
+		Label headerLabel = new Label("Ritten overzicht");	
 		
 		headerLabel.setFont(Font.font((24/1.5)));
 		headerLabel.setTranslateX((50/1.5));
@@ -96,9 +96,10 @@ public class TripOverviewView implements View {
 		addButton.setMaxSize((75/1.5)*r, (75/1.5)*r);
 		addButton.setStyle("-fx-background-color: #4fb04f; -fx-font-size: 21px; -fx-text-fill: white;");
 		
-		
+		addButton.setOnAction(e -> this.tripController.appController.loadView("views.AddTripView", "createView"));
+
 		addTripButtonPane.getChildren().addAll(addButton);
-		
+				
 		return addTripButtonPane;
 	}
 	

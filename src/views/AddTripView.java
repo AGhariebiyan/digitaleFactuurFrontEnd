@@ -57,7 +57,7 @@ public class AddTripView implements View {
 		
 		rootPane.getChildren().addAll(createAddTripsPane());	
 		
-		Scene scene = new Scene(rootPane, 1080, 720);
+		Scene scene = new Scene(rootPane, (1920/1.5), (1080/1.5));
 		
 		return scene;
 	};
@@ -69,16 +69,16 @@ public class AddTripView implements View {
 	private Node createAddTripsPane() {
 		Pane addTripsPane = new Pane();
 		
-		addTripsPane.setMinSize(770, 580);
-		addTripsPane.setTranslateX(450);
-		addTripsPane.setTranslateY(200);
+		addTripsPane.setMinSize((1345/1.5), (750/1.5));
+		addTripsPane.setTranslateX((450/1.5));
+		addTripsPane.setTranslateY((200/1.5));
 		addTripsPane.setStyle("-fx-background-color: white; -fx-background-radius: 10px;");
 		
 		Label headerLabel = new Label("Rit toevoegen");	
 		
-		headerLabel.setFont(Font.font(24));
-		headerLabel.setTranslateX(50);
-		headerLabel.setTranslateY(25);
+		headerLabel.setFont(Font.font((24/1.5)));
+		headerLabel.setTranslateX((50/1.5));
+		headerLabel.setTranslateY((25/1.5));
 		
 				
 		addTripsPane.getChildren().addAll(headerLabel, addTripButtonPane(), inputFieldsAddTripVBox());
@@ -93,9 +93,9 @@ public class AddTripView implements View {
 	private Pane addTripButtonPane() {
 		Pane addTripButtonPane = new Pane();
 		
-		addTripButtonPane.setMinSize(75, 75);
-		addTripButtonPane.setTranslateX(1295);
-		addTripButtonPane.setTranslateY(-37.50);
+		addTripButtonPane.setMinSize((125/1.5), (125/1.5));
+		addTripButtonPane.setTranslateX((1295/1.5));
+		addTripButtonPane.setTranslateY((-37.50/1.5));
 		
 		Image image = new Image("file:src/resources/imgs/road_white.png");
 		ImageView imageView = new ImageView(image); 
@@ -103,13 +103,14 @@ public class AddTripView implements View {
 		Button addButton = new Button();
 		addButton.setGraphic(imageView);
 		
-		double r = 1.5;
+		double r = (1.5/1.5);
 		addButton.setShape(new Circle(r));
-		addButton.setMinSize(50*r, 50*r);
-		addButton.setMaxSize(50*r, 50*r);
-		addButton.setStyle("-fx-background-color: #2F4051; -fx-font-size: 30px; -fx-text-fill: white;");
+		addButton.setMinSize((75/1.5)*r, (75/1.5)*r);
+		addButton.setMaxSize((75/1.5)*r, (75/1.5)*r);
+		addButton.setStyle("-fx-background-color: #2F4051; -fx-font-size: 21px; -fx-text-fill: white;");
 		
-		
+		addButton.setOnAction(e -> this.tripController.appController.loadView("views.TripOverviewView", "createView"));
+
 		addTripButtonPane.getChildren().addAll(addButton);
 		
 		return addTripButtonPane;
@@ -121,12 +122,12 @@ public class AddTripView implements View {
 	 */
 	private Node inputFieldsAddTripVBox() {
 		VBox inputFieldsAddTripVBox = new VBox();
-		inputFieldsAddTripVBox.setPadding(new Insets(5, 5, 5, 5));
-		inputFieldsAddTripVBox.setSpacing(10);
+		inputFieldsAddTripVBox.setPadding(new Insets((5/1.5), (5/1.5), (5/1.5), (5/1.5)));
+		inputFieldsAddTripVBox.setSpacing((10/1.5));
 		
-		inputFieldsAddTripVBox.setMinSize(900, 450);
-		inputFieldsAddTripVBox.setTranslateX(300);
-		inputFieldsAddTripVBox.setTranslateY(100);
+		inputFieldsAddTripVBox.setMinSize((900/1.5), (450/1.5));
+		inputFieldsAddTripVBox.setTranslateX((300/1.5));
+		inputFieldsAddTripVBox.setTranslateY((100/1.5));
 		
 		HBox inputFieldsHBoxRow1 = new HBox();
 		HBox inputFieldsHBoxRow2 = new HBox();
@@ -136,22 +137,22 @@ public class AddTripView implements View {
 		
 		List<HBox> inputFieldsList = Arrays.asList(inputFieldsHBoxRow1, inputFieldsHBoxRow2, inputFieldsHBoxRow3, inputFieldsHBoxRow4, inputFieldsHBoxRow5);
 		
-		int setTranslateYOfRow = 25;
+		int setTranslateYOfRow = (17);
 		int amountOfRows = 5;
 		int rowCounter = 0;
 		
 		for (HBox inputFieldRow: inputFieldsList) {
 			rowCounter+= 1;
-			inputFieldRow.setPadding(new Insets(5, 5, 5, 5));
-			inputFieldRow.setSpacing(10);
+			inputFieldRow.setPadding(new Insets((5/1.5), (5/1.5), (5/1.5), (5/1.5)));
+			inputFieldRow.setSpacing((10/1.5));
 			
-			inputFieldRow.setMinSize(900, 50);
-			inputFieldRow.setTranslateX(0);
+			inputFieldRow.setMinSize((900/1.5), (50/1.5));
+			inputFieldRow.setTranslateX((-100/1.5));
 			inputFieldRow.setTranslateY(setTranslateYOfRow);
 			
-			if (rowCounter == amountOfRows) { inputFieldRow.setTranslateY(setTranslateYOfRow + 25); }
+			if (rowCounter == amountOfRows) { inputFieldRow.setTranslateY(setTranslateYOfRow + 17); }
 			
-			setTranslateYOfRow+= 25;
+			setTranslateYOfRow+= 17;
 
 			inputFieldsAddTripVBox.getChildren().add(inputFieldRow);
 		}
@@ -181,27 +182,28 @@ public class AddTripView implements View {
 		inputFieldsHBoxRow4.getChildren().addAll(labelInputFieldsHBoxRow4, textFieldInputFieldsHBoxRow4);
 		
 		List<Label> labelList = Arrays.asList(labelInputFieldsHBoxRow1, labelInputFieldsHBoxRow2, labelInputFieldsHBoxRow3, labelInputFieldsHBoxRow4);
-		
+
 		for (Label label: labelList) {
 			label.setStyle("-fx-font-size: 16px;");
-			label.setMinSize(200, 50);
+			label.setMinSize((250/1.5), (50/1.5));
 		}
 		
 		List<TextField> textFieldList = Arrays.asList(textFieldInputFieldsHBoxRow1, textFieldInputFieldsHBoxRow2, textFieldInputFieldsHBoxRow3, textFieldInputFieldsHBoxRow4);
 		
 		for (TextField textField: textFieldList) {
-			textField.setPrefWidth(300);
+			textField.setPrefWidth((475/1.5));
 			textField.setStyle("-fx-font-size: 16px;");
-			textField.setTranslateX(75);
-			textField.setTranslateY(10);
+			textField.setTranslateX((125/1.5));
+			textField.setTranslateY((10/1.5));
 		}
 		
 		Button createTripButton = new Button("create");
 		createTripButton.setStyle("-fx-font-size: 16px; -fx-background-color: #1E71EA; -fx-text-fill: white;");
-		createTripButton.setTranslateX(510);
-		DashboardView dView = new DashboardView();
+		createTripButton.setTranslateX((750/1.5));
+		createTripButton.setTranslateY((50/1.5));
 		
-//		createTripButton.setOnAction(e -> this.tripController.appController.loadView(dView));
+		createTripButton.setOnAction(e -> this.tripController.appController.loadView("views.TripOverviewView", "createView"));
+		
 		inputFieldsHBoxRow5.getChildren().addAll(createTripButton);
 		
 		return inputFieldsAddTripVBox;
