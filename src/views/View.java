@@ -22,9 +22,4 @@ public interface View {
 	 * @return Scene 
 	 */
 	Scene getScene();
-	
-	/**
-	 * @author Oussama Fahchouch
-	 */
-	public Pane loadMenu();
 }

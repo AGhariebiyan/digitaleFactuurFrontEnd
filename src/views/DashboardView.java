@@ -189,7 +189,7 @@ public class DashboardView implements View {
         Image vehicleImage = new Image("file:src/resources/imgs/vehicle.png");
         Button vehicleButton = new Button("               Auto's");
         ImageView vehicleImageView = new ImageView(vehicleImage);
-        tripImageView.setTranslateX(0);
+        vehicleImageView.setTranslateX(-8);
         vehicleButton.setGraphic(vehicleImageView);
         
         vehicleButton.setMinSize((300/1.5), (50/1.5));
@@ -201,7 +201,7 @@ public class DashboardView implements View {
         Image projectImage = new Image("file:src/resources/imgs/projects.png");
         Button projectButton = new Button("            Projecten");
         ImageView projectImageView = new ImageView(projectImage);
-        projectImageView.setTranslateX(0);
+        projectImageView.setTranslateX(-3);
         projectButton.setGraphic(projectImageView);
         
         projectButton.setMinSize((300/1.5), (50/1.5));
@@ -222,9 +222,9 @@ public class DashboardView implements View {
 	private Node createLogoutPane() {
 		Pane logoutPane = new Pane();
 
-		logoutPane.setMinSize((300/1.5), (135/1.5));
+		logoutPane.setMinSize((300/1.5), (70/1.5));
 		logoutPane.setTranslateX(0);
-		logoutPane.setTranslateY((945/1.5));
+		logoutPane.setTranslateY((1010/1.5));
 		logoutPane.setStyle("-fx-background-color: #DFE1E0");
 		
 		Button logoutButton = new Button("            Logout");
@@ -237,7 +237,7 @@ public class DashboardView implements View {
 		logoutButton.setGraphic(logoutImageView);
 		logoutPane.getChildren().addAll(logoutButton);	
 		logoutButton.setTranslateX((22/1.5));
-		logoutButton.setTranslateY((45/1.5));
+		logoutButton.setTranslateY((15/1.5));
 		logoutButton.setStyle("-fx-background-color: #DFE1E0");
 		
 		return logoutPane;
@@ -252,10 +252,4 @@ public class DashboardView implements View {
 	public Scene getScene() {
 		return this.scene;
 	}
-	
-	@Override
-	public Pane loadMenu(){
-		return null;
-	}
-	
 }
