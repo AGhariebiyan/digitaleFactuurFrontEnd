@@ -19,6 +19,10 @@ import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
+/**
+ * @author fifi
+ *
+ */
 public class DashboardView implements View {
 	private Scene scene;
 	private Border blackBorder = new Border(new BorderStroke(Color.BLACK, BorderStrokeStyle.SOLID, CornerRadii.EMPTY, BorderWidths.DEFAULT));
@@ -29,6 +33,10 @@ public class DashboardView implements View {
 //		dashboardController = new DashboardController();
 	}
 	
+	/**
+	 * @author fifi
+	 * @return Scene
+	 */
 	@Override
 	public Scene createView() {
 		Pane rootPane = new Pane();
@@ -60,6 +68,10 @@ public class DashboardView implements View {
 	}
 	
 	//creates top screen part with inner components
+	/**
+	 * @author fifi
+	 * @return headerPane
+	 */
 	private Pane createHeaderPane() {
 		Pane headerPane = new Pane();
 		
@@ -74,7 +86,10 @@ public class DashboardView implements View {
 		return headerPane;
 	}
 
-	
+	/**
+	 * @author fifi
+	 * @return userHBox
+	 */
 	private Node createUserHBox() {
 		HBox userHBox = new HBox();
 		userHBox.setPadding(new Insets(15, 12, 15, 12));
@@ -96,7 +111,10 @@ public class DashboardView implements View {
 		return userHBox;
 	}
 
-
+	/**
+	 * @author fifi
+	 * @return logoPane
+	 */
 	private Node createLogoPane() {
 		Pane logoPane = new Pane();
 		
@@ -112,7 +130,11 @@ public class DashboardView implements View {
 		
 		return logoPane;
 	}
-
+	
+	/**
+	 * @author fifi
+	 * @return dashBoardViewPane
+	 */
 	private Node createLeftBoardViewPane() {
 		Pane dashBoardViewPane = new Pane();
 		
@@ -126,6 +148,10 @@ public class DashboardView implements View {
 		return dashBoardViewPane;
 	}
 	
+	/**
+	 * @author fifi
+	 * @return buttonVBox
+	 */
 	private Node createButtonVBox() {
 		VBox menuVBox = new VBox();
 		
@@ -189,22 +215,30 @@ public class DashboardView implements View {
 		return menuVBox;
 	}
 	
+	/**
+	 * @author fifi
+	 * @return logoutPane
+	 */
 	private Node createLogoutPane() {
 		Pane logoutPane = new Pane();
 
 		logoutPane.setMinSize((300/1.5), (135/1.5));
-		//logoutPane.setBorder(blackBorder);
 		logoutPane.setTranslateX(0);
 		logoutPane.setTranslateY((945/1.5));
+		logoutPane.setStyle("-fx-background-color: #DFE1E0");
+		
 		Button logoutButton = new Button("            Logout");
 		logoutButton.setPrefWidth((220/1.5));
+		
 		Image logoutImage = new Image("file:src/resources/imgs/logout.png");
 		ImageView logoutImageView = new ImageView(logoutImage);
+		
 		logoutImageView.setTranslateX(25);
 		logoutButton.setGraphic(logoutImageView);
 		logoutPane.getChildren().addAll(logoutButton);	
+		logoutButton.setTranslateX((22/1.5));
 		logoutButton.setTranslateY((45/1.5));
-		logoutButton.setStyle("-fx-background-color: #FFFFFF");
+		logoutButton.setStyle("-fx-background-color: #DFE1E0");
 		
 		return logoutPane;
 	}

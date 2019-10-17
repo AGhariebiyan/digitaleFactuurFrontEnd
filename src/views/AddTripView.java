@@ -42,7 +42,7 @@ public class AddTripView implements View {
 	public Scene createView(){
 		Pane rootPane = new Pane();
 		
-		rootPane.getChildren().addAll(createAddTripsPane());	
+		rootPane.getChildren().addAll(loadMenu(), createAddTripsPane());	
 		
 		Scene scene = new Scene(rootPane, (1920/1.5), (1080/1.5));
 		
@@ -320,18 +320,23 @@ public class AddTripView implements View {
         
         Pane logoutPane = new Pane();
 
-		logoutPane.setMinSize((300/1.5), (135/1.5));
+    	logoutPane.setMinSize((300/1.5), (135/1.5));
 		logoutPane.setTranslateX(0);
 		logoutPane.setTranslateY((945/1.5));
+		logoutPane.setStyle("-fx-background-color: #DFE1E0");
+		
 		Button logoutButton = new Button("            Logout");
 		logoutButton.setPrefWidth((220/1.5));
+		
 		Image logoutImage = new Image("file:src/resources/imgs/logout.png");
 		ImageView logoutImageView = new ImageView(logoutImage);
+		
 		logoutImageView.setTranslateX(25);
 		logoutButton.setGraphic(logoutImageView);
 		logoutPane.getChildren().addAll(logoutButton);	
+		logoutButton.setTranslateX((22/1.5));
 		logoutButton.setTranslateY((45/1.5));
-		logoutButton.setStyle("-fx-background-color: #FFFFFF");
+		logoutButton.setStyle("-fx-background-color: #DFE1E0");
 
 		menuVBox.getChildren().addAll(dashboardButton, tripButton, vehicleButton, projectButton);
 		dashBoardViewPane.getChildren().addAll(menuVBox, logoutPane);
