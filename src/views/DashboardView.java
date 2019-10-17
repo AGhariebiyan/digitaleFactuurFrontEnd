@@ -226,6 +226,7 @@ public class DashboardView implements View {
 		return this.scene;
 	}
 	
+	@Override
 	public Pane loadMenu(){
 		return null;
 	}

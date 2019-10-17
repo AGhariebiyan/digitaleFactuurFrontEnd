@@ -1,6 +1,8 @@
 package views;
 
+import controllers.AppController;
 import controllers.TripController;
+import javafx.geometry.Insets;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -14,7 +16,9 @@ import javafx.scene.layout.BorderStroke;
 import javafx.scene.layout.BorderStrokeStyle;
 import javafx.scene.layout.BorderWidths;
 import javafx.scene.layout.CornerRadii;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
+import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 import javafx.scene.text.Font;
@@ -26,11 +30,7 @@ import models.TripModel;
 public class TripOverviewView implements View {
 	private TripController tripController;
 	private Scene scene;
-	
-	public Pane loadMenu() {
-		return null;
-	}
-	
+		
 	/**
 	 * @author Oussama Fahchouch
 	 */
@@ -46,7 +46,7 @@ public class TripOverviewView implements View {
 	public Scene createView(){
 		Pane rootPane = new Pane();
 		
-		rootPane.getChildren().addAll(createTripsOverviewPane());	
+		rootPane.getChildren().addAll(loadMenu(), createTripsOverviewPane());	
 		
 		Scene scene = new Scene(rootPane, (1920/1.5), (1080/1.5));
 		
@@ -175,4 +175,133 @@ public class TripOverviewView implements View {
 	public Scene getScene() {
 		return this.scene;
 	};
+	
+	/**
+	 * @author Oussama Fahchouch
+	 */
+	@Override
+	public Pane loadMenu() {
+		Pane menuPane = new Pane();
+		Pane headerPane = new Pane();
+		
+		menuPane.setMinSize((1920/1.5), (1080/1.5));
+		menuPane.setTranslateX(0);
+		menuPane.setTranslateY(0);
+		
+		headerPane.setMinSize((1920/1.5), (75/1.5));
+		headerPane.setTranslateX(0);
+		headerPane.setTranslateY(0);
+		
+		headerPane.setStyle("-fx-background-color: #FFFFFF");
+		
+		HBox userHBox = new HBox();
+		userHBox.setPadding(new Insets(15, 12, 15, 12));
+	    userHBox.setSpacing(10);
+	    
+	    userHBox.setMinSize((1920/1.5), (75/1.5));
+	    userHBox.setTranslateX((1670/1.5));
+	    userHBox.setTranslateY(0);
+	    
+		Label usernameLabel = new Label("username");
+		usernameLabel.setTranslateY(10);
+		
+		Image image = new Image("file:src/resources/imgs/user_icon.png");
+		ImageView imageView = new ImageView(image); 
+		imageView.setTranslateY(5);
+		
+		Pane logoPane = new Pane();
+		
+		Image imageLogo = new Image("file:src/resources/imgs/logo.jpg");
+		ImageView imageViewLogo = new ImageView(imageLogo); 
+		
+		logoPane.setMinSize((300/1.5), (75/1.5));
+		logoPane.setTranslateX(0);
+		logoPane.setTranslateY(0);
+		
+		userHBox.getChildren().addAll(imageView, usernameLabel);
+		logoPane.getChildren().addAll(imageViewLogo);
+		headerPane.getChildren().addAll(logoPane, userHBox);
+		
+		Pane dashBoardViewPane = new Pane();
+		
+		dashBoardViewPane.setMinSize((300/1.5), (1080/1.5));
+		dashBoardViewPane.setTranslateX(0);
+		dashBoardViewPane.setTranslateY(0);
+
+		dashBoardViewPane.setStyle("-fx-background-color: #FFFFFF");
+		
+		VBox menuVBox = new VBox();
+		
+		menuVBox.setPadding(new Insets(0, 0, 0, 0));
+		menuVBox.setSpacing(0);
+		menuVBox.setMinSize((170/1.5), (43/1.5));
+		menuVBox.setTranslateX(0);
+		menuVBox.setTranslateY((125/1.5));
+		
+		Image dashboardImage = new Image("file:src/resources/imgs/dashboard.png");
+        Button dashboardButton = new Button("           Dashboard");
+        ImageView imageViewDashboardImage = new ImageView(dashboardImage);
+        imageViewDashboardImage.setTranslateX(0);
+        dashboardButton.setGraphic(imageViewDashboardImage);
+        dashboardButton.setStyle("-fx-background-color: #FFFFFF");
+        
+        dashboardButton.setMinSize((300/1.5), (50/1.5));
+        dashboardButton.setMaxSize((300/1.5), (50/1.5));
+        dashboardButton.setOnAction(e -> AppController.getInstance().loadView("views.DashboardView", "createView"));
+		
+		Image tripImage = new Image("file:src/resources/imgs/road.png");
+        Button tripButton = new Button("                 Ritten");
+        ImageView tripImageView = new ImageView(tripImage);
+        tripImageView.setTranslateX(0);
+        tripButton.setGraphic(tripImageView);
+        tripButton.setStyle("-fx-background-color: #FFFFFF");
+        
+        tripButton.setMinSize((300/1.5), (50/1.5));
+        tripButton.setMaxSize((300/1.5), (50/1.5));
+        tripButton.setOnAction(e -> AppController.getInstance().loadView("views.TripOverviewView", "createView"));
+       
+        Image vehicleImage = new Image("file:src/resources/imgs/vehicle.png");
+        Button vehicleButton = new Button("               Auto's");
+        ImageView vehicleImageView = new ImageView(vehicleImage);
+        tripImageView.setTranslateX(0);
+        vehicleButton.setGraphic(vehicleImageView);
+        
+        vehicleButton.setMinSize((300/1.5), (50/1.5));
+        vehicleButton.setMaxSize((300/1.5), (50/1.5));
+        vehicleButton.setStyle("-fx-background-color: #FFFFFF");
+        vehicleButton.setOnAction(e -> AppController.getInstance().loadView("views.DashboardView", "createView"));
+
+        Image projectImage = new Image("file:src/resources/imgs/projects.png");
+        Button projectButton = new Button("            Projecten");
+        ImageView projectImageView = new ImageView(projectImage);
+        projectImageView.setTranslateX(0);
+        projectButton.setGraphic(projectImageView);
+        
+        projectButton.setMinSize((300/1.5), (50/1.5));
+        projectButton.setMaxSize((300/1.5), (50/1.5));
+        
+        projectButton.setStyle("-fx-background-color: #FFFFFF");
+        projectButton.setOnAction(e -> AppController.getInstance().loadView("views.DashboardView", "createView"));
+        
+        Pane logoutPane = new Pane();
+
+		logoutPane.setMinSize((300/1.5), (135/1.5));
+		logoutPane.setTranslateX(0);
+		logoutPane.setTranslateY((945/1.5));
+		Button logoutButton = new Button("            Logout");
+		logoutButton.setPrefWidth((220/1.5));
+		Image logoutImage = new Image("file:src/resources/imgs/logout.png");
+		ImageView logoutImageView = new ImageView(logoutImage);
+		logoutImageView.setTranslateX(25);
+		logoutButton.setGraphic(logoutImageView);
+		logoutPane.getChildren().addAll(logoutButton);	
+		logoutButton.setTranslateY((45/1.5));
+		logoutButton.setStyle("-fx-background-color: #FFFFFF");
+
+		menuVBox.getChildren().addAll(dashboardButton, tripButton, vehicleButton, projectButton);
+		dashBoardViewPane.getChildren().addAll(menuVBox, logoutPane);
+		menuPane.getChildren().addAll(dashBoardViewPane, headerPane);
+	    
+		return menuPane;
+	}
 }
