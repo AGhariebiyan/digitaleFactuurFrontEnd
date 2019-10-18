@@ -138,8 +138,7 @@ public class ProjectOverviewView implements View {
      */
     private void addSearchFilter(TableView tableView){
         //Wrap the ObservableList in a FilteredList.
-        FilteredList<ProjectModel> filteredData = new FilteredList<>(this.searchData, p -> true);
-
+        FilteredList<?> filteredData = new FilteredList<>(this.searchData, p -> true);
         //Set the filter Predicate whenever the filter changes.
         this.searchTextField.textProperty().addListener((observable, oldValue, newValue) -> {
             filteredData.setPredicate(model -> {
@@ -147,33 +146,26 @@ public class ProjectOverviewView implements View {
                 if (newValue == null || newValue.isEmpty()) {
                     return true;
                 }
-
-
                 //Compare table columns with filter text.
                 String lowerCaseFilter = newValue.toLowerCase();
-
                 //get the class object of the observable object.
                 Class classObj = model.getClass();
                 // Retrieve a list of methods of the given model
                 Method[] methods = classObj.getDeclaredMethods();
-
                 // Retrieve a list of of the tableview columns
                 ObservableList<?> columns = tableView.getColumns();
+
+                Boolean foundResult = false;
 
                 for (int parentIndex = 0; parentIndex < columns.size(); parentIndex++) {
                     for (int childIndex = 0; childIndex < methods.length; childIndex++) {
                         if (methods[childIndex].toString().contains("get")) {
-                            System.out.println(((TableColumn) columns.get(parentIndex)).getId() + " - "+methods[childIndex].getName());
                             if( ((TableColumn) columns.get(parentIndex)).getId().equals(methods[childIndex].getName())){
                                 try {
-                                    Object myClassObject = classObj;
                                     Method m = classObj.getMethod(methods[childIndex].getName());
-                                    Object result = m.invoke(myClassObject);
-
+                                    Object result = m.invoke(model);
                                     if (result.toString().toLowerCase().contains(lowerCaseFilter)) {
-                                        return true;
-                                    }else{
-                                        return false;
+                                        foundResult = true;
                                     }
                                 } catch (NoSuchMethodException e) {
                                     e.printStackTrace();
@@ -182,19 +174,16 @@ public class ProjectOverviewView implements View {
                                 } catch (InvocationTargetException e) {
                                     e.printStackTrace();
                                 }
-
                             }
-
                         }
                     }
                 }
-
-                return false; // Does not match.
+                return foundResult; // Does not match.
             });
         });
 
         //Wrap the FilteredList in a SortedList.
-        SortedList<ProjectModel> sortedData = new SortedList<>(filteredData);
+        SortedList<?> sortedData = new SortedList<>(filteredData);
 
         //Bind the SortedList comparator to the TableView comparator.
         sortedData.comparatorProperty().bind(tableView.comparatorProperty());
