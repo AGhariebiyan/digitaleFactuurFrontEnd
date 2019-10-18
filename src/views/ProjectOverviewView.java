@@ -47,8 +47,8 @@ public class ProjectOverviewView implements View {
         rootPane.setId("mainBackground");
         Scene scene = new Scene(rootPane,(1920/1.5), (1080/1.5));
         this.scene = scene;
-        this.scene.getStylesheets().add("/resources/css/application.css");
-        this.scene.getStylesheets().add("/resources/css/project.css");
+        this.scene.getStylesheets().add( this.getClass().getResource("/css/application.css").toExternalForm() );
+//        this.scene.getStylesheets().add( this.getClass().getResource("/css/project.css").toExternalForm() );
         return scene;
     };
 

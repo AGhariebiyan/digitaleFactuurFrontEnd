@@ -9,6 +9,7 @@
     -fx-max-width: 300px;
 }
 
+
 #logo{
     -fx-background-image: url("../imgs/logo.png");
     -fx-min-width: 50px;
