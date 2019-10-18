@@ -1,7 +1,51 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="4bfe40d3-9739-4d44-9577-d0ffcc2a04e6" name="Default Changelist" comment="" />
+    <list default="true" id="4bfe40d3-9739-4d44-9577-d0ffcc2a04e6" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/classes/production/digitaleFactuurFrontEnd/controllers/UserController.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/classes/production/digitaleFactuurFrontEnd/css/login.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/classes/production/digitaleFactuurFrontEnd/imgs/homepageBackground.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/classes/production/digitaleFactuurFrontEnd/imgs/logo.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/classes/production/digitaleFactuurFrontEnd/models/UserModel.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/classes/production/digitaleFactuurFrontEnd/views/LoginView.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resource/application.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resource/css/login.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resource/imgs/dashboard.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resource/imgs/homepageBackground.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resource/imgs/logo.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resource/imgs/projects.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resource/imgs/road.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resource/imgs/vehicle.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/controllers/UserController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/models/UserModel.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/views/LoginView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/production/digitaleFactuurFrontEnd/application/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/classes/production/digitaleFactuurFrontEnd/application/Main.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/production/digitaleFactuurFrontEnd/resources/application.css" beforeDir="false" afterPath="$PROJECT_DIR$/classes/production/digitaleFactuurFrontEnd/application.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/production/digitaleFactuurFrontEnd/resources/imgs/addButton.png" beforeDir="false" afterPath="$PROJECT_DIR$/classes/production/digitaleFactuurFrontEnd/imgs/addButton.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/production/digitaleFactuurFrontEnd/resources/imgs/dashboard.png" beforeDir="false" afterPath="$PROJECT_DIR$/classes/production/digitaleFactuurFrontEnd/imgs/dashboard.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/production/digitaleFactuurFrontEnd/resources/imgs/logo.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/classes/production/digitaleFactuurFrontEnd/imgs/logo.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/production/digitaleFactuurFrontEnd/resources/imgs/logoDF.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/classes/production/digitaleFactuurFrontEnd/imgs/logoDF.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/production/digitaleFactuurFrontEnd/resources/imgs/logout.png" beforeDir="false" afterPath="$PROJECT_DIR$/classes/production/digitaleFactuurFrontEnd/imgs/logout.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/production/digitaleFactuurFrontEnd/resources/imgs/projects.png" beforeDir="false" afterPath="$PROJECT_DIR$/classes/production/digitaleFactuurFrontEnd/imgs/projects.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/production/digitaleFactuurFrontEnd/resources/imgs/road.png" beforeDir="false" afterPath="$PROJECT_DIR$/classes/production/digitaleFactuurFrontEnd/imgs/road.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/production/digitaleFactuurFrontEnd/resources/imgs/road_white.png" beforeDir="false" afterPath="$PROJECT_DIR$/classes/production/digitaleFactuurFrontEnd/imgs/road_white.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/production/digitaleFactuurFrontEnd/resources/imgs/user_icon.png" beforeDir="false" afterPath="$PROJECT_DIR$/classes/production/digitaleFactuurFrontEnd/imgs/user_icon.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/production/digitaleFactuurFrontEnd/resources/imgs/vehicle.png" beforeDir="false" afterPath="$PROJECT_DIR$/classes/production/digitaleFactuurFrontEnd/imgs/vehicle.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/production/digitaleFactuurFrontEnd/resources/project.css" beforeDir="false" afterPath="$PROJECT_DIR$/classes/production/digitaleFactuurFrontEnd/project.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/application/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/application/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/resources/application.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/resources/imgs/addButton.png" beforeDir="false" afterPath="$PROJECT_DIR$/resource/imgs/addButton.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/resources/imgs/dashboard.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/resources/imgs/logo.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/resources/imgs/logoDF.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/resource/imgs/logoDF.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/resources/imgs/logout.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/resources/imgs/projects.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/resources/imgs/road.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/resources/imgs/road_white.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/resources/imgs/user_icon.png" beforeDir="false" afterPath="$PROJECT_DIR$/resource/imgs/user_icon.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/resources/imgs/vehicle.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/resources/project.css" beforeDir="false" />
+    </list>
     <ignored path="$PROJECT_DIR$/classes/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -28,11 +72,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/application/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="204">
-              <caret line="14" column="32" selection-start-line="14" selection-start-column="32" selection-end-line="14" selection-end-column="32" />
+            <state relative-caret-position="170">
+              <caret line="12" column="75" selection-start-line="12" selection-start-column="75" selection-end-line="12" selection-end-column="75" />
             </state>
           </provider>
         </entry>
@@ -62,23 +106,32 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/models/ProjectModel.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-425">
-              <caret line="17" column="24" selection-start-line="17" selection-start-column="24" selection-end-line="17" selection-end-column="24" />
+            <state relative-caret-position="162">
+              <caret line="57" column="32" selection-start-line="57" selection-start-column="32" selection-end-line="57" selection-end-column="32" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/views/ProjectOverviewView.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-2686">
-              <caret column="14" selection-start-column="14" selection-end-column="14" />
+            <state relative-caret-position="357">
+              <caret line="50" selection-start-line="50" selection-end-line="50" selection-end-column="66" />
               <folding>
                 <element signature="e#10173#10174#0" expanded="true" />
                 <element signature="e#10212#10213#0" expanded="true" />
                 <element signature="e#10306#10307#0" expanded="true" />
                 <element signature="e#10339#10340#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/resource/css/login.css">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-16">
+              <caret line="11" selection-start-line="11" selection-end-line="11" />
             </state>
           </provider>
         </entry>
@@ -153,6 +206,7 @@
       <find>methodName</find>
       <find>project</find>
       <find>createbutton</find>
+      <find>project.css</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -165,10 +219,11 @@
         <option value="$PROJECT_DIR$/src/views/ProjectOverviewView.java" />
         <option value="$PROJECT_DIR$/src/views/TripOverviewView.java" />
         <option value="$PROJECT_DIR$/src/views/AddTripView.java" />
-        <option value="$PROJECT_DIR$/src/application/Main.java" />
         <option value="$PROJECT_DIR$/src/views/DashboardView.java" />
         <option value="$PROJECT_DIR$/src/controllers/AppController.java" />
         <option value="$PROJECT_DIR$/src/models/ProjectModel.java" />
+        <option value="$PROJECT_DIR$/resource/css/login.css" />
+        <option value="$PROJECT_DIR$/src/application/Main.java" />
       </list>
     </option>
   </component>
@@ -194,6 +249,17 @@
             <path>
               <item name="digitaleFactuurFrontEnd" type="b2602c69:ProjectViewProjectNode" />
               <item name="digitaleFactuurFrontEnd" type="462c0819:PsiDirectoryNode" />
+              <item name="resource" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="digitaleFactuurFrontEnd" type="b2602c69:ProjectViewProjectNode" />
+              <item name="digitaleFactuurFrontEnd" type="462c0819:PsiDirectoryNode" />
+              <item name="resource" type="462c0819:PsiDirectoryNode" />
+              <item name="css" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="digitaleFactuurFrontEnd" type="b2602c69:ProjectViewProjectNode" />
+              <item name="digitaleFactuurFrontEnd" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -213,12 +279,6 @@
               <item name="digitaleFactuurFrontEnd" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="models" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="digitaleFactuurFrontEnd" type="b2602c69:ProjectViewProjectNode" />
-              <item name="digitaleFactuurFrontEnd" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="digitaleFactuurFrontEnd" type="b2602c69:ProjectViewProjectNode" />
@@ -292,7 +352,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="19898000" />
+    <option name="totallyTimeSpent" value="20297000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-6" y="-6" width="1549" height="837" extended-state="6" />
@@ -399,20 +459,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/application/Main.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="14" column="32" selection-start-line="14" selection-start-column="32" selection-end-line="14" selection-end-column="32" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/models/ProjectModel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-425">
-          <caret line="17" column="24" selection-start-line="17" selection-start-column="24" selection-end-line="17" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/controllers/AppController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-272">
@@ -451,16 +497,37 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/resource/css/login.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-16">
+          <caret line="11" selection-start-line="11" selection-end-line="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/models/ProjectModel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="162">
+          <caret line="57" column="32" selection-start-line="57" selection-start-column="32" selection-end-line="57" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/views/ProjectOverviewView.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-2686">
-          <caret column="14" selection-start-column="14" selection-end-column="14" />
+        <state relative-caret-position="357">
+          <caret line="50" selection-start-line="50" selection-end-line="50" selection-end-column="66" />
           <folding>
             <element signature="e#10173#10174#0" expanded="true" />
             <element signature="e#10212#10213#0" expanded="true" />
             <element signature="e#10306#10307#0" expanded="true" />
             <element signature="e#10339#10340#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/application/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="12" column="75" selection-start-line="12" selection-start-column="75" selection-end-line="12" selection-end-column="75" />
         </state>
       </provider>
     </entry>

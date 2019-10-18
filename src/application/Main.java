@@ -10,7 +10,7 @@ public class Main extends Application {
 	public void start(Stage primaryStage) {
 		try {
 			AppController.getInstance().setPrimaryStage(primaryStage);
-			AppController.getInstance().loadView("views.DashboardView", "createView");
+			AppController.getInstance().loadView("views.ProjectOverviewView", "createView");
 		} catch(Exception e) {
 			e.printStackTrace();
 		}
