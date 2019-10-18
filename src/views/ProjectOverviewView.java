@@ -11,10 +11,12 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.text.Font;
 import models.ProjectModel;
+
+import java.lang.reflect.*;
+import java.util.ArrayList;
 
 /**
  * @author Mike van Es
@@ -94,24 +96,30 @@ public class ProjectOverviewView implements View {
 
         TableColumn<String, ProjectModel> column1 = new TableColumn<>("Project id");
         column1.setCellValueFactory(new PropertyValueFactory<>("projectId"));
+        column1.setId("getProjectId");
 
         TableColumn<String, ProjectModel> column2 = new TableColumn<>("Project naam");
         column2.setCellValueFactory(new PropertyValueFactory<>("projectName"));
+        column2.setId("getProjectName");
 
         TableColumn<String, ProjectModel> column3 = new TableColumn<>("Aantal ritten");
         column3.setCellValueFactory(new PropertyValueFactory<>("totalTrips"));
+        column3.setId("getTotalTrips");
 
         TableColumn<String, ProjectModel> column4 = new TableColumn<>("Gereden kilometers");
         column4.setCellValueFactory(new PropertyValueFactory<>("totalKilometers"));
+        column4.setId("getTotalKilometers");
 
         tableView.getColumns().add(column1);
         tableView.getColumns().add(column2);
         tableView.getColumns().add(column3);
         tableView.getColumns().add(column4);
 
-        for (int i = 0; i < projectController.getProjects().size(); i++){
-            tableView.getItems().add(projectController.getProjects().get(i));
-            this.searchData.add(projectController.getProjects().get(i));
+
+        ArrayList<ProjectModel> projectModelArray = projectController.getProjects();
+        for (int i = 0; i <projectModelArray.size(); i++){
+            tableView.getItems().add(projectModelArray.get(i));
+            this.searchData.add(projectModelArray.get(i));
         }
 
         tableView.setMinSize((1245/1.5), (450/1.5));
@@ -124,38 +132,58 @@ public class ProjectOverviewView implements View {
 
     /**
      * @author Mike van Es
-     * Function to filter the previous made table
+     * @Param: TableView tableviewObject
+     * Function to filter the previous made table. Works with anytable aslong as the tableview is passed and the tablecolumns has the correct ids's,
+     * these should be the name of your get function in the model
      */
     private void addSearchFilter(TableView tableView){
         //Wrap the ObservableList in a FilteredList.
-        FilteredList<ProjectModel> filteredData = new FilteredList<>(this.searchData, p -> true);
-
+        FilteredList<?> filteredData = new FilteredList<>(this.searchData, p -> true);
         //Set the filter Predicate whenever the filter changes.
         this.searchTextField.textProperty().addListener((observable, oldValue, newValue) -> {
-            filteredData.setPredicate(project -> {
+            filteredData.setPredicate(model -> {
                 // If filter text is empty, display all persons.
                 if (newValue == null || newValue.isEmpty()) {
                     return true;
                 }
-
                 //Compare table columns with filter text.
                 String lowerCaseFilter = newValue.toLowerCase();
+                //get the class object of the observable object.
+                Class classObj = model.getClass();
+                // Retrieve a list of methods of the given model
+                Method[] methods = classObj.getDeclaredMethods();
+                // Retrieve a list of of the tableview columns
+                ObservableList<?> columns = tableView.getColumns();
 
-                if (Integer.toString(project.getProjectId()).toLowerCase().contains(lowerCaseFilter)) {
-                    return true;
-                }else if (project.getProjectName().toLowerCase().contains(lowerCaseFilter)) {
-                    return true;
-                }else if (Integer.toString(project.getTotalTrips()).toLowerCase().contains(lowerCaseFilter)) {
-                    return true;
-                }else if (Double.toString(project.getTotalKilometers()).toLowerCase().contains(lowerCaseFilter)) {
-                    return true;
+                Boolean foundResult = false;
+
+                for (int parentIndex = 0; parentIndex < columns.size(); parentIndex++) {
+                    for (int childIndex = 0; childIndex < methods.length; childIndex++) {
+                        if (methods[childIndex].toString().contains("get")) {
+                            if( ((TableColumn) columns.get(parentIndex)).getId().equals(methods[childIndex].getName())){
+                                try {
+                                    Method m = classObj.getMethod(methods[childIndex].getName());
+                                    Object result = m.invoke(model);
+                                    if (result.toString().toLowerCase().contains(lowerCaseFilter)) {
+                                        foundResult = true;
+                                    }
+                                } catch (NoSuchMethodException e) {
+                                    e.printStackTrace();
+                                } catch (IllegalAccessException e) {
+                                    e.printStackTrace();
+                                } catch (InvocationTargetException e) {
+                                    e.printStackTrace();
+                                }
+                            }
+                        }
+                    }
                 }
-                return false; // Does not match.
+                return foundResult; // Does not match.
             });
         });
 
         //Wrap the FilteredList in a SortedList.
-        SortedList<ProjectModel> sortedData = new SortedList<>(filteredData);
+        SortedList<?> sortedData = new SortedList<>(filteredData);
 
         //Bind the SortedList comparator to the TableView comparator.
         sortedData.comparatorProperty().bind(tableView.comparatorProperty());

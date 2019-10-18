@@ -2,45 +2,47 @@ package controllers;
 
 
 import javafx.scene.Scene;
+import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Method;
-import views.AddTripView;
 
 /**
  * @author Mike van Es
- * Singleton for loading new views in the primarystage
+ * @author Oussama Fahchouch
+ * Singelton for getting the appcontoller in any place, so we can switch scenes.
  */
 public class AppController extends ClassLoader {
 	public static AppController appController;
 	private Stage primaryStage;
+	private Pane headerPane;
+	private Pane menuPane;
 
-
+	/**
+	 * @author Mike van Es
+	 */
 	public static AppController getInstance() {
 		if (appController == null) {
 			appController = new AppController();
 		}
 		return appController;
 	}
-	/**
-	 * @author Mike van Es
-	 * Creates a new isntance of a given class and calls the function given in the parameters
-	 * @param1: String of the class name
-	 * @param2: String of the method name
-	 *
-	 */
+
+    /**
+     * @author Mike van Es
+     * Creates a new isntance of a given class and calls the function given in the parameters
+     * @param1: String of the class name
+     * @param2: String of the method name
+     *
+     */
 	public static void loadView(String classBinName, String methodName){
 		try {
-
-//			System.out.println(appController);
 			// Create a new JavaClassLoader
 			ClassLoader classLoader = appController.getClass().getClassLoader();
 
 			// Load the target class using its binary name
 			Class loadedMyClass = classLoader.loadClass(classBinName);
-
-//			System.out.println("Loaded class name: " + loadedMyClass.getName());
 
 			// Create a new instance from the loaded class
 			Constructor constructor = loadedMyClass.getConstructor();
@@ -48,15 +50,10 @@ public class AppController extends ClassLoader {
 
 			// Getting the target method from the loaded class and invoke it using its name
 			Method method = loadedMyClass.getMethod(methodName);
-//			System.out.println("Invoked method name: " + method.getName());
 			Object scene = method.invoke(myClassObject);
 
-//			System.out.println("Loading new scene" + scene + " "+ appController.primaryStage);
 			appController.primaryStage.setScene((Scene) scene );
 			appController.primaryStage.show();
-
-
-
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
 		} catch (Exception e) {
@@ -66,15 +63,39 @@ public class AppController extends ClassLoader {
 	
 	/**
 	 * @author Oussama Fahchouch
-	 * @return
-	 */
-
-
-	/**
-	 * @author Oussama Fahchouch
 	 * @param primaryStage
 	 */
 	public void setPrimaryStage(Stage primaryStage) {
 		appController.primaryStage = primaryStage;
-	};
+	}
+	
+	/**
+	 * @author Oussama Fahchouch
+	 * @return headerPane
+	 */
+	public Pane getHeaderPane() {
+		return headerPane;
+	}
+	
+	/**
+	 * @author Oussama Fahchouch
+	 */
+	public void setHeaderPane(Pane headerPane) {
+		this.headerPane = headerPane;
+	}
+	
+	/**
+	 * @author Oussama Fahchouch
+	 * @return headerPane
+	 */
+	public Pane getMenuPane() {
+		return menuPane;
+	}
+	
+	/**
+	 * @author Oussama Fahchouch
+	 */
+	public void setMenuPane(Pane menuPane) {
+		this.menuPane = menuPane;
+	}
 }
