@@ -11,6 +11,7 @@ import java.lang.reflect.Method;
 /**
  * @author Mike van Es
  * @author Oussama Fahchouch
+ * Singelton for getting the appcontoller in any place, so we can switch scenes.
  */
 public class AppController extends ClassLoader {
 	public static AppController appController;
@@ -19,7 +20,7 @@ public class AppController extends ClassLoader {
 	private Pane menuPane;
 
 	/**
-	 * @author Oussama Fahchouch
+	 * @author Mike van Es
 	 */
 	public static AppController getInstance() {
 		if (appController == null) {
@@ -27,11 +28,14 @@ public class AppController extends ClassLoader {
 		}
 		return appController;
 	}
-	
-	/**
-	 * @author Mike van Es
-	 * @param: view
-	 */
+
+    /**
+     * @author Mike van Es
+     * Creates a new isntance of a given class and calls the function given in the parameters
+     * @param1: String of the class name
+     * @param2: String of the method name
+     *
+     */
 	public static void loadView(String classBinName, String methodName){
 		try {
 			// Create a new JavaClassLoader

@@ -214,7 +214,7 @@ public class DashboardView implements View {
         projectButton.setMaxSize((300/1.5), (50/1.5));
         
         projectButton.setStyle("-fx-background-color: #FFFFFF");
-        projectButton.setOnAction(e -> AppController.getInstance().loadView("views.DashboardView", "createView"));
+        projectButton.setOnAction(e -> AppController.getInstance().loadView("views.ProjectOverviewView", "createView"));
 
 		menuVBox.getChildren().addAll(dashboardButton, tripButton, vehicleButton, projectButton);
 		
@@ -252,6 +252,11 @@ public class DashboardView implements View {
 
 	@Override
 	public void updateView() {		
+	}
+
+	@Override
+	public void setScene(Scene sceneToSet) {
+
 	}
 
 	@Override
