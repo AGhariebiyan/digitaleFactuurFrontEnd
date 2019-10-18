@@ -165,24 +165,23 @@ public class ProjectOverviewView implements View {
                         if (methods[childIndex].toString().contains("get")) {
                             System.out.println(((TableColumn) columns.get(parentIndex)).getId() + " - "+methods[childIndex].getName());
                             if( ((TableColumn) columns.get(parentIndex)).getId().equals(methods[childIndex].getName())){
-                                        Method method;
-                                        try {
-                                            Object myClassObject = classObj;
-                                            Method m = classObj.getMethod(methods[childIndex].getName());
-                                            Object result = m.invoke(myClassObject);
+                                try {
+                                    Object myClassObject = classObj;
+                                    Method m = classObj.getMethod(methods[childIndex].getName());
+                                    Object result = m.invoke(myClassObject);
 
-                                            if (result.toString().toLowerCase().contains(lowerCaseFilter)) {
-                                                return true;
-                                            }else{
-                                                return false;
-                                            }
-                                        } catch (NoSuchMethodException e) {
-                                            e.printStackTrace();
-                                        } catch (IllegalAccessException e) {
-                                            e.printStackTrace();
-                                        } catch (InvocationTargetException e) {
-                                            e.printStackTrace();
-                                        }
+                                    if (result.toString().toLowerCase().contains(lowerCaseFilter)) {
+                                        return true;
+                                    }else{
+                                        return false;
+                                    }
+                                } catch (NoSuchMethodException e) {
+                                    e.printStackTrace();
+                                } catch (IllegalAccessException e) {
+                                    e.printStackTrace();
+                                } catch (InvocationTargetException e) {
+                                    e.printStackTrace();
+                                }
 
                             }
 
