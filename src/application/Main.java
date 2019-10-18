@@ -16,8 +16,9 @@ public class Main extends Application {
 	public void start(Stage primaryStage) {
 		try {
 //			TripOverviewView tView = new TripOverviewView();
-			LoginView aTView = new LoginView();
-			AppController.getInstance().loadView(aTView, primaryStage);
+			AppController appController = AppController.getInstance();
+			appController.setPrimaryStage(primaryStage);
+			appController.loadView("views.LoginView", "createView");
 		} catch(Exception e) {
 			e.printStackTrace();
 		}

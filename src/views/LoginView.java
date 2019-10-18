@@ -20,7 +20,7 @@ public class LoginView implements View{
 
     public LoginView(){
         this.css = this.getClass().getResource("/css/login.css").toExternalForm();
-        this.scene = createView();
+//        this.scene = createView();
     }
 
     @Override
@@ -71,6 +71,11 @@ public class LoginView implements View{
 
     @Override
     public void updateView() {
+
+    }
+
+    @Override
+    public void setScene(Scene sceneToSet) {
 
     }
 

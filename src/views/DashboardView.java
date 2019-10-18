@@ -186,6 +186,11 @@ public class DashboardView implements View {
 	}
 
 	@Override
+	public void setScene(Scene sceneToSet) {
+
+	}
+
+	@Override
 	public Scene getScene() {
 		return this.scene;
 	}
