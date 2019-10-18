@@ -11,6 +11,7 @@ import java.lang.reflect.Method;
 /**
  * @author Mike van Es
  * @author Oussama Fahchouch
+ * Singelton for getting the appcontoller in any place, so we can switch scenes.
  */
 public class AppController extends ClassLoader {
 	public static AppController appController;
@@ -19,7 +20,7 @@ public class AppController extends ClassLoader {
 	private Pane menuPane;
 
 	/**
-	 * @author Oussama Fahchouch
+	 * @author Mike van Es
 	 */
 	public static AppController getInstance() {
 		if (appController == null) {
