@@ -7,7 +7,15 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.layout.Border;
+import javafx.scene.layout.BorderStroke;
+import javafx.scene.layout.BorderStrokeStyle;
+import javafx.scene.layout.BorderWidths;
+import javafx.scene.layout.CornerRadii;
 import javafx.scene.layout.Pane;
+import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 import javafx.scene.text.Font;
 import models.TripModel;
@@ -24,12 +32,11 @@ public class TripOverviewView implements View {
 	 */
 	public TripOverviewView() {
 		this.tripController = new TripController();
-//		createView();
+		this.scene = createView();
 	}
 
 	/**
 	 * @author Oussama Fahchouch
-	 * @return
 	 */
 	@Override
 	public Scene createView(){
@@ -40,7 +47,7 @@ public class TripOverviewView implements View {
 		Scene scene = new Scene(rootPane,1920, 1080);
 		
 		return scene;
-	}
+	};
 	
 	
 	/**
@@ -154,12 +161,7 @@ public class TripOverviewView implements View {
 	 */
 	@Override
 	public void updateView(){}
-
-	@Override
-	public void setScene(Scene sceneToSet) {
-
-	}
-
+	
 	/**
 	 * @author Oussama Fahchouch
 	 * @return Scene

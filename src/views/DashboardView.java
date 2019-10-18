@@ -1,5 +1,9 @@
 package views;
 
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+
+import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.scene.Node;
 import javafx.scene.Scene;
@@ -7,6 +11,8 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.Background;
 import javafx.scene.layout.Border;
 import javafx.scene.layout.BorderStroke;
 import javafx.scene.layout.BorderStrokeStyle;
@@ -25,7 +31,7 @@ public class DashboardView implements View {
 	 * @author Oussama Fahchouch
 	 */
 	public DashboardView() {
-		createView();
+		this.scene = createView();
 	}
 	
 	@Override
@@ -33,9 +39,9 @@ public class DashboardView implements View {
 		Pane rootPane = new Pane();
 		
 		rootPane.getChildren().addAll(createdashBoardViewPane(), createHeaderPane());	
-
+		
 		Scene scene = new Scene(rootPane, 1920, 1080);
-		this.scene = scene;
+		
 		return scene;
 	}
 	
@@ -177,11 +183,6 @@ public class DashboardView implements View {
 
 	@Override
 	public void updateView() {		
-	}
-
-	@Override
-	public void setScene(Scene sceneToSet) {
-
 	}
 
 	@Override

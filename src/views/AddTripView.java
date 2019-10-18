@@ -1,22 +1,30 @@
 package views;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
 import controllers.TripController;
 import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
+import javafx.scene.layout.Border;
+import javafx.scene.layout.BorderStroke;
+import javafx.scene.layout.BorderStrokeStyle;
+import javafx.scene.layout.BorderWidths;
+import javafx.scene.layout.CornerRadii;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
+import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 import javafx.scene.text.Font;
+import javafx.scene.text.TextAlignment;
+import models.TripModel;
 
 /**
  * @author Oussama Fahchouch
@@ -30,12 +38,12 @@ public class AddTripView implements View {
 	 */
 	public AddTripView() {
 		this.tripController = new TripController();
-//		createView();
+		this.scene = createView();
 	}
 	
 	/**
 	 * @author Oussama Fahchouch
-	 * @return
+	 * @return Scene michiel was hier
 	 */
 	@Override
 	public Scene createView(){
@@ -44,8 +52,6 @@ public class AddTripView implements View {
 		rootPane.getChildren().addAll(createAddTripsPane());	
 		
 		Scene scene = new Scene(rootPane,1920, 1080);
-//		System.out.println("hallo");
-		this.scene = scene;
 		
 		return scene;
 	}
@@ -84,11 +90,7 @@ public class AddTripView implements View {
 		addTripButtonPane.setTranslateX(1295);
 		addTripButtonPane.setTranslateY(-37.50);
 		
-		Image image = new Image("file:src/resources/imgs/road_white.png");
-		ImageView imageView = new ImageView(image); 
-		
-		Button addButton = new Button();
-		addButton.setGraphic(imageView);
+		Button addButton = new Button("=");
 		
 		double r = 1.5;
 		addButton.setShape(new Circle(r));
@@ -145,26 +147,18 @@ public class AddTripView implements View {
 		
 		Label labelInputFieldsHBoxRow1 = new Label("Project id:");
 		TextField textFieldInputFieldsHBoxRow1 = new TextField ();
-		textFieldInputFieldsHBoxRow1.setId("projectIdTextField");
-		textFieldInputFieldsHBoxRow1.setPromptText("project id..");
 		inputFieldsHBoxRow1.getChildren().addAll(labelInputFieldsHBoxRow1, textFieldInputFieldsHBoxRow1);
 		
 		Label labelInputFieldsHBoxRow2 = new Label("Start locatie:");
 		TextField textFieldInputFieldsHBoxRow2 = new TextField ();
-		textFieldInputFieldsHBoxRow2.setId("startLocationTextField");
-		textFieldInputFieldsHBoxRow2.setPromptText("start locatie..");
 		inputFieldsHBoxRow2.getChildren().addAll(labelInputFieldsHBoxRow2, textFieldInputFieldsHBoxRow2);
 		
 		Label labelInputFieldsHBoxRow3 = new Label("Eind locatie:");
 		TextField textFieldInputFieldsHBoxRow3 = new TextField ();
-		textFieldInputFieldsHBoxRow3.setId("endLocationTextField");
-		textFieldInputFieldsHBoxRow3.setPromptText("eind locatie..");
 		inputFieldsHBoxRow3.getChildren().addAll(labelInputFieldsHBoxRow3, textFieldInputFieldsHBoxRow3);
 		
 		Label labelInputFieldsHBoxRow4 = new Label("Kenteken voertuig:");
 		TextField textFieldInputFieldsHBoxRow4 = new TextField ();
-		textFieldInputFieldsHBoxRow4.setId("licenseplateTextField");
-		textFieldInputFieldsHBoxRow4.setPromptText("kenteken voertuig..");
 		inputFieldsHBoxRow4.getChildren().addAll(labelInputFieldsHBoxRow4, textFieldInputFieldsHBoxRow4);
 		
 		List<Label> labelList = Arrays.asList(labelInputFieldsHBoxRow1, labelInputFieldsHBoxRow2, labelInputFieldsHBoxRow3, labelInputFieldsHBoxRow4);
@@ -186,9 +180,6 @@ public class AddTripView implements View {
 		Button createTripButton = new Button("create");
 		createTripButton.setStyle("-fx-font-size: 16px; -fx-background-color: #1E71EA; -fx-text-fill: white;");
 		createTripButton.setTranslateX(510);
-		DashboardView dView = new DashboardView();
-		
-//		createTripButton.setOnAction(e -> this.tripController.appController.loadView(dView));
 		inputFieldsHBoxRow5.getChildren().addAll(createTripButton);
 		
 		return inputFieldsAddTripVBox;
@@ -199,12 +190,7 @@ public class AddTripView implements View {
 	 */
 	@Override
 	public void updateView(){}
-
-	@Override
-	public void setScene(Scene sceneToSet) {
-
-	}
-
+	
 	/**
 	 * @author Oussama Fahchouch
 	 * @return Scene
@@ -212,5 +198,5 @@ public class AddTripView implements View {
 	@Override
 	public Scene getScene() {
 		return this.scene;
-	};
+	}
 }

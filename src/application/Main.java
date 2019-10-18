@@ -7,16 +7,17 @@ import javafx.scene.Scene;
 import javafx.scene.layout.BorderPane;
 import views.AddTripView;
 import views.DashboardView;
+import views.LoginView;
 import views.TripOverviewView;
-
 
 public class Main extends Application {
 	
 	@Override
 	public void start(Stage primaryStage) {
 		try {
-			AppController.getInstance().setPrimaryStage(primaryStage);
-			AppController.getInstance().loadView("views.ProjectOverviewView", "createView");
+//			TripOverviewView tView = new TripOverviewView();
+			LoginView aTView = new LoginView();
+			AppController.getInstance().loadView(aTView, primaryStage);
 		} catch(Exception e) {
 			e.printStackTrace();
 		}
