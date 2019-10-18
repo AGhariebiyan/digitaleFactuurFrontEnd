@@ -1,39 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="4bfe40d3-9739-4d44-9577-d0ffcc2a04e6" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/classes/production/digitaleFactuurFrontEnd/META-INF/digitaleFactuurFrontEnd.kotlin_module" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/classes/production/digitaleFactuurFrontEnd/application/Main.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/classes/production/digitaleFactuurFrontEnd/controllers/AppController.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/classes/production/digitaleFactuurFrontEnd/controllers/Controller.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/classes/production/digitaleFactuurFrontEnd/controllers/ProjectController.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/classes/production/digitaleFactuurFrontEnd/controllers/TripController.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/classes/production/digitaleFactuurFrontEnd/models/ProjectModel.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/classes/production/digitaleFactuurFrontEnd/models/TripModel.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/classes/production/digitaleFactuurFrontEnd/resources/application.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/classes/production/digitaleFactuurFrontEnd/resources/imgs/addButton.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/classes/production/digitaleFactuurFrontEnd/resources/imgs/dashboard.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/classes/production/digitaleFactuurFrontEnd/resources/imgs/logoDF.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/classes/production/digitaleFactuurFrontEnd/resources/imgs/projects.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/classes/production/digitaleFactuurFrontEnd/resources/imgs/road.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/classes/production/digitaleFactuurFrontEnd/resources/imgs/road_white.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/classes/production/digitaleFactuurFrontEnd/resources/imgs/user_icon.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/classes/production/digitaleFactuurFrontEnd/resources/imgs/vehicle.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/classes/production/digitaleFactuurFrontEnd/resources/project.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/classes/production/digitaleFactuurFrontEnd/views/AddTripView.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/classes/production/digitaleFactuurFrontEnd/views/DashboardView.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/classes/production/digitaleFactuurFrontEnd/views/ProjectOverviewView.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/classes/production/digitaleFactuurFrontEnd/views/TripOverviewView.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/classes/production/digitaleFactuurFrontEnd/views/View.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/application/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/application/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/resources/application.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/application.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/AddTripView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/AddTripView.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/DashboardView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/DashboardView.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/ProjectOverviewView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/ProjectOverviewView.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/TripOverviewView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/TripOverviewView.java" afterDir="false" />
-    </list>
+    <list default="true" id="4bfe40d3-9739-4d44-9577-d0ffcc2a04e6" name="Default Changelist" comment="" />
     <ignored path="$PROJECT_DIR$/classes/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -63,8 +31,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/application/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="255">
-              <caret line="17" column="4" lean-forward="true" selection-start-line="17" selection-start-column="4" selection-end-line="17" selection-end-column="4" />
+            <state relative-caret-position="204">
+              <caret line="14" column="32" lean-forward="true" selection-start-line="14" selection-start-column="32" selection-end-line="14" selection-end-column="32" />
             </state>
           </provider>
         </entry>
@@ -81,7 +49,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/views/TripOverviewView.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="384">
+            <state relative-caret-position="656">
               <caret line="166" selection-start-line="166" selection-end-line="166" />
             </state>
           </provider>
@@ -111,15 +79,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/views/DashboardView.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="345">
-              <caret line="216" column="98" selection-start-line="216" selection-start-column="98" selection-end-line="216" selection-end-column="98" />
-              <folding>
-                <element signature="e#8053#8054#0" expanded="true" />
-                <element signature="e#8077#8078#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="651">
+              <caret line="216" column="8" selection-start-line="216" selection-start-column="8" selection-end-line="216" selection-end-column="8" />
             </state>
           </provider>
         </entry>
@@ -133,11 +97,23 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/controllers/AppController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="142">
-              <caret line="50" column="54" selection-start-line="50" selection-start-column="54" selection-end-line="50" selection-end-column="54" />
+            <state relative-caret-position="323">
+              <caret line="36" column="7" selection-start-line="36" selection-start-column="7" selection-end-line="36" selection-end-column="7" />
+              <folding>
+                <element signature="e#1637#1638#0" expanded="true" />
+                <element signature="e#1685#1686#0" expanded="true" />
+                <element signature="e#1781#1782#0" expanded="true" />
+                <element signature="e#1805#1806#0" expanded="true" />
+                <element signature="e#1893#1894#0" expanded="true" />
+                <element signature="e#1928#1929#0" expanded="true" />
+                <element signature="e#2022#2023#0" expanded="true" />
+                <element signature="e#2044#2045#0" expanded="true" />
+                <element signature="e#2128#2129#0" expanded="true" />
+                <element signature="e#2159#2160#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -177,12 +153,12 @@
       <list>
         <option value="$PROJECT_DIR$/src/models/ProjectModel.java" />
         <option value="$PROJECT_DIR$/src/resources/application.css" />
-        <option value="$PROJECT_DIR$/src/controllers/AppController.java" />
         <option value="$PROJECT_DIR$/src/views/ProjectOverviewView.java" />
         <option value="$PROJECT_DIR$/src/views/TripOverviewView.java" />
         <option value="$PROJECT_DIR$/src/views/AddTripView.java" />
         <option value="$PROJECT_DIR$/src/application/Main.java" />
         <option value="$PROJECT_DIR$/src/views/DashboardView.java" />
+        <option value="$PROJECT_DIR$/src/controllers/AppController.java" />
       </list>
     </option>
   </component>
@@ -300,7 +276,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="18085000" />
+    <option name="totallyTimeSpent" value="18089000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="827" extended-state="6" />
@@ -397,8 +373,20 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/controllers/AppController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="142">
-          <caret line="50" column="54" selection-start-line="50" selection-start-column="54" selection-end-line="50" selection-end-column="54" />
+        <state relative-caret-position="323">
+          <caret line="36" column="7" selection-start-line="36" selection-start-column="7" selection-end-line="36" selection-end-column="7" />
+          <folding>
+            <element signature="e#1637#1638#0" expanded="true" />
+            <element signature="e#1685#1686#0" expanded="true" />
+            <element signature="e#1781#1782#0" expanded="true" />
+            <element signature="e#1805#1806#0" expanded="true" />
+            <element signature="e#1893#1894#0" expanded="true" />
+            <element signature="e#1928#1929#0" expanded="true" />
+            <element signature="e#2022#2023#0" expanded="true" />
+            <element signature="e#2044#2045#0" expanded="true" />
+            <element signature="e#2128#2129#0" expanded="true" />
+            <element signature="e#2159#2160#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -424,7 +412,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/views/TripOverviewView.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="384">
+        <state relative-caret-position="656">
           <caret line="166" selection-start-line="166" selection-end-line="166" />
         </state>
       </provider>
@@ -438,19 +426,15 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/application/Main.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="17" column="4" lean-forward="true" selection-start-line="17" selection-start-column="4" selection-end-line="17" selection-end-column="4" />
+        <state relative-caret-position="204">
+          <caret line="14" column="32" lean-forward="true" selection-start-line="14" selection-start-column="32" selection-end-line="14" selection-end-column="32" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/views/DashboardView.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="345">
-          <caret line="216" column="98" selection-start-line="216" selection-start-column="98" selection-end-line="216" selection-end-column="98" />
-          <folding>
-            <element signature="e#8053#8054#0" expanded="true" />
-            <element signature="e#8077#8078#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="651">
+          <caret line="216" column="8" selection-start-line="216" selection-start-column="8" selection-end-line="216" selection-end-column="8" />
         </state>
       </provider>
     </entry>

@@ -27,11 +27,14 @@ public class AppController extends ClassLoader {
 		}
 		return appController;
 	}
-	
-	/**
-	 * @author Mike van Es
-	 * @param: view
-	 */
+
+    /**
+     * @author Mike van Es
+     * Creates a new isntance of a given class and calls the function given in the parameters
+     * @param1: String of the class name
+     * @param2: String of the method name
+     *
+     */
 	public static void loadView(String classBinName, String methodName){
 		try {
 			// Create a new JavaClassLoader
