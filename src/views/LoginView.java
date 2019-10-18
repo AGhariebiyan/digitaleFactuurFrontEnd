@@ -20,7 +20,6 @@ public class LoginView implements View{
 
     public LoginView(){
         this.css = this.getClass().getResource("/css/login.css").toExternalForm();
-//        this.scene = createView();
     }
 
     @Override
