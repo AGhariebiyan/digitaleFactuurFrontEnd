@@ -46,19 +46,19 @@ public class DashboardView implements View {
 		Image image = new Image(this.getClass().getResource("/imgs/homepageBackground.png").toExternalForm());
 		ImageView imageView = new ImageView(image);
 		
-		
+		imageView.setTranslateY(25);
 		rootPane.getChildren().add(imageView);
 		//creates center components of rootPane
 		Pane totalTripsPane = new Pane();
 		totalTripsPane.setStyle("-fx-background-color: #3A4F62");
 		//totalTripsPane.setBorder(blackBorder);
 		totalTripsPane.setMinSize((450/1.5), (350/1.5));
-		totalTripsPane.setTranslateX((525/1.5));
-		totalTripsPane.setTranslateY((125/1.5));
+		totalTripsPane.setTranslateX((550/1.5));
+		totalTripsPane.setTranslateY((175/1.5));
 		Label totalTripsLabel = new Label("Totale ritten");
 		totalTripsPane.getChildren().addAll(totalTripsLabel);	
 		totalTripsLabel.setTextFill(Color.WHITE);
-		totalTripsLabel.setTranslateX(75);
+		totalTripsLabel.setTranslateX(55);
 		totalTripsLabel.setTranslateY(25);
 
 		totalTripsLabel.setFont(new Font(30));
@@ -68,12 +68,12 @@ public class DashboardView implements View {
 		totalProjectsPane.setStyle("-fx-background-color: #3A4F62");
 		//totalProjectsPane.setBorder(blackBorder);
 		totalProjectsPane.setMinSize((450/1.5), (350/1.5));
-		totalProjectsPane.setTranslateX((1125/1.5));
-		totalProjectsPane.setTranslateY((125/1.5));
+		totalProjectsPane.setTranslateX((1175/1.5));
+		totalProjectsPane.setTranslateY((175/1.5));
 		Label totalProjectsLabel = new Label("Totale projecten");
 		totalProjectsPane.getChildren().addAll(totalProjectsLabel);	
 		totalProjectsLabel.setTextFill(Color.WHITE);
-		totalProjectsLabel.setTranslateX(50);
+		totalProjectsLabel.setTranslateX(27);
 		totalProjectsLabel.setTranslateY(25);
 
 		totalProjectsLabel.setFont(new Font(30));
@@ -81,9 +81,9 @@ public class DashboardView implements View {
 		Pane addTripPane = new Pane();
 		addTripPane.setStyle("-fx-background-color: #3A4F62");
 		//addTripPane.setBorder(blackBorder);
-		addTripPane.setMinSize((1050/1.5), (300/1.5));
-		addTripPane.setTranslateX((525/1.5));
-		addTripPane.setTranslateY((625/1.5));
+		addTripPane.setMinSize((1075/1.5), (300/1.5));
+		addTripPane.setTranslateX((550/1.5));
+		addTripPane.setTranslateY((675/1.5));
 		Image addButtonImage = new Image(this.getClass().getResource("/imgs/addButton.png").toExternalForm());
         ImageView addButtonImageView = new ImageView(addButtonImage);
 
@@ -92,7 +92,7 @@ public class DashboardView implements View {
 		addTripButton.setTextFill(Color.WHITE);
 		addTripButton.setStyle("-fx-background-color: #3A4F62");
 		addTripButton.setMinSize((50),50);
-		addTripButton.setTranslateX(220);
+		addTripButton.setTranslateX(125);
 		addTripButton.setTranslateY(50);
 		addTripButton.setFont(new Font(20));
 		addTripButton.setOnAction(e -> AppController.getInstance().loadView("views.TripOverviewView", "createView"));
@@ -162,14 +162,13 @@ public class DashboardView implements View {
 	private Pane createLogoPane() {
 		Pane logoPane = new Pane();
 		
-		Image image = new Image(this.getClass().getResource("/imgs/logo.png").toExternalForm());
+		Image image = new Image(this.getClass().getResource("/imgs/logoDF.jpg").toExternalForm());
 		ImageView imageView = new ImageView(image); 
 		
 		logoPane.setMinSize((300/1.5), (75/1.5));
 		logoPane.setTranslateX(0);
 		logoPane.setTranslateY(0);
-		logo
-		
+
 		logoPane.getChildren().addAll(imageView);
 
 		
@@ -208,9 +207,9 @@ public class DashboardView implements View {
 		
 		//create dashboard button
 		Image dashboardImage = new Image(this.getClass().getResource("/imgs/dashboard.png").toExternalForm());
-        Button dashboardButton = new Button("           Dashboard");
+        Button dashboardButton = new Button("       Dashboard");
         ImageView imageView = new ImageView(dashboardImage);
-        imageView.setTranslateX(0);
+        imageView.setTranslateX(15);
         dashboardButton.setGraphic(imageView);
         dashboardButton.setStyle("-fx-background-color: #FFFFFF");
         
@@ -219,10 +218,10 @@ public class DashboardView implements View {
         dashboardButton.setOnAction(e -> AppController.getInstance().loadView("views.DashboardView", "createView"));
 		
 		//create trip button 
-		Image tripImage = new Image("file:src/resources/imgs/road.png");
-        Button tripButton = new Button("                 Ritten");
+		Image tripImage = new Image(this.getClass().getResource("/imgs/road.png").toExternalForm());
+        Button tripButton = new Button("Ritten");
         ImageView tripImageView = new ImageView(tripImage);
-        tripImageView.setTranslateX(0);
+        tripImageView.setTranslateX(-15);
         tripButton.setGraphic(tripImageView);
         tripButton.setStyle("-fx-background-color: #FFFFFF");
         
@@ -232,27 +231,27 @@ public class DashboardView implements View {
        
 		//create vehicle button 
         Image vehicleImage = new Image(this.getClass().getResource("/imgs/vehicle.png").toExternalForm());
-        Button vehicleButton = new Button("               Auto's");
+        Button vehicleButton = new Button("       Voertuigen");
         ImageView vehicleImageView = new ImageView(vehicleImage);
-        vehicleImageView.setTranslateX(-8);
+        vehicleImageView.setTranslateX(15);
         vehicleButton.setGraphic(vehicleImageView);
         
         vehicleButton.setMinSize((300/1.5), (50/1.5));
         vehicleButton.setMaxSize((300/1.5), (50/1.5));
-        vehicleButton.setStyle("-fx-background-color: #FFFFFF");
+        vehicleButton.setStyle("-fx-background-color: #FFFFFF;");
         vehicleButton.setOnAction(e -> AppController.getInstance().loadView("views.DashboardView", "createView"));
 
 		//create project button 
         Image projectImage = new Image(this.getClass().getResource("/imgs/projects.png").toExternalForm());
-        Button projectButton = new Button("            Projecten");
+        Button projectButton = new Button("      Projecten");
         ImageView projectImageView = new ImageView(projectImage);
-        projectImageView.setTranslateX(-3);
+        projectImageView.setTranslateX(10);
         projectButton.setGraphic(projectImageView);
         
         projectButton.setMinSize((300/1.5), (50/1.5));
         projectButton.setMaxSize((300/1.5), (50/1.5));
         
-        projectButton.setStyle("-fx-background-color: #FFFFFF");
+        projectButton.setStyle("-fx-background-color: #FFFFFF;");
         projectButton.setOnAction(e -> AppController.getInstance().loadView("views.ProjectOverviewView", "createView"));
 
 		menuVBox.getChildren().addAll(dashboardButton, tripButton, vehicleButton, projectButton);
@@ -272,16 +271,15 @@ public class DashboardView implements View {
 		logoutPane.setTranslateY((1010/1.5));
 		logoutPane.setStyle("-fx-background-color: #DFE1E0");
 		
-		Button logoutButton = new Button("            Logout");
+		Button logoutButton = new Button("   Logout");
 		logoutButton.setPrefWidth((220/1.5));
 		
 		Image logoutImage = new Image(this.getClass().getResource("/imgs/logout.png").toExternalForm());
 		ImageView logoutImageView = new ImageView(logoutImage);
 		
-		logoutImageView.setTranslateX(25);
 		logoutButton.setGraphic(logoutImageView);
 		logoutPane.getChildren().addAll(logoutButton);	
-		logoutButton.setTranslateX((22/1.5));
+		logoutButton.setTranslateX((30/1.5));
 		logoutButton.setTranslateY((15/1.5));
 		logoutButton.setStyle("-fx-background-color: #DFE1E0");
 		

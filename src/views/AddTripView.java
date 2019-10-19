@@ -84,7 +84,7 @@ public class AddTripView implements View {
 		addTripButtonPane.setTranslateX((1295/1.5));
 		addTripButtonPane.setTranslateY((-37.50/1.5));
 		
-		Image image = new Image("file:src/resources/imgs/road_white.png");
+		Image image = new Image(this.getClass().getResource("/imgs/road_white.png").toExternalForm());
 		ImageView imageView = new ImageView(image); 
 		
 		Button addButton = new Button();
