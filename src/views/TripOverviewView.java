@@ -162,11 +162,6 @@ public class TripOverviewView implements View {
 	@Override
 	public void updateView(){}
 
-	@Override
-	public void setScene(Scene sceneToSet) {
-
-	}
-
 	/**
 	 * @author Oussama Fahchouch
 	 * @return Scene

@@ -18,8 +18,6 @@ public interface View {
 	 */
 	public void updateView();
 
-    void setScene(Scene sceneToSet);
-
     /**
 	 * @author Oussama Fahchouch
 	 * @return Scene 

@@ -269,14 +269,6 @@ public class ProjectOverviewView implements View {
      * @author Oussama Fahchouch
      */
     @Override
-    public void setScene(Scene sceneToSet) {
-        this.scene = sceneToSet;
-    }
-
-    /**
-     * @author Oussama Fahchouch
-     */
-    @Override
     public Scene getScene() {
         return this.scene;
     };
