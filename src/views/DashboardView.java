@@ -88,8 +88,9 @@ public class DashboardView implements View {
         ImageView addButtonImageView = new ImageView(addButtonImage);
 
 		Button addTripButton = new Button("Ritten Toevoegen", addButtonImageView);
+		addButtonImageView.setTranslateX(300);
 		addTripButton.setTextFill(Color.WHITE);
-		addTripButton.setStyle("-fx-background-color: #1ABC9C");
+		addTripButton.setStyle("-fx-background-color: #3A4F62");
 		addTripButton.setMinSize((50),50);
 		addTripButton.setTranslateX(220);
 		addTripButton.setTranslateY(50);
@@ -167,6 +168,7 @@ public class DashboardView implements View {
 		logoPane.setMinSize((300/1.5), (75/1.5));
 		logoPane.setTranslateX(0);
 		logoPane.setTranslateY(0);
+		logo
 		
 		logoPane.getChildren().addAll(imageView);
 
@@ -273,7 +275,7 @@ public class DashboardView implements View {
 		Button logoutButton = new Button("            Logout");
 		logoutButton.setPrefWidth((220/1.5));
 		
-		Image logoutImage = new Image(this.getClass().getResource("/imgs/user_icon.png").toExternalForm());
+		Image logoutImage = new Image(this.getClass().getResource("/imgs/logout.png").toExternalForm());
 		ImageView logoutImageView = new ImageView(logoutImage);
 		
 		logoutImageView.setTranslateX(25);
