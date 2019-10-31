@@ -1,7 +1,9 @@
 package controllers;
 
+import javafx.scene.layout.Pane;
 import models.ProjectModel;
 import models.TripModel;
+import controllers.AppController;
 
 import java.util.ArrayList;
 
@@ -12,7 +14,22 @@ public class ProjectController {
         // Onload make the controller get the current projects per user / this function is now filled with example code.
         this.fetchProjectsFromBackEnd();
     }
+    /**
+     * @author Oussama Fahchouch
+     * @return headerPane
+     */
+    public Pane getHeaderPane() {
+        return AppController.getInstance().getHeaderPane();
+    }
 
+    /**
+     * @author Oussama Fahchouch
+     * @return headerPane
+     */
+    public Pane getMenuPane() {
+        return AppController.getInstance().getMenuPane();
+    }
+    
     private void fetchProjectsFromBackEnd(){
         //Make a call to the API to fetch all the projects / example projects are shown below.
 

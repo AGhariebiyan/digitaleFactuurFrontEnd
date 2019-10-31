@@ -43,7 +43,7 @@ public class ProjectOverviewView implements View {
     public Scene createView(){
         Pane rootPane = new Pane();
 
-        rootPane.getChildren().addAll(createProjectOverviewPane());
+        rootPane.getChildren().addAll(this.projectController.getMenuPane(), this.projectController.getHeaderPane(), createProjectOverviewPane() );
         rootPane.setId("mainBackground");
         Scene scene = new Scene(rootPane,(1920/1.5), (1080/1.5));
         this.scene = scene;
