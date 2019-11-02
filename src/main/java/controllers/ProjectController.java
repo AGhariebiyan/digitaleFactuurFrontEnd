@@ -1,9 +1,10 @@
 package controllers;
 
+//import com.sun.deploy.net.HttpResponse;
+
 import javafx.scene.layout.Pane;
 import models.ProjectModel;
 import models.TripModel;
-import controllers.AppController;
 
 import java.util.ArrayList;
 
@@ -29,9 +30,15 @@ public class ProjectController {
     public Pane getMenuPane() {
         return AppController.getInstance().getMenuPane();
     }
-    
+
     private void fetchProjectsFromBackEnd(){
         //Make a call to the API to fetch all the projects / example projects are shown below.
+        String JWTstring = AppController.getInstance().createJWT("DFjwtProjcets", "getProjects", 0);
+        AppController.getInstance().httpRequest("http://localhost:8085/project/getProject?jwtToken=Hoi%20Daan&projectId=50", "GET");
+
+
+
+
 
         //Loop through all the project, for each project create a new model and save it in the projectModelArraylist and for each trip in the project create a new tripmodel and save it in the ArrayList.
         TripModel trip1 = new TripModel();
