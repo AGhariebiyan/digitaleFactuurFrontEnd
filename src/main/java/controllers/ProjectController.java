@@ -1,15 +1,17 @@
 package controllers;
 
-import com.google.common.reflect.TypeToken;
 import com.google.gson.Gson;
+import com.google.gson.JsonObject;
+import com.google.gson.reflect.TypeToken;
 import javafx.scene.layout.Pane;
 import models.ProjectModel;
+import models.TripModel;
+import org.apache.commons.io.IOUtils;
 
-import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
-import java.io.InputStreamReader;
 import java.lang.reflect.Type;
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.Collection;
 
@@ -36,47 +38,43 @@ public class ProjectController {
         return AppController.getInstance().getMenuPane();
     }
 
+
+    /**
+     * Fetches the projects from the back-end and parses the JSON string
+     */
     private void fetchProjectsFromBackEnd(){
         //Make a call to the API to fetch all the projects / example projects are shown below.
         InputStream projectStream = AppController.getInstance().httpRequest("http://localhost:8080/project/getAllProject", "GET");
-
         try {
-            BufferedReader in = new BufferedReader(
-                    new InputStreamReader(projectStream));
-            String inputLine = in.readLine();
-            in.close();
-            System.out.println(inputLine);
-            Gson gson = new Gson();
-            Type collectionType = new TypeToken<Collection<ProjectModel>>(){}.getType();
-            Collection<ProjectModel> enums = gson.fromJson(inputLine, collectionType);
-            for (ProjectModel projects : enums) {
-                System.out.println(projects.getProjectName());
+            String result = IOUtils.toString(projectStream, StandardCharsets.UTF_8);
+            if(result.contains("[")) {
+                Gson gson = new Gson();
+                Type jsonObject = new TypeToken<Collection<JsonObject>>() {
+                }.getType();
+                Collection<JsonObject> projectColl = gson.fromJson(result, jsonObject);
+
+                //Loop through the json objects
+                for (JsonObject projects : projectColl) {
+                    // Remove any excess ""
+                    String projectName = projects.get("name").toString().replaceAll("^\"|\"$", "");
+                    ProjectModel tmpModel = new ProjectModel(Integer.parseInt(projects.get("id").toString()), projectName);
+
+                    Type tripObject = new TypeToken<Collection<TripModel>>() {
+                    }.getType();
+                    //For each trip create a new tripmodel and add it to the collection
+                    Collection<TripModel> tripColl = gson.fromJson(projects.get("trips").toString(), tripObject);
+
+                    //Add the trips to the model
+                    for (TripModel trips : tripColl) {
+                        tmpModel.addTrip(trips);
+                    }
+                    projectModel.add(tmpModel);
+                }
             }
 
         } catch (IOException ex) {
             ex.printStackTrace();
         }
-
-
-
-        //Loop through all the project, for each project create a new model and save it in the projectModelArraylist and for each trip in the project create a new tripmodel and save it in the ArrayList.
-//        TripModel trip1 = new TripModel();
-//        trip1.setStartKilometergauge(0);
-//        trip1.setEndKilometergauge(50);
-//        TripModel trip2 = new TripModel();
-//        trip2.setStartKilometergauge(50);
-//        trip2.setEndKilometergauge(100);
-//
-//        ArrayList<TripModel> tripsPerProject = new ArrayList<>();
-//        tripsPerProject.add(trip1);
-//        tripsPerProject.add(trip2);
-//
-//        ProjectModel p1 = new ProjectModel(22, "project1", tripsPerProject);
-//        ProjectModel p2 = new ProjectModel(23, "project2", tripsPerProject);
-//
-//        projectModel.add(p1);
-//        projectModel.add(p2);
-
     }
 
     public ArrayList<ProjectModel> getProjects(){

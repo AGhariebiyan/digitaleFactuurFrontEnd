@@ -17,6 +17,18 @@ public class TripModel {
 	 * @author Oussama Fahchouch
 	 * @return the tripId
 	 */
+
+	public TripModel(int id, int projectId, int userId, String licensePlate, String startLocation, String endLocation, double startKilometergauge, double endKilometergauge) {
+		this.tripId = id;
+		this.projectId = projectId;
+		this.userId = userId;
+		this.licenseplate = licensePlate;
+		this.startLocation = startLocation;
+		this.endLocation = endLocation;
+		this.startKilometergauge = startKilometergauge;
+		this.endKilometergauge = endKilometergauge;
+	}
+
 	public int getTripId() {
 		return tripId;
 	}

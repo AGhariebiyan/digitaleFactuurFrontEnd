@@ -13,7 +13,7 @@ public class ProjectModel {
 
     private int id;
     private String name;
-    private ArrayList<TripModel> tripModel;
+    private ArrayList<TripModel> tripModel = new ArrayList<>();
 
 
     /**
@@ -23,10 +23,10 @@ public class ProjectModel {
      * @param: string name
      * @param: Arraylist<TripModel> Trip
      */
-    public ProjectModel(int id, String name, ArrayList<TripModel> trip){
+    public ProjectModel(int id, String name){
         this.id = id;
         this.name = name;
-        this.tripModel = trip;
+//        this.tripModel = trip;
     }
 
     /**
@@ -81,6 +81,7 @@ public class ProjectModel {
             totalKilometers = totalKilometers + tripModel.get(i).getEndKilometergauge() - tripModel.get(i).getStartKilometergauge();
         }
 
+//        System.out.println(totalKilometers);
         return totalKilometers;
     }
 

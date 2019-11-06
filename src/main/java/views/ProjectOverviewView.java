@@ -94,7 +94,7 @@ public class ProjectOverviewView implements View {
     private TableView ProjectOverviewTablePane() {
         TableView tableView = new TableView();
 
-        TableColumn<String, ProjectModel> column1 = new TableColumn<>("Project id");
+        TableColumn<Integer, ProjectModel> column1 = new TableColumn<>("Project id");
         column1.setCellValueFactory(new PropertyValueFactory<>("projectId"));
         column1.setId("getProjectId");
 
@@ -106,7 +106,7 @@ public class ProjectOverviewView implements View {
         column3.setCellValueFactory(new PropertyValueFactory<>("totalTrips"));
         column3.setId("getTotalTrips");
 
-        TableColumn<String, ProjectModel> column4 = new TableColumn<>("Gereden kilometers");
+        TableColumn<Double, ProjectModel> column4 = new TableColumn<>("Gereden kilometers");
         column4.setCellValueFactory(new PropertyValueFactory<>("totalKilometers"));
         column4.setId("getTotalKilometers");
 
