@@ -1,23 +1,16 @@
 package controllers;
 
 
-import io.jsonwebtoken.JwtBuilder;
-import io.jsonwebtoken.Jwts;
-import io.jsonwebtoken.SignatureAlgorithm;
 import javafx.scene.Scene;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
-import javax.crypto.spec.SecretKeySpec;
-import javax.xml.bind.DatatypeConverter;
 import java.io.IOException;
 import java.io.InputStream;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Method;
 import java.net.HttpURLConnection;
 import java.net.URL;
-import java.security.Key;
-import java.util.Date;
 /**
  * @author Mike van Es
  * @author Oussama Fahchouch
@@ -71,36 +64,6 @@ public class AppController extends ClassLoader {
 		}
 	}
 
-	public static String createJWT(String issuer, String subject, long ttlMillis) {
-
-		//The JWT signature algorithm we will be using to sign the token
-		SignatureAlgorithm signatureAlgorithm = SignatureAlgorithm.HS256;
-
-		long nowMillis = System.currentTimeMillis();
-		Date now = new Date(nowMillis);
-
-		//We will sign our JWT with our ApiKey secret
-		byte[] apiKeySecretBytes = DatatypeConverter.parseBase64Binary("79554e2460ae336c07c3eb0208adbb4cc4af184c17b51e0a2373cc0f9bba87b5");
-		Key signingKey = new SecretKeySpec(apiKeySecretBytes, signatureAlgorithm.getJcaName());
-
-		@SuppressWarnings("deprecation") JwtBuilder builder = Jwts.builder()
-				.setIssuedAt(now)
-				.setSubject(subject)
-				.setIssuer(issuer)
-				.signWith(signatureAlgorithm, signingKey);
-		//Let's set the JWT Claims
-
-		//if it has been specified, let's add the expiration
-		if (ttlMillis > 0) {
-			long expMillis = nowMillis + ttlMillis;
-			Date exp = new Date(expMillis);
-			builder.setExpiration(exp);
-		}
-
-		//Builds the JWT and serializes it to a compact, URL-safe string
-		return builder.compact();
-	}
-
 	/**
 	 * Simple method to create a HTTP request
 	 * @author Mike van Es
@@ -147,7 +110,7 @@ public class AppController extends ClassLoader {
 				// Close reader
 				//in.close();
 				// Close connection
-				con.disconnect();
+//				con.disconnect();
 
 				return con.getInputStream();
 			//}else{
