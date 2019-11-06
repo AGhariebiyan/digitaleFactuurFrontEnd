@@ -1,4 +1,4 @@
-package controllers;
+package main.java.controllers;
 
 import javafx.scene.Node;
 import javafx.scene.layout.Pane;

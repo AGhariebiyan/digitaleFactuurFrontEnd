@@ -1,4 +1,4 @@
-package views;
+package main.java.views;
 
 import javafx.scene.Scene;
 import javafx.scene.layout.Pane;

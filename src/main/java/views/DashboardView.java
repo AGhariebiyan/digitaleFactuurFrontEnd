@@ -1,7 +1,7 @@
-package views;
+package main.java.views;
 
-import controllers.AppController;
-import controllers.DashboardController;
+import main.java.controllers.AppController;
+import main.java.controllers.DashboardController;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -87,7 +87,7 @@ public class DashboardView implements View {
 		addTripButton.setTranslateX(125);
 		addTripButton.setTranslateY(50);
 		addTripButton.setFont(new Font(20));
-		addTripButton.setOnAction(e -> AppController.getInstance().loadView("views.TripOverviewView", "createView"));
+		addTripButton.setOnAction(e -> AppController.getInstance().loadView("main.java.views.TripOverviewView", "createView"));
 
 		addTripPane.getChildren().addAll(addTripButton);	
 
@@ -207,7 +207,7 @@ public class DashboardView implements View {
         
         dashboardButton.setMinSize((300/1.5), (50/1.5));
         dashboardButton.setMaxSize((300/1.5), (50/1.5));
-        dashboardButton.setOnAction(e -> AppController.getInstance().loadView("views.DashboardView", "createView"));
+        dashboardButton.setOnAction(e -> AppController.getInstance().loadView("main.java.views.DashboardView", "createView"));
 		
 		//create trip button 
 		Image tripImage = new Image(this.getClass().getResource("/imgs/road.png").toExternalForm());
@@ -219,7 +219,7 @@ public class DashboardView implements View {
         
         tripButton.setMinSize((300/1.5), (50/1.5));
         tripButton.setMaxSize((300/1.5), (50/1.5));
-        tripButton.setOnAction(e -> AppController.getInstance().loadView("views.TripOverviewView", "createView"));
+        tripButton.setOnAction(e -> AppController.getInstance().loadView("main.java.views.TripOverviewView", "createView"));
        
 		//create vehicle button 
         Image vehicleImage = new Image(this.getClass().getResource("/imgs/vehicle.png").toExternalForm());
@@ -231,7 +231,7 @@ public class DashboardView implements View {
         vehicleButton.setMinSize((300/1.5), (50/1.5));
         vehicleButton.setMaxSize((300/1.5), (50/1.5));
         vehicleButton.setStyle("-fx-background-color: #FFFFFF;");
-        vehicleButton.setOnAction(e -> AppController.getInstance().loadView("views.DashboardView", "createView"));
+        vehicleButton.setOnAction(e -> AppController.getInstance().loadView("main.java.views.DashboardView", "createView"));
 
 		//create project button 
         Image projectImage = new Image(this.getClass().getResource("/imgs/projects.png").toExternalForm());
@@ -244,7 +244,7 @@ public class DashboardView implements View {
         projectButton.setMaxSize((300/1.5), (50/1.5));
         
         projectButton.setStyle("-fx-background-color: #FFFFFF;");
-        projectButton.setOnAction(e -> AppController.getInstance().loadView("views.ProjectOverviewView", "createView"));
+        projectButton.setOnAction(e -> AppController.getInstance().loadView("main.java.views.ProjectOverviewView", "createView"));
 
 		menuVBox.getChildren().addAll(dashboardButton, tripButton, vehicleButton, projectButton);
 		

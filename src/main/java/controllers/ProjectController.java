@@ -1,11 +1,11 @@
-package controllers;
+package main.java.controllers;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 import com.google.gson.reflect.TypeToken;
 import javafx.scene.layout.Pane;
-import models.ProjectModel;
-import models.TripModel;
+import main.java.models.ProjectModel;
+import main.java.models.TripModel;
 import org.apache.commons.io.IOUtils;
 
 import java.io.IOException;

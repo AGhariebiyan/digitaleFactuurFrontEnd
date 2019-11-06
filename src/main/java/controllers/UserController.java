@@ -1,6 +1,6 @@
-package controllers;
+package main.java.controllers;
 
-import models.UserModel;
+import main.java.models.UserModel;
 
 public class UserController {
 

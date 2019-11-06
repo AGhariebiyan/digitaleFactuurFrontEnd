@@ -1,4 +1,4 @@
-package models;
+package main.java.models;
 
 public class UserModel {
     private int userId;

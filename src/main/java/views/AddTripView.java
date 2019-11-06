@@ -1,10 +1,10 @@
-package views;
+package main.java.views;
 
 import java.util.Arrays;
 import java.util.List;
 
-import controllers.AppController;
-import controllers.TripController;
+import main.java.controllers.AppController;
+import main.java.controllers.TripController;
 import javafx.geometry.Insets;
 import javafx.scene.Node;
 import javafx.scene.Scene;
@@ -96,7 +96,7 @@ public class AddTripView implements View {
 		addButton.setMaxSize((75/1.5)*r, (75/1.5)*r);
 		addButton.setStyle("-fx-background-color: #2F4051; -fx-font-size: 21px; -fx-text-fill: white;");
 		
-		addButton.setOnAction(e -> this.tripController.appController.loadView("views.TripOverviewView", "createView"));
+		addButton.setOnAction(e -> this.tripController.appController.loadView("main.java.views.TripOverviewView", "createView"));
 
 		addTripButtonPane.getChildren().addAll(addButton);
 		
