@@ -1,5 +1,7 @@
 package views;
 
+import controllers.AppController;
+import controllers.UserController;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -14,7 +16,9 @@ public class LoginView implements View{
 
     private Scene scene;
     private String css;
+    private UserController userController;
 
+    // css class voor de vormgeving
     public LoginView(){
         this.css = this.getClass().getResource("/css/login.css").toExternalForm();
     }
@@ -23,21 +27,14 @@ public class LoginView implements View{
     public Scene createView(){
         TextField username = new TextField();
         username.setPromptText("Gebruikersnaam");
-
         PasswordField password = new PasswordField();
         password.setPromptText("Password");
-
         Button btnLogin = new Button("Login");
         btnLogin.setId("btnLogin");
-
         Hyperlink btnRegistreren = new Hyperlink();
         btnRegistreren.setText("Geen account? Registreer nu!");
-//        btnRegistreren.setOnAction(new EventHandler<ActionEvent>() {
-//            @Override
-//            public void handle(ActionEvent event) {
-//
-//            }
-//        });
+
+        btnLogin.setOnAction(e -> getCredentials(username.getText(), password.getText()));
 
         // Logo
         VBox vBoxLogo = new VBox();
@@ -63,6 +60,13 @@ public class LoginView implements View{
         scene.getStylesheets().addAll(css);
 
         return scene;
+    }
+
+    public void getCredentials(String user, String passwd){
+        userController.authorize(user, passwd);
+        System.out.println(user);
+        AppController.getInstance().loadView("views.DashboardView", "createView");
+
     }
 
     @Override

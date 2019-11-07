@@ -1,6 +1,5 @@
 package controllers;
 
-import javafx.scene.Node;
 import javafx.scene.layout.Pane;
 
 /**
@@ -8,11 +7,11 @@ import javafx.scene.layout.Pane;
  *
  */
 public class DashboardController implements Controller {
-	
+
 	public void setHeaderPane(Pane headerPane) {
 		Controller.appController.setHeaderPane(headerPane);
 	}
-	
+
 	public void setMenuPane(Pane menuPane) {
 		Controller.appController.setMenuPane(menuPane);
 	}
