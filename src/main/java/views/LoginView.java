@@ -1,6 +1,5 @@
 package views;
 
-import controllers.AppController;
 import controllers.UserController;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -21,6 +20,7 @@ public class LoginView implements View{
     // css class voor de vormgeving
     public LoginView(){
         this.css = this.getClass().getResource("/css/login.css").toExternalForm();
+        this.userController = new UserController();
     }
 
     @Override
@@ -63,9 +63,16 @@ public class LoginView implements View{
     }
 
     public void getCredentials(String user, String passwd){
-        userController.authorize(user, passwd);
         System.out.println(user);
-        AppController.getInstance().loadView("views.DashboardView", "createView");
+        if (userController.authorize(user, passwd)){
+//            System.out.println("entered");
+//            AppController.getInstance().loadView("views.DashboardView", "createView");
+//            System.out.println("entered1");
+        }
+        else{
+            System.out.println("inlog mislukt");
+        }
+
 
     }
 
