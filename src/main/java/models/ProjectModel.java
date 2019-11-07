@@ -1,6 +1,7 @@
-package main.java.models;
+package models;
 
 import java.util.ArrayList;
+
 
 /**
  * @author Mike van Es

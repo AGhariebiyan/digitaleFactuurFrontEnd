@@ -1,6 +1,4 @@
-package main.java.controllers;
-
-import main.java.views.View;
+package controllers;
 
 /**
  * @author Oussama Fahchouch

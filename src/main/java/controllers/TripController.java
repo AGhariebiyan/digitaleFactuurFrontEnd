@@ -1,10 +1,9 @@
-package main.java.controllers;
-
-import java.util.ArrayList;
+package controllers;
 
 import javafx.scene.layout.Pane;
-import main.java.models.TripModel;
-import main.java.views.View;
+import models.TripModel;
+
+import java.util.ArrayList;
 
 /**
  * @author Oussama Fahchouch

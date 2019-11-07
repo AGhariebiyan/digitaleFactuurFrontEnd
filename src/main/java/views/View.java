@@ -1,7 +1,6 @@
-package main.java.views;
+package views;
 
 import javafx.scene.Scene;
-import javafx.scene.layout.Pane;
 
 /**
  * @author Oussama Fahchouch

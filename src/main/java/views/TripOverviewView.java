@@ -1,22 +1,16 @@
-package main.java.views;
+package views;
 
-import main.java.controllers.AppController;
-import main.java.controllers.TripController;
-import javafx.geometry.Insets;
+import controllers.TripController;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
-import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
-import javafx.scene.layout.VBox;
 import javafx.scene.shape.Circle;
 import javafx.scene.text.Font;
-import main.java.models.TripModel;
+import models.TripModel;
 
 /**
  * @author Oussama Fahchouch

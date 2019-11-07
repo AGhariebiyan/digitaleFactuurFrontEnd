@@ -1,6 +1,6 @@
-package main.java.views;
+package views;
 
-import main.java.controllers.ProjectController;
+import controllers.ProjectController;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
@@ -13,7 +13,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.Pane;
 import javafx.scene.text.Font;
-import main.java.models.ProjectModel;
+import models.ProjectModel;
 
 import java.lang.reflect.*;
 import java.util.ArrayList;

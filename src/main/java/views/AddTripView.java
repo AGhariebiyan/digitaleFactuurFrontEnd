@@ -1,10 +1,6 @@
-package main.java.views;
+package views;
 
-import java.util.Arrays;
-import java.util.List;
-
-import main.java.controllers.AppController;
-import main.java.controllers.TripController;
+import controllers.TripController;
 import javafx.geometry.Insets;
 import javafx.scene.Node;
 import javafx.scene.Scene;
@@ -18,6 +14,9 @@ import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.scene.shape.Circle;
 import javafx.scene.text.Font;
+
+import java.util.Arrays;
+import java.util.List;
 
 /**
  * @author Oussama Fahchouch
