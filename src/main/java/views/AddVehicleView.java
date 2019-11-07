@@ -144,28 +144,28 @@ public class AddVehicleView implements View {
         }
 
         Label labelInputFieldsHBoxRow1 = new Label("Kenteken:");
-        TextField textFieldInputFieldsHBoxRow1 = new TextField ();
-        textFieldInputFieldsHBoxRow1.setId("licenseplateTextField");
-        textFieldInputFieldsHBoxRow1.setPromptText("kenteken..");
-        inputFieldsHBoxRow1.getChildren().addAll(labelInputFieldsHBoxRow1, textFieldInputFieldsHBoxRow1);
+        TextField licensePlate = new TextField ();
+        licensePlate.setId("licenseplateTextField");
+        licensePlate.setPromptText("kenteken..");
+        inputFieldsHBoxRow1.getChildren().addAll(labelInputFieldsHBoxRow1, licensePlate);
 
         Label labelInputFieldsHBoxRow2 = new Label("Project ID:");
-        TextField textFieldInputFieldsHBoxRow2 = new TextField ();
-        textFieldInputFieldsHBoxRow2.setId("projectIdTextField");
-        textFieldInputFieldsHBoxRow2.setPromptText("project id..");
-        inputFieldsHBoxRow2.getChildren().addAll(labelInputFieldsHBoxRow2, textFieldInputFieldsHBoxRow2);
+        TextField projectId = new TextField ();
+        projectId.setId("projectIdTextField");
+        projectId.setPromptText("project id..");
+        inputFieldsHBoxRow2.getChildren().addAll(labelInputFieldsHBoxRow2, projectId);
 
         Label labelInputFieldsHBoxRow3 = new Label("Voertuig naam:");
-        TextField textFieldInputFieldsHBoxRow3 = new TextField ();
-        textFieldInputFieldsHBoxRow3.setId("vehicleNameTextField");
-        textFieldInputFieldsHBoxRow3.setPromptText("voertuig naam..");
-        inputFieldsHBoxRow3.getChildren().addAll(labelInputFieldsHBoxRow3, textFieldInputFieldsHBoxRow3);
+        TextField vehicleName = new TextField ();
+        vehicleName.setId("vehicleNameTextField");
+        vehicleName.setPromptText("voertuig naam..");
+        inputFieldsHBoxRow3.getChildren().addAll(labelInputFieldsHBoxRow3, vehicleName);
 
         Label labelInputFieldsHBoxRow4 = new Label("Voertuig type:");
-        TextField textFieldInputFieldsHBoxRow4 = new TextField ();
-        textFieldInputFieldsHBoxRow4.setId("vehicleTypeTextField");
-        textFieldInputFieldsHBoxRow4.setPromptText("voertuig type..");
-        inputFieldsHBoxRow4.getChildren().addAll(labelInputFieldsHBoxRow4, textFieldInputFieldsHBoxRow4);
+        TextField vehicleType = new TextField ();
+//        vehicleType.setId("vehicleTypeTextField");
+        vehicleType.setPromptText("voertuig type..");
+        inputFieldsHBoxRow4.getChildren().addAll(labelInputFieldsHBoxRow4, vehicleType);
 
         List<Label> labelList = Arrays.asList(labelInputFieldsHBoxRow1, labelInputFieldsHBoxRow2, labelInputFieldsHBoxRow3, labelInputFieldsHBoxRow4);
 
@@ -174,7 +174,7 @@ public class AddVehicleView implements View {
             label.setMinSize((250/1.5), (50/1.5));
         }
 
-        List<TextField> textFieldList = Arrays.asList(textFieldInputFieldsHBoxRow1, textFieldInputFieldsHBoxRow2, textFieldInputFieldsHBoxRow3, textFieldInputFieldsHBoxRow4);
+        List<TextField> textFieldList = Arrays.asList(licensePlate, projectId, vehicleName, vehicleType);
 
         for (TextField textField: textFieldList) {
             textField.setPrefWidth((475/1.5));
@@ -188,7 +188,8 @@ public class AddVehicleView implements View {
         createVehicleButton.setTranslateX((750/1.5));
         createVehicleButton.setTranslateY((50/1.5));
 
-        createVehicleButton.setOnAction(e -> this.vehicleController.appController.loadView("views.VehicleOverviewView", "createView"));
+        createVehicleButton.setOnAction(
+                e -> this.vehicleController.addVehicle(licensePlate.getText(),Integer.parseInt(projectId.getText()),vehicleName.getText(),vehicleType.getText()));
 
         inputFieldsHBoxRow5.getChildren().addAll(createVehicleButton);
 

@@ -21,7 +21,7 @@ public class VehicleOverviewView implements View {
      */
     public VehicleOverviewView() {
         this.vehicleController = new VehicleController();
-        this.scene = createView();
+//        this.scene = createView();
     }
 
     /**
@@ -111,7 +111,7 @@ public class VehicleOverviewView implements View {
         TableView tableView = new TableView();
 
         TableColumn<String, VehicleModel> column1 = new TableColumn<>("Kenteken");
-        column1.setCellValueFactory(new PropertyValueFactory<>("licenseplate"));
+        column1.setCellValueFactory(new PropertyValueFactory<>("licensePlate"));
 
         TableColumn<String, VehicleModel> column2 = new TableColumn<>("Auto naam");
         column2.setCellValueFactory(new PropertyValueFactory<>("vehicleName"));
@@ -131,9 +131,10 @@ public class VehicleOverviewView implements View {
         tableView.getColumns().add(column4);
         tableView.getColumns().add(column5);
 
-//        for (int i = 0; i < vehicleController.getVehicles().size(); i++){
-//            tableView.getItems().add(vehicleController.getVehiclesMadeByUser().get(i));
-//        }
+        for (VehicleModel vm: vehicleController.fetchAllVehicles()){
+            tableView.getItems().add(vm);
+            System.out.println("hierhier");
+        }
 
         tableView.setMinSize((1245/1.5), (450/1.5));
         tableView.setTranslateX((50/1.5));

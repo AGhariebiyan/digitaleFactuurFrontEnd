@@ -4,27 +4,35 @@ package models;
  * @author Bram de Jong
  */
 public class VehicleModel {
-    private int vehicleId;
-    private String licensplate;
+    private int userId;
+    private String licensePlate;
     private String vehicleName;
     private String vehicleType;
     private int totalTrips;
 
-
-    public int getVehicleId() {
-        return vehicleId;
+    public VehicleModel(int userId, String licensePlate, String vehicleName, String vehicleType, int totalTrips){
+        this.userId = userId;
+        this.licensePlate = licensePlate;
+        this.vehicleName = vehicleName;
+        this.vehicleType = vehicleType;
+        this.totalTrips = totalTrips;
     }
 
-    public void setVehicleId(int vehicleId) {
-        this.vehicleId = vehicleId;
+
+    public int getUserId() {
+        return userId;
     }
 
-    public String getLicensplate() {
-        return licensplate;
+    public void setUserId(int vehicleId) {
+        this.userId = userId;
     }
 
-    public void setLicensplate(String licensplate) {
-        this.licensplate = licensplate;
+    public String getLicensePlate() {
+        return licensePlate;
+    }
+
+    public void setLicensplate(String licensPlate) {
+        this.licensePlate = licensPlate;
     }
 
     public String getVehicleName() {
