@@ -72,7 +72,7 @@ public class AppController extends ClassLoader {
 
 	public static InputStream httpRequest(String url, String requestType){
 		try {
-
+//			System.out.println(url);
 			//The URL wich we are going to send to.
 			URL requestUrl = new URL(url);
 			HttpURLConnection con = (HttpURLConnection) requestUrl.openConnection();
@@ -90,7 +90,7 @@ public class AppController extends ClassLoader {
 			// System.out.println(contentType);
 
 			//The response wich we recieve e.g. 200, 400, 404
-			int status = con.getResponseCode();
+//			int status = con.getResponseCode();
 
 			// Example code to read new the results
 			// Example code to read new the results

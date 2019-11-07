@@ -8,7 +8,7 @@ import org.junit.Test;
 
 public class DashboardControllerTest {
 
-	@Before
+	/*@Before
 	public void setUp() throws Exception {
 		
 	}
@@ -16,14 +16,15 @@ public class DashboardControllerTest {
 	@After
 	public void tearDown() throws Exception {
 	}
-
+*/
 	@Test
 	public void canGetTotalProjects() {
 		
 		DashboardController d1 = new DashboardController();
-		assertNotNull(d1);
-		
-		
+		int expectedResult = 11;
+		  
+       
+        assertEquals(expectedResult,d1.getStringTotalProjectsFromBackEnd());
 		
 	}
 
