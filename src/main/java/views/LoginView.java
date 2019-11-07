@@ -66,7 +66,7 @@ public class LoginView implements View{
         System.out.println(user);
         if (userController.authorize(user, passwd)){
 //            System.out.println("entered");
-//            AppController.getInstance().loadView("views.DashboardView", "createView");
+            UserController.appController.getInstance().loadView("views.DashboardView", "createView");
 //            System.out.println("entered1");
         }
         else{

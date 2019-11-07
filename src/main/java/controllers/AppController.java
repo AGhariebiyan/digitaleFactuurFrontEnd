@@ -90,7 +90,7 @@ public class AppController extends ClassLoader {
 			// System.out.println(contentType);
 
 			//The response wich we recieve e.g. 200, 400, 404
-			int status = con.getResponseCode();
+//			int status = con.getResponseCode();
 
 			// Example code to read new the results
 			// Example code to read new the results
@@ -110,8 +110,11 @@ public class AppController extends ClassLoader {
 				//in.close();
 				// Close connection
 //				con.disconnect();
-
-				return con.getInputStream();
+				try {
+					return con.getInputStream();
+				}catch (IOException e){
+					return null;
+				}
 			//}else{
 				// Close connection
 			//	con.disconnect();

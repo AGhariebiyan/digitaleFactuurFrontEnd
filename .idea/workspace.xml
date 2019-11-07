@@ -2,7 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4bfe40d3-9739-4d44-9577-d0ffcc2a04e6" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/models/HttpResponse.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controllers/AppController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/AppController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/controllers/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/UserController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/models/UserModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/models/UserModel.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/views/LoginView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/views/LoginView.java" afterDir="false" />
@@ -151,7 +153,7 @@
       <workItem from="1572639678242" duration="59000" />
       <workItem from="1572735861165" duration="162000" />
       <workItem from="1573055197543" duration="9038000" />
-      <workItem from="1573127564633" duration="7938000" />
+      <workItem from="1573127564633" duration="11318000" />
     </task>
     <task id="LOCAL-00001" summary="begin gemaakt aan login validation">
       <created>1573126641645</created>
@@ -160,7 +162,14 @@
       <option name="project" value="LOCAL" />
       <updated>1573126641646</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="kan worden ingelogd via front-end">
+      <created>1573137405336</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1573137405336</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -195,7 +204,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="begin gemaakt aan login validation" />
-    <option name="LAST_COMMIT_MESSAGE" value="begin gemaakt aan login validation" />
+    <MESSAGE value="kan worden ingelogd via front-end" />
+    <option name="LAST_COMMIT_MESSAGE" value="kan worden ingelogd via front-end" />
   </component>
   <component name="antWorkspaceConfiguration">
     <option name="IS_AUTOSCROLL_TO_SOURCE" value="false" />
