@@ -1,17 +1,9 @@
 package controllers;
 
-import com.google.common.reflect.TypeToken;
-import com.google.gson.Gson;
 import javafx.scene.layout.Pane;
 import models.ProjectModel;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.lang.reflect.Type;
 import java.util.ArrayList;
-import java.util.Collection;
 
 public class ProjectController {
     private ArrayList<ProjectModel> projectModel = new ArrayList();
@@ -37,25 +29,25 @@ public class ProjectController {
     }
 
     private void fetchProjectsFromBackEnd(){
-        //Make a call to the API to fetch all the projects / example projects are shown below.
-        InputStream projectStream = AppController.getInstance().httpRequest("http://localhost:8080/project/getAllProject", "GET");
-
-        try {
-            BufferedReader in = new BufferedReader(
-                    new InputStreamReader(projectStream));
-            String inputLine = in.readLine();
-            in.close();
-            System.out.println(inputLine);
-            Gson gson = new Gson();
-            Type collectionType = new TypeToken<Collection<ProjectModel>>(){}.getType();
-            Collection<ProjectModel> enums = gson.fromJson(inputLine, collectionType);
-            for (ProjectModel projects : enums) {
-                System.out.println(projects.getProjectName());
-            }
-
-        } catch (IOException ex) {
-            ex.printStackTrace();
-        }
+//        //Make a call to the API to fetch all the projects / example projects are shown below.
+//        InputStream projectStream = AppController.getInstance().httpRequest("http://localhost:8080/project/getAllProject", "GET");
+//
+//        try {
+//            BufferedReader in = new BufferedReader(
+//                    new InputStreamReader(projectStream));
+//            String inputLine = in.readLine();
+//            in.close();
+//            System.out.println(inputLine);
+//            Gson gson = new Gson();
+//            Type collectionType = new TypeToken<Collection<ProjectModel>>(){}.getType();
+//            Collection<ProjectModel> enums = gson.fromJson(inputLine, collectionType);
+//            for (ProjectModel projects : enums) {
+//                System.out.println(projects.getProjectName());
+//            }
+//
+//        } catch (IOException ex) {
+//            ex.printStackTrace();
+//        }
 
 
 
