@@ -96,6 +96,15 @@ public class ProjectModel {
     }
 
 
+    /**
+     * Returns the trips for a given project
+     * @return List of the trips;
+     */
+    public ArrayList<TripModel> getTrips(){
+        return tripModel;
+    }
+
+
 
 
 }
