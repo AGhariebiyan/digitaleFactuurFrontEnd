@@ -7,7 +7,6 @@ import javafx.scene.layout.Pane;
 import models.ProjectModel;
 import models.TripModel;
 import org.apache.commons.io.IOUtils;
-
 import java.io.IOException;
 import java.io.InputStream;
 import java.lang.reflect.Type;
