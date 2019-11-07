@@ -2,6 +2,16 @@ package main.java.views;
 
 import main.java.controllers.AppController;
 import main.java.controllers.DashboardController;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.InputStream;
+import java.nio.charset.StandardCharsets;
+
+import org.apache.commons.io.IOUtils;
+
+
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -70,6 +80,14 @@ public class DashboardView implements View {
 
 		totalProjectsLabel.setFont(new Font(30));
 		
+		Label totalProjectsLabelNumber = new Label(getStringTotalProjectsFromBackEnd());
+		totalProjectsPane.getChildren().addAll(totalProjectsLabelNumber);	
+		totalProjectsLabelNumber.setTextFill(Color.WHITE);
+		totalProjectsLabelNumber.setTranslateX(27);
+		totalProjectsLabelNumber.setTranslateY(75);
+
+		totalProjectsLabelNumber.setFont(new Font(30));
+		
 		Pane addTripPane = new Pane();
 		addTripPane.setStyle("-fx-background-color: #3A4F62");
 		//addTripPane.setBorder(blackBorder);
@@ -103,6 +121,34 @@ public class DashboardView implements View {
 		return scene;
 	}
 	
+	public String getStringTotalProjectsFromBackEnd(){
+		// To store our response
+		
+		String line;  
+		StringBuilder content = null;
+
+		// Get the input stream of the connection
+		try {
+			//BufferedReader input = new BufferedReader(new InputStreamReader(AppController.httpRequest("http://localhost:8080/trips", "GET")));
+			 InputStream totalProjectsStream = AppController.getInstance().httpRequest("http://localhost:8080/trips/user/project", "GET");
+				
+			 String result = IOUtils.toString(totalProjectsStream, StandardCharsets.UTF_8);
+			 
+		
+		    /*content = new StringBuilder();
+		    while ((line = input.readLine()) != null) {
+		        // Append each line of the response and separate them
+		        content.append(line);
+		        content.append(System.lineSeparator());
+		    	}*/
+				return result;
+		  
+		    }catch(IOException ex) {
+            ex.printStackTrace();
+		    }
+		//return content.toString();
+		return null;
+	}
 	//creates top screen part with inner components
 	/**
 	 * @author fifi
