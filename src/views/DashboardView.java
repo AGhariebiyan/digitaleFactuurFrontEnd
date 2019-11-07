@@ -24,7 +24,7 @@ public class DashboardView implements View {
 	private DashboardController dashboardController;
 	
 	public DashboardView() {
-		this.scene = createView();
+//		this.scene = createView();
 		//dashboardController kan hier nog niet geinitialiseerd worden!
 	}
 	
@@ -34,16 +34,20 @@ public class DashboardView implements View {
 	 */
 	@Override
 	public Scene createView() {
+		this.dashboardController = new DashboardController();
+		
 		Pane rootPane = new Pane();
 		Image image = new Image(this.getClass().getResource("/imgs/homepageBackground.png").toExternalForm());
 		ImageView imageView = new ImageView(image);
 		
 		imageView.setTranslateY(25);
 		rootPane.getChildren().add(imageView);
-		//creates center components of rootPane
+		
 		Pane totalTripsPane = new Pane();
 		totalTripsPane.setStyle("-fx-background-color: #3A4F62");
-		//totalTripsPane.setBorder(blackBorder);
+		
+		
+		
 		totalTripsPane.setMinSize((450/1.5), (350/1.5));
 		totalTripsPane.setTranslateX((550/1.5));
 		totalTripsPane.setTranslateY((175/1.5));
@@ -55,19 +59,33 @@ public class DashboardView implements View {
 
 		totalTripsLabel.setFont(new Font(30));
 		
+		Label totalTripsLabelNumber = new Label(this.dashboardController.getStringTotalTripsFromBackEnd());
+		totalTripsPane.getChildren().addAll(totalTripsLabelNumber);	
+		totalTripsLabelNumber.setTextFill(Color.WHITE);
+		totalTripsLabelNumber.setTranslateX(100);
+		totalTripsLabelNumber.setTranslateY(75);
+		
+		totalTripsLabelNumber.setFont(new Font(75));
+		
 		
 		Pane totalProjectsPane = new Pane();
 		totalProjectsPane.setStyle("-fx-background-color: #3A4F62");
-		//totalProjectsPane.setBorder(blackBorder);
 		totalProjectsPane.setMinSize((450/1.5), (350/1.5));
 		totalProjectsPane.setTranslateX((1175/1.5));
 		totalProjectsPane.setTranslateY((175/1.5));
 		Label totalProjectsLabel = new Label("Totale projecten");
 		totalProjectsPane.getChildren().addAll(totalProjectsLabel);	
 		totalProjectsLabel.setTextFill(Color.WHITE);
-		totalProjectsLabel.setTranslateX(27);
+		totalProjectsLabel.setTranslateX(55);
 		totalProjectsLabel.setTranslateY(25);
 
+		Label totalProjectsLabelNumber = new Label(this.dashboardController.getStringTotalProjectsFromBackEnd());
+		totalProjectsPane.getChildren().addAll(totalProjectsLabelNumber);	
+		totalProjectsLabelNumber.setTextFill(Color.WHITE);
+		totalProjectsLabelNumber.setTranslateX(125);
+		totalProjectsLabelNumber.setTranslateY(75);
+
+		totalProjectsLabelNumber.setFont(new Font(75));
 		totalProjectsLabel.setFont(new Font(30));
 		
 		Pane addTripPane = new Pane();
@@ -94,12 +112,12 @@ public class DashboardView implements View {
 		
 		rootPane.getChildren().addAll(createLeftBoardViewPane(), createHeaderPane(),totalTripsPane,totalProjectsPane,addTripPane);	
 		
-		this.dashboardController = new DashboardController();
+		
 		this.dashboardController.setHeaderPane(createHeaderPane());
 		this.dashboardController.setMenuPane(createLeftBoardViewPane());
 		
 		Scene scene = new Scene(rootPane, (1920/1.5), (1080/1.5));
-		
+		this.scene = scene;
 		return scene;
 	}
 	
@@ -245,6 +263,7 @@ public class DashboardView implements View {
         
         projectButton.setStyle("-fx-background-color: #FFFFFF;");
         projectButton.setOnAction(e -> AppController.getInstance().loadView("views.ProjectOverviewView", "createView"));
+        
 
 		menuVBox.getChildren().addAll(dashboardButton, tripButton, vehicleButton, projectButton);
 		
@@ -274,6 +293,7 @@ public class DashboardView implements View {
 		logoutButton.setTranslateX((30/1.5));
 		logoutButton.setTranslateY((15/1.5));
 		logoutButton.setStyle("-fx-background-color: #DFE1E0");
+		logoutButton.setOnAction(e -> AppController.getInstance().loadView("views.LoginView", "createView"));
 		
 		return logoutPane;
 	}
