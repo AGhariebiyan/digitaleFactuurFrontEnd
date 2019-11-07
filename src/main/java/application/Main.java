@@ -1,6 +1,6 @@
-package main.java.application;
+package application;
 	
-import main.java.controllers.AppController;
+import controllers.AppController;
 import javafx.application.Application;
 import javafx.stage.Stage;
 
@@ -10,7 +10,7 @@ public class Main extends Application {
 	public void start(Stage primaryStage) {
 		try {
 			AppController.getInstance().setPrimaryStage(primaryStage);
-			AppController.getInstance().loadView("main.java.views.DashboardView", "createView");
+			AppController.getInstance().loadView("views.DashboardView", "createView");
 		} catch(Exception e) {
 			e.printStackTrace();
 		}
