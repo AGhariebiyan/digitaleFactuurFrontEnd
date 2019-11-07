@@ -2,7 +2,10 @@ package views;
 
 import controllers.VehicleController;
 import javafx.scene.Scene;
-import javafx.scene.control.*;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.Pane;
 import javafx.scene.shape.Circle;
@@ -15,6 +18,7 @@ import models.VehicleModel;
 public class VehicleOverviewView implements View {
     private VehicleController vehicleController;
     private Scene scene;
+    private TableView tableView = new TableView();
 
     /**
      * @author Bram de Jong
@@ -57,7 +61,7 @@ public class VehicleOverviewView implements View {
         headerLabel.setTranslateX((50/1.5));
         headerLabel.setTranslateY((25/1.5));
 
-        vehiclesOverviewPane.getChildren().addAll(headerLabel, addVehicleButtonPane(), VehicleOverviewTableView());
+        vehiclesOverviewPane.getChildren().addAll(headerLabel, addVehicleButtonPane(), deleteVehicleButtonPane(), VehicleOverviewTableView());
 
         return vehiclesOverviewPane;
     }
@@ -80,11 +84,8 @@ public class VehicleOverviewView implements View {
         addButton.setMinSize((75/1.5)*r, (75/1.5)*r);
         addButton.setMaxSize((75/1.5)*r, (75/1.5)*r);
         addButton.setStyle("-fx-background-color: #4fb04f; -fx-font-size: 21px; -fx-text-fill: white;");
-
         addButton.setOnAction(e -> this.vehicleController.appController.loadView("views.AddVehicleView", "createView"));
-
         addVehicleButtonPane.getChildren().addAll(addButton);
-
         return addVehicleButtonPane;
     }
 
@@ -108,8 +109,6 @@ public class VehicleOverviewView implements View {
      * @return tableView
      */
     private TableView VehicleOverviewTableView() {
-        TableView tableView = new TableView();
-
         TableColumn<String, VehicleModel> column1 = new TableColumn<>("Kenteken");
         column1.setCellValueFactory(new PropertyValueFactory<>("licensePlate"));
 
@@ -122,18 +121,15 @@ public class VehicleOverviewView implements View {
         TableColumn<String, VehicleModel> column4 = new TableColumn<>("Aantal ritten");
         column4.setCellValueFactory(new PropertyValueFactory<>("totalTrips"));
 
-        TableColumn<String, VehicleModel> column5 = new TableColumn<>("Verwijderen");
-        column5.setCellValueFactory(new PropertyValueFactory<>("deleteVehicle"));
-
         tableView.getColumns().add(column1);
         tableView.getColumns().add(column2);
         tableView.getColumns().add(column3);
         tableView.getColumns().add(column4);
-        tableView.getColumns().add(column5);
+
+
 
         for (VehicleModel vm: vehicleController.fetchAllVehicles()){
             tableView.getItems().add(vm);
-            System.out.println("hierhier");
         }
 
         tableView.setMinSize((1245/1.5), (450/1.5));
@@ -144,6 +140,25 @@ public class VehicleOverviewView implements View {
         return tableView;
     }
 
+    private Pane deleteVehicleButtonPane() {
+        Pane deleteVehicleButtonPane = new Pane();
+
+        deleteVehicleButtonPane.setMinSize((125/1.5), (125/1.5));
+        deleteVehicleButtonPane.setTranslateX((1295/1.5));
+        deleteVehicleButtonPane.setTranslateY((700/1.5));
+
+        Button addButton = new Button("D");
+
+        double r = (1.5/1.5);
+        addButton.setShape(new Circle(r));
+        addButton.setMinSize((75/1.5)*r, (75/1.5)*r);
+        addButton.setMaxSize((75/1.5)*r, (75/1.5)*r);
+        addButton.setStyle("-fx-background-color: #4fb04f; -fx-font-size: 21px; -fx-text-fill: white;");
+        addButton.setOnAction(e -> {vehicleController.deleteVehicle(tableView.getSelectionModel().getSelectedIndex());
+            this.vehicleController.appController.loadView("views.VehicleOverviewView", "createView");});
+        deleteVehicleButtonPane.getChildren().addAll(addButton);
+        return deleteVehicleButtonPane;
+    }
     /**
      * @author Bram de Jong
      */

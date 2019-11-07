@@ -33,10 +33,12 @@ public class VehicleController implements Controller {
 
     /**
      * @author Bram de Jong
-     * @param licenseplate
+     * @param
      * @return
      */
-    private boolean deleteVehicle(String licenseplate) {
+    public boolean deleteVehicle(int index) {
+        appController.httpRequest("http://localhost:8080/vehicles/delete/"+vehicleModels.get(index).getLicensePlate(),"DELETE");
+        System.out.println(vehicleModels.get(index).getLicensePlate());
         return false;
     }
 
