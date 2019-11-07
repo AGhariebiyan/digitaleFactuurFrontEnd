@@ -46,7 +46,7 @@ public class ProjectController {
      */
     public void fetchProjectsFromBackEnd(){
         //Make a call to the API to fetch all the projects / example projects are shown below.
-        InputStream projectStream = appController.httpRequest("http://localhost:8080/project/getAllProject", "GET");
+        InputStream projectStream = appController.httpRequest("http://localhost:8080/project/getProject", "GET");
         try {
             String result = IOUtils.toString(projectStream, StandardCharsets.UTF_8);
             if(result.contains("[")) {
