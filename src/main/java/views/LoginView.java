@@ -63,11 +63,8 @@ public class LoginView implements View{
     }
 
     public void getCredentials(String user, String passwd){
-        System.out.println(user);
         if (userController.authorize(user, passwd)){
-//            System.out.println("entered");
             UserController.appController.getInstance().loadView("views.DashboardView", "createView");
-//            System.out.println("entered1");
         }
         else{
             System.out.println("inlog mislukt");
