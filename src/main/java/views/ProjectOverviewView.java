@@ -40,7 +40,7 @@ public class ProjectOverviewView implements View {
 
     /**
      * @author Mike van Es
-     * @return
+     * @return Scene
      */
     @Override
     public Scene createView(){
@@ -80,6 +80,10 @@ public class ProjectOverviewView implements View {
         return ProjectOverviewPane;
     }
 
+    /**
+     * Adds the search field so we can search the table
+     * @return TextField
+     */
     private TextField tableSearchField(){
         this.searchTextField = new TextField ();
         this.searchTextField.setPromptText("Zoeken...");

@@ -16,7 +16,9 @@ public class ProjectViewController {
     private AppController appController = AppController.getInstance();
     private ProjectModel projectModel;
 
-
+    /**
+     * Controller for the project insight view
+     */
     public ProjectViewController(){
         InputStream request = appController.httpRequest("http://localhost:8080/project/getProject", "GET");
         try {
@@ -28,6 +30,10 @@ public class ProjectViewController {
         }
     }
 
+    /**
+     * Returns the amount of trips on a given project trips
+     * @return ArrayList of TripsModel
+     */
     public ArrayList<TripModel> getTrips(){
         try {
             return projectModel.getTrips();
@@ -37,6 +43,11 @@ public class ProjectViewController {
 
 
     }
+
+    /**
+     * Returns the string of the projectname
+     * @return String of projectname
+     */
     public String getProjectName(){
         return projectModel.getProjectName();
     }

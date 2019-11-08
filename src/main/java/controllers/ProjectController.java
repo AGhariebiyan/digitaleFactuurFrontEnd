@@ -78,6 +78,11 @@ public class ProjectController {
         }
     }
 
+    /**
+     * Loads a project insight view
+     * Sends the projectmodel to the backend so we can later retrieve it in our new view.
+     * @param pid - projectId
+     */
     public void loadProjectView(int pid){
         this.selectedProject = pid;
         Gson gson = new Gson();
@@ -91,12 +96,12 @@ public class ProjectController {
         appController.loadView("views.ProjectView", "createView");
     }
 
-
+    /**
+     * Returns project
+     * @return Map<Integer, ProjectModel>
+     */
     public Map<Integer, ProjectModel> getProjects(){
         return projectModel;
     }
 
-    public ProjectModel returnSelectedProject(){
-        return projectModel.get(this.selectedProject);
-    }
 }

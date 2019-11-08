@@ -9,7 +9,6 @@ import java.util.ArrayList;
 public class ProjectModel {
     /**
      * @author Mike van Es
-     * TODO: ADD VEHICLE MODEL, THIS MODEL DID NOT EXIST YET, FIX POSSIBLE POINTER EXCEPTIONS
      */
 
     private int id;

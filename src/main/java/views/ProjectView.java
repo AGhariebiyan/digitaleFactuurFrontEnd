@@ -81,6 +81,10 @@ public class ProjectView implements View {
         return ProjectPane;
     }
 
+    /**
+     * Creates a tabpane of the trips of a given project.
+     * @return TabPane
+     */
     private TabPane addTabs(){
         // create a tabpane
         TabPane tabpane = new TabPane();
@@ -173,6 +177,11 @@ public class ProjectView implements View {
 
     }
 
+    /**
+     * Creates webengines for google maps. gmapsMap constant gets filled with the references of the different engines. So we ca access from a different thread
+     * @param tripModel
+     * @return HBox
+     */
     public HBox createGmaps(TripModel tripModel){
         WebView webView = new WebView();
         // Create the WebEngine
@@ -198,6 +207,9 @@ public class ProjectView implements View {
         return webbox;
     }
 
+    /**
+     * Callback method for WebEngine, this method runs on a different thread.
+     */
     private void createCallBackWebEngine(){
         lastEngine.getLoadWorker().stateProperty().addListener(new ChangeListener<Worker.State>() {
             public void changed(ObservableValue<? extends Worker.State> ov, Worker.State oldState, Worker.State newState) {
