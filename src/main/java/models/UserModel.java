@@ -12,6 +12,7 @@ public class UserModel {
     private String username;
     private String userToken;
 
+
     public UserModel(int userId, String username, String userToken) {
         this.userId = userId;
         this.username = username;
