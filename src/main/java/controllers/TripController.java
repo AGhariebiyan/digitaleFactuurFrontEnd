@@ -47,6 +47,15 @@ public class TripController implements Controller {
 	 * @return
 	 */
 	public void addTripByUser(String licenseplate, String startLocation, String endLocation) {
+		if(licenseplate.contains(" "))
+			licenseplate = licenseplate.replace(" ", "%20");
+
+		if(startLocation.contains(" "))
+			startLocation = startLocation.replace(" ", "%20");
+
+		if(endLocation.contains(" "))
+			endLocation = endLocation.replace(" ", "%20");
+
 		//HIER MOET NOG DE USER KOMEN - EERST WACHTEN OP ALI'S WERK
 		AppController.getInstance().httpRequest("http://localhost:8080/trips/trip/add/for-user/1/"
 			    + licenseplate + "/" 
