@@ -179,14 +179,12 @@ public class ProjectView implements View {
         WebEngine webEngine = webView.getEngine();
         webEngine.load(this.getClass().getResource("/html/index.html").toString());
 
-        Float startlat = tripModel.getStartLat();
-        Float startlong = tripModel.getStartLong();
+        String startloc = tripModel.getStartLocation();
+        String endloc = tripModel.getEndLocation();
 
-        Float endlat = tripModel.getEndLat();
-        Float endlong = tripModel.getEndLong();
 
         //Save all values in a final array, so we can access it from the callback thread.
-        gmapMap.put(webEngine, startlat+","+startlong+"END:"+endlat+","+endlong);
+        gmapMap.put(webEngine, startloc+"END:"+endloc);
 
         // Create the VBox
         HBox webbox = new HBox();
@@ -204,20 +202,21 @@ public class ProjectView implements View {
         lastEngine.getLoadWorker().stateProperty().addListener(new ChangeListener<Worker.State>() {
             public void changed(ObservableValue<? extends Worker.State> ov, Worker.State oldState, Worker.State newState) {
                 if (newState == Worker.State.SUCCEEDED) {
-                    for (Map.Entry<WebEngine, String> entry : gmapMap.entrySet()) {
+                    try {
+                        for (Map.Entry<WebEngine, String> entry : gmapMap.entrySet()) {
+                            //When the site is loaded call the js functions
+                            //Parse the String
+                            String[] split = entry.getValue().split("END:");
+                            String startloc = split[0];
+                            String endloc = split[1];
 
-                        //When the site is loaded call the js functions
-                        //Parse the String
-                        String[] split = entry.getValue().split("END:");
-                        String startlat  =  split[0].split(",")[0];
-                        String startlong =  split[0].split(",")[1];
-
-                        String endlat  =  split[1].split(",")[0];
-                        String endlong =  split[1].split(",")[1];
-
-                        entry.getKey().executeScript("addStartMarker("+startlat+", "+startlong+")");
-                        entry.getKey().executeScript("addEndMarker("+endlat+", "+endlong+")");
-
+                            entry.getKey().executeScript("addByAdress('" + startloc + "', '" + endloc + "')");
+                        }
+                    }catch (netscape.javascript.JSException e){
+                        //Reload when it fails, soemtimes the script tries to init the adress function before it is ready
+                        for (Map.Entry<WebEngine, String> entry : gmapMap.entrySet()) {
+                            entry.getKey().reload();
+                        }
                     }
                 }
             }
