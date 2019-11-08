@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+	    <meta charset="utf-8">
+		<meta name="theme-color" content="#ffffff">
+		<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDyozfs6imtqXQB4fTez-leDxvLoZHDJCs"></script>	
+	</head>
+	<body >
+		
+		<main>
+			<div id="gmaps" style="height: 300px; width: 100%;"></div>
+		</main>
+	</body>
+
+	<script type="text/javascript">
+		var map;
+		var geocoder;
+		var markersArray = new Array();
+		initGmaps();
+		// setBounds();
+		function initGmaps(){
+			var adam = new google.maps.LatLng(52.371807, 4.896029);
+
+			map = new google.maps.Map(
+				document.getElementById('gmaps'), {
+					zoom: 8,
+					center: adam,
+					disableDefaultUI: true
+			});
+
+			geocoder = new google.maps.Geocoder();
+		}
+
+		function addByAdress(start, end) {
+			geocoder.geocode({'address': start}, function(results, status) {
+				if (status === 'OK') {
+					map.setCenter(results[0].geometry.location);
+					var markerS = new google.maps.Marker({
+						map: map,
+						position: results[0].geometry.location
+					});
+					map.setCenter(markerS.getPosition())
+					markersArray.push(markerS);
+
+					geocoder.geocode({'address': end}, function(results, status) {
+						if (status === 'OK') {
+							map.setCenter(results[0].geometry.location);
+							var markerE = new google.maps.Marker({
+								map: map,
+								position: results[0].geometry.location
+							});
+
+							markersArray.push(markerE);
+							// map.setCenter(marker.getPosition())
+							setBounds()
+						}
+					});
+
+				}
+			});
+		}
+
+		function setBounds() {
+
+			var bounds = new google.maps.LatLngBounds();
+			for (var i=0; i < markersArray.length; i++) {
+				bounds.extend(markersArray[i].getPosition());
+			}
+			map.fitBounds(bounds);
+		}
+
+		function addStartMarker(lat, long){
+			lat = lat;
+			long = long;
+
+			var latlong = {lat: lat, lng: long};
+			var markerstart = new google.maps.Marker({
+				position: latlong,
+				map: map,
+				title: 'Hello World!'
+			});
+
+			markerstart.setMap(map);
+			markersArray.push(markerstart);
+			map.setCenter(markerstart.getPosition())
+		}
+
+		function addEndMarker(lat, long){
+			lat = lat;
+			long = long;
+
+			var latlong = {lat: lat, lng: long};
+			var markerend = new google.maps.Marker({
+				position: latlong,
+				map: map,
+				title: 'Hello World!'
+			});
+
+			markerend.setMap(map);
+			markersArray.push(markerend);
+			// map.setCenter(marker.getPosition())
+			setBounds()
+		}
+
+
+	</script>
+	
+</html>

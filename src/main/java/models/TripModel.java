@@ -12,6 +12,10 @@ public class TripModel {
 	private String endLocation;
 	private double startKilometergauge;
 	private double endKilometergauge;
+	private float startLat;
+	private float endLat;
+	private float startLong;
+	private float endLong;
 	
 	/**
 	 * @author Oussama Fahchouch
@@ -152,4 +156,17 @@ public class TripModel {
 	public void setEndKilometergauge(double endKilometergauge) {
 		this.endKilometergauge = endKilometergauge;
 	}
+
+	public void setStartLat(float startLat){this.startLat = startLat;}
+	public float getStartLat(){return this.startLat;}
+
+	public void setEndLat(float endLat){this.endLat = endLat;}
+	public float getEndLat(){return this.endLat;}
+
+	public void setStartLong(float startLong){this.startLong = startLong;}
+	public float getStartLong(){return this.startLong;}
+
+	public void setEndLong(float endLong){this.endLat = endLong;}
+	public float getEndLong(){return this.endLong;}
+
 }

@@ -1,9 +1,18 @@
 package controllers;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonObject;
+import com.google.gson.reflect.TypeToken;
 import javafx.scene.layout.Pane;
 import models.TripModel;
+import org.apache.commons.io.IOUtils;
 
+import java.io.IOException;
+import java.io.InputStream;
+import java.lang.reflect.Type;
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
+import java.util.Collection;
 
 /**
  * @author Oussama Fahchouch
@@ -14,18 +23,44 @@ public class TripController implements Controller {
 	/**
 	 * @author Oussama Fahchouch
 	 * @param projectId
-	 * @param userId
 	 * @param licenseplate
 	 * @param startLocation
 	 * @param endLocation
-	 * @param startKilometergauge
-	 * @param endKilometergauge
-	 * @param customerId
 	 * @return
 	 */
-	private boolean addTrip(int projectId, int userId, String licenseplate, String startLocation,
-			String endLocation, double startKilometergauge, double endKilometergauge, int customerId) {
-		return false;
+	public void addTripForProject(int projectId, String licenseplate, String startLocation,
+			String endLocation) {
+		AppController.getInstance().httpRequest("http://localhost:8080/trips/trip/add/for-project/"
+				+ projectId + "/"
+				//HIER MOET NOG DE USER KOMEN - EERST WACHTEN OP ALI'S WERK
+				+ "1" + "/"
+			    + licenseplate + "/" 
+				+ startLocation + "/" 
+			    + endLocation + "/0/0", "POST");
+	}
+	
+	/**
+	 * @author Oussama Fahchouch
+	 * @param licenseplate
+	 * @param startLocation
+	 * @param endLocation
+	 * @return
+	 */
+	public void addTripByUser(String licenseplate, String startLocation, String endLocation) {
+		if(licenseplate.contains(" "))
+			licenseplate = licenseplate.replace(" ", "%20");
+
+		if(startLocation.contains(" "))
+			startLocation = startLocation.replace(" ", "%20");
+
+		if(endLocation.contains(" "))
+			endLocation = endLocation.replace(" ", "%20");
+
+		//HIER MOET NOG DE USER KOMEN - EERST WACHTEN OP ALI'S WERK
+		AppController.getInstance().httpRequest("http://localhost:8080/trips/trip/add/for-user/1/"
+			    + licenseplate + "/" 
+				+ startLocation + "/" 
+			    + endLocation + "/0/0", "POST");
 	}
 	
 	/**
@@ -33,8 +68,9 @@ public class TripController implements Controller {
 	 * @param tripId
 	 * @return
 	 */
-	private boolean deleteTrip(int tripId) {
-		return false;
+	public void deleteTrip(int tripId) {
+        AppController.getInstance().httpRequest("http://localhost:8080/trips/delete/" + Integer.toString(tripId), "DELETE");
+
 	}
 	
 	/**
@@ -45,15 +81,6 @@ public class TripController implements Controller {
 	 */
 	private double calculateDistance(double startKilometergauge, double endKilometergauge) {
 		return 0.0;
-	}
-	
-	/**
-	 * @author Oussama Fahchouch
-	 * @return ArrayList<String> fetchedTrips
-	 */
-	private ArrayList<String> getTripsMadeByUser() {
-		ArrayList<String> fetchedTrips = new ArrayList<String>();
-		return fetchedTrips;
 	}
 	
 	/**
@@ -71,4 +98,45 @@ public class TripController implements Controller {
 	public Pane getMenuPane() {
 		return this.appController.getMenuPane();
 	}
+	
+	
+    /**
+     * @author Mike van Es
+     * @author Oussama Fahchouch
+     */
+    public ArrayList<TripModel>  fetchTrips(){
+    	ArrayList<TripModel> fetchedTrips = new ArrayList<TripModel>();
+    	//HIER MOET NOG USER ID KOMEN, WACHTEN OP ALI'S WERK
+        InputStream tripStream = AppController.getInstance().httpRequest("http://localhost:8080/trips/user/" + "2", "GET");
+        
+        try {
+            String result = IOUtils.toString(tripStream, StandardCharsets.UTF_8);
+            
+            if(result.contains("[")) {
+                Gson gson = new Gson();
+                Type jsonObject = new TypeToken<Collection<JsonObject>>() {}.getType();
+                Collection<JsonObject> tripColl = gson.fromJson(result, jsonObject);
+
+                for (JsonObject trip : tripColl) {
+                  TripModel tmpModel = new TripModel(Integer.parseInt(trip.get("tripId").toString()), 
+                		  Integer.parseInt(trip.get("projectId").toString()), 
+                		  Integer.parseInt(trip.get("userId").toString()), 
+                		  trip.get("licensePlate").toString().replaceAll("^\"|\"$", ""), 
+                		  trip.get("startLocation").toString().replaceAll("^\"|\"$", ""), 
+                		  trip.get("endLocation").toString().replaceAll("^\"|\"$", ""), 
+                		  Double.parseDouble(trip.get("startKilometergauge").toString()), 
+                		  Double.parseDouble(trip.get("endKilometergauge").toString()));
+
+                  fetchedTrips.add(tmpModel);
+                }
+                return fetchedTrips;
+            }
+
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
+        return null;
+    }
+    
+    
 }

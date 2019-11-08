@@ -7,21 +7,22 @@ import javafx.scene.layout.Pane;
 import models.ProjectModel;
 import models.TripModel;
 import org.apache.commons.io.IOUtils;
-
 import java.io.IOException;
 import java.io.InputStream;
 import java.lang.reflect.Type;
 import java.nio.charset.StandardCharsets;
-import java.util.ArrayList;
 import java.util.Collection;
+import java.util.HashMap;
+import java.util.Map;
 
 
 public class ProjectController {
-    private ArrayList<ProjectModel> projectModel = new ArrayList();
+    private Map<Integer, ProjectModel> projectModel = new HashMap<>();
+    private int selectedProject;
+    private AppController appController = AppController.getInstance();
 
     public ProjectController(){
         // Onload make the controller get the current projects per user / this function is now filled with example code.
-        this.fetchProjectsFromBackEnd();
     }
     /**
      * @author Oussama Fahchouch
@@ -43,25 +44,24 @@ public class ProjectController {
     /**
      * Fetches the projects from the back-end and parses the JSON string
      */
-    private void fetchProjectsFromBackEnd(){
+    public void fetchProjectsFromBackEnd(){
         //Make a call to the API to fetch all the projects / example projects are shown below.
-        InputStream projectStream = AppController.getInstance().httpRequest("http://localhost:8080/project/getAllProject", "GET");
+        InputStream projectStream = appController.httpRequest("http://localhost:8080/project/getAllProject", "GET");
         try {
             String result = IOUtils.toString(projectStream, StandardCharsets.UTF_8);
             if(result.contains("[")) {
                 Gson gson = new Gson();
-                Type jsonObject = new TypeToken<Collection<JsonObject>>() {
-                }.getType();
+                Type jsonObject = new TypeToken<Collection<JsonObject>>(){}.getType();
                 Collection<JsonObject> projectColl = gson.fromJson(result, jsonObject);
 
                 //Loop through the json objects
                 for (JsonObject projects : projectColl) {
                     // Remove any excess ""
                     String projectName = projects.get("name").toString().replaceAll("^\"|\"$", "");
-                    ProjectModel tmpModel = new ProjectModel(Integer.parseInt(projects.get("id").toString()), projectName);
+                    int projectId = Integer.parseInt(projects.get("id").toString());
+                    ProjectModel tmpModel = new ProjectModel(projectId, projectName);
 
-                    Type tripObject = new TypeToken<Collection<TripModel>>() {
-                    }.getType();
+                    Type tripObject = new TypeToken<Collection<TripModel>>() {}.getType();
                     //For each trip create a new tripmodel and add it to the collection
                     Collection<TripModel> tripColl = gson.fromJson(projects.get("trips").toString(), tripObject);
 
@@ -69,7 +69,7 @@ public class ProjectController {
                     for (TripModel trips : tripColl) {
                         tmpModel.addTrip(trips);
                     }
-                    projectModel.add(tmpModel);
+                    projectModel.put(projectId, tmpModel);
                 }
             }
 
@@ -78,7 +78,30 @@ public class ProjectController {
         }
     }
 
-    public ArrayList<ProjectModel> getProjects(){
+    /**
+     * Loads a project insight view
+     * Sends the projectmodel to the backend so we can later retrieve it in our new view.
+     * @param pid - projectId
+     */
+    public void loadProjectView(int pid){
+        this.selectedProject = pid;
+        Gson gson = new Gson();
+
+        String projectString = gson.toJson(projectModel.get(pid));
+        String url = "http://localhost:8080/project/setProject?project="+projectString;
+        if(url.contains(" "))
+            url = url.replace(" ", "%20");
+
+        appController.httpRequest(url, "POST");
+        appController.loadView("views.ProjectView", "createView");
+    }
+
+    /**
+     * Returns project
+     * @return Map<Integer, ProjectModel>
+     */
+    public Map<Integer, ProjectModel> getProjects(){
         return projectModel;
     }
+
 }

@@ -1,6 +1,12 @@
 package views;
 
+import java.util.Arrays;
+import java.util.List;
+
+import controllers.AppController;
 import controllers.TripController;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.scene.Node;
 import javafx.scene.Scene;
@@ -15,15 +21,13 @@ import javafx.scene.layout.VBox;
 import javafx.scene.shape.Circle;
 import javafx.scene.text.Font;
 
-import java.util.Arrays;
-import java.util.List;
-
 /**
  * @author Oussama Fahchouch
  */
 public class AddTripView implements View {
 	private TripController tripController;
 	private Scene scene;
+	private AlertView alertView;
 	
 	/**
 	 * @author Oussama Fahchouch
@@ -31,6 +35,7 @@ public class AddTripView implements View {
 	public AddTripView() {
 		this.tripController = new TripController();
 		this.scene = createView();
+        this.alertView = new AlertView();
 	}
 	
 	/**
@@ -95,7 +100,8 @@ public class AddTripView implements View {
 		addButton.setMaxSize((75/1.5)*r, (75/1.5)*r);
 		addButton.setStyle("-fx-background-color: #2F4051; -fx-font-size: 21px; -fx-text-fill: white;");
 		
-		addButton.setOnAction(e -> this.tripController.appController.loadView("main.java.views.TripOverviewView", "createView"));
+		addButton.setOnAction(e -> this.tripController.appController.loadView("views.TripOverviewView", "createView"));
+
 
 		addTripButtonPane.getChildren().addAll(addButton);
 		
@@ -188,7 +194,36 @@ public class AddTripView implements View {
 		createTripButton.setTranslateX((750/1.5));
 		createTripButton.setTranslateY((50/1.5));
 		
-		createTripButton.setOnAction(e -> this.tripController.appController.loadView("views.TripOverviewView", "createView"));
+		createTripButton.setOnAction(new EventHandler<ActionEvent>() {
+
+			@Override
+			    public void handle(ActionEvent e) {
+				
+					if(textFieldInputFieldsHBoxRow4.getText().isEmpty() ||
+							textFieldInputFieldsHBoxRow2.getText().isEmpty() ||
+							textFieldInputFieldsHBoxRow3.getText().isEmpty()
+							) {
+						
+				        alertView.alert("De rit is niet goed aangegeven. Probeer het opnieuw");
+					} else if(!textFieldInputFieldsHBoxRow1.getText().isEmpty()) { 
+						AppController.getInstance();
+						tripController.addTripForProject(Integer.parseInt(textFieldInputFieldsHBoxRow1.getText()), 
+								textFieldInputFieldsHBoxRow4.getText(), 
+								textFieldInputFieldsHBoxRow2.getText(), 
+								textFieldInputFieldsHBoxRow3.getText());
+						
+						alertView.alert("De rit is toegevoegd. U wordt nu doorverwezen naar het ritten overzicht.");		
+		                tripController.appController.loadView("views.TripOverviewView", "createView");
+					} else { 						
+						tripController.addTripByUser(textFieldInputFieldsHBoxRow4.getText(), 
+								textFieldInputFieldsHBoxRow2.getText(), 
+								textFieldInputFieldsHBoxRow3.getText());
+						
+						alertView.alert("De rit is toegevoegd. U wordt nu doorverwezen naar het ritten overzicht.");		
+		                tripController.appController.loadView("views.TripOverviewView", "createView");
+					}
+			     }
+			 });
 		
 		inputFieldsHBoxRow5.getChildren().addAll(createTripButton);
 		

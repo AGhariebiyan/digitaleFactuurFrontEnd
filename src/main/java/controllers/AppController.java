@@ -33,6 +33,7 @@ public class AppController extends ClassLoader {
 		return appController;
 	}
 
+
     /**
      * @author Mike van Es
      * Creates a new isntance of a given class and calls the function given in the parameters
@@ -78,7 +79,6 @@ public class AppController extends ClassLoader {
 			//The URL wich we are going to send to.
 			URL requestUrl = new URL(url);
 			HttpURLConnection con = (HttpURLConnection) requestUrl.openConnection();
-			System.out.println(requestType);
 			//The request type, POST, GET etc.
 			con.setRequestMethod(requestType);
 			con.setRequestProperty("Content-Type", "application/json");
@@ -86,42 +86,8 @@ public class AppController extends ClassLoader {
 			con.setConnectTimeout(5000);
 			con.setReadTimeout(5000);
 
-			// Debug
-			// String contentType  = con.getRequestMethod();
-			// System.out.println("Debug");
-			// System.out.println(contentType);
 
-			//The response wich we recieve e.g. 200, 400, 404
-//			int status = con.getResponseCode();
-
-			// Example code to read new the results
-			// Example code to read new the results
-			// Example code to read new the results
-			//if(status == 200) {
-				// Example code to read new the results
-				//BufferedReader in = new BufferedReader(
-				//		new InputStreamReader(con.getInputStream()));
-				//String inputLine;
-				//StringBuffer content = new StringBuffer();
-				//while ((inputLine = in.readLine()) != null) {
-				//	System.out.println(inputLine);
-				//	content.append(inputLine);
-				//}
-
-				// Close reader
-				//in.close();
-				// Close connection
-//				con.disconnect();
-				try {
-					return con.getInputStream();
-				}catch (IOException e){
-					return null;
-				}
-			//}else{
-				// Close connection
-			//	con.disconnect();
-			//	return null;
-			//}
+			return con.getInputStream();
 
 		} catch (IOException e) {
 

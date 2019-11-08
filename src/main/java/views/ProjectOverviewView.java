@@ -1,6 +1,7 @@
 package views;
 
 import controllers.ProjectController;
+import javafx.beans.binding.Bindings;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
@@ -15,8 +16,9 @@ import javafx.scene.layout.Pane;
 import javafx.scene.text.Font;
 import models.ProjectModel;
 
-import java.lang.reflect.*;
-import java.util.ArrayList;
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
+import java.util.Map;
 
 /**
  * @author Mike van Es
@@ -33,11 +35,12 @@ public class ProjectOverviewView implements View {
      */
     public ProjectOverviewView() {
         this.projectController = new ProjectController();
+        this.projectController.fetchProjectsFromBackEnd();
     }
 
     /**
      * @author Mike van Es
-     * @return
+     * @return Scene
      */
     @Override
     public Scene createView(){
@@ -77,6 +80,10 @@ public class ProjectOverviewView implements View {
         return ProjectOverviewPane;
     }
 
+    /**
+     * Adds the search field so we can search the table
+     * @return TextField
+     */
     private TextField tableSearchField(){
         this.searchTextField = new TextField ();
         this.searchTextField.setPromptText("Zoeken...");
@@ -110,23 +117,49 @@ public class ProjectOverviewView implements View {
         column4.setCellValueFactory(new PropertyValueFactory<>("totalKilometers"));
         column4.setId("getTotalKilometers");
 
+        tableView.setPlaceholder(new Label("Geen projecten gevonden"));
+
         tableView.getColumns().add(column1);
         tableView.getColumns().add(column2);
         tableView.getColumns().add(column3);
         tableView.getColumns().add(column4);
 
 
-        ArrayList<ProjectModel> projectModelArray = projectController.getProjects();
-        for (int i = 0; i <projectModelArray.size(); i++){
-            tableView.getItems().add(projectModelArray.get(i));
-            this.searchData.add(projectModelArray.get(i));
+        Map<Integer, ProjectModel> projectModelMap = projectController.getProjects();
+        for (ProjectModel pm : projectModelMap.values()){
+            tableView.getItems().add(pm);
+            this.searchData.add(pm);
         }
 
         tableView.setMinSize((1245/1.5), (450/1.5));
         tableView.setTranslateX((50/1.5));
         tableView.setTranslateY((100/1.5));
+        tableView.setFixedCellSize(25);
+        tableView.prefHeightProperty().bind(tableView.fixedCellSizeProperty().multiply(Bindings.size(tableView.getItems()).add(1.03)));
+        tableView.minHeightProperty().bind(tableView.prefHeightProperty());
+        tableView.maxHeightProperty().bind(tableView.prefHeightProperty());
+
         tableView.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
         addSearchFilter(tableView);
+
+        tableView.getSelectionModel().selectedItemProperty().addListener(
+                (observable, oldValue, newValue) -> {
+                    if (newValue == null) {
+                        return;
+                    }
+
+                    if(((ProjectModel) newValue).getTotalTrips() == 0) {
+                        AlertView alert = new AlertView();
+                        alert.alert("Er zijn geen trips voor dit project");
+                        return;
+                    }else {
+                        this.projectController.loadProjectView(((ProjectModel) newValue).getProjectId());
+                    }
+                }
+        );
+
+
+
         return tableView;
     }
 
