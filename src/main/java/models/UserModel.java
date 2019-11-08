@@ -1,5 +1,12 @@
 package models;
 
+/**
+ * The user is saved here.
+ *
+ * @author Ali Rezaa Ghariebiyan
+ * @version 08-11-2019
+ */
+
 public class UserModel {
     private int userId;
     private String username;

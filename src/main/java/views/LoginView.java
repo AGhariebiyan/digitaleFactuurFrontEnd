@@ -10,12 +10,20 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
+import javafx.scene.paint.Color;
+import javafx.scene.text.Text;
 
+/**
+ * The login view is compiled in this view. A login.css file is used for the design
+ *
+ * @author Ali Rezaa Ghariebiyan
+ * @version 08-11-2019
+ */
 public class LoginView implements View{
 
-    private Scene scene;
     private String css;
     private UserController userController;
+    private Scene scene;
 
     // css class voor de vormgeving
     public LoginView(){
@@ -33,8 +41,18 @@ public class LoginView implements View{
         btnLogin.setId("btnLogin");
         Hyperlink btnRegistreren = new Hyperlink();
         btnRegistreren.setText("Geen account? Registreer nu!");
+        Text melding = new Text("");
 
-        btnLogin.setOnAction(e -> getCredentials(username.getText().toLowerCase(), password.getText().toLowerCase()));
+        // On Click invoke the getCredentials method with the user and password
+        btnLogin.setOnAction(event -> {
+            if (!getCredentials(username.getText().toLowerCase(), password.getText().toLowerCase()) == true)
+            {
+                melding.setFill(Color.DARKRED);
+                melding.setText("username of password is wrong!");
+            }
+        });
+
+//        btnLogin.setOnAction(e -> getCredentials(username.getText().toLowerCase(), password.getText().toLowerCase()));
 
         // Logo
         VBox vBoxLogo = new VBox();
@@ -42,7 +60,7 @@ public class LoginView implements View{
         vBoxLogo.setId("logo");
 
         // FORMULIER
-        VBox vBoxForm = new VBox(username, password, btnLogin, btnRegistreren);
+        VBox vBoxForm = new VBox(username, password, btnLogin, btnRegistreren, melding);
         vBoxForm.setAlignment(Pos.CENTER);
         vBoxForm.setId("login_form");
         vBoxForm.setSpacing(10);
@@ -62,15 +80,20 @@ public class LoginView implements View{
         return scene;
     }
 
-    public void getCredentials(String user, String passwd){
+    /**
+     * the authorize method in the UserController is called. If successful, the method returns true.
+     *
+     * @author Ali Rezaa Ghariebiyan
+     * @version 08-11-2019
+     */
+    public boolean getCredentials(String user, String passwd){
         if (userController.authorize(user, passwd)){
             UserController.appController.getInstance().loadView("views.DashboardView", "createView");
+            return true;
         }
         else{
-            System.out.println("inlog mislukt");
+            return false;
         }
-
-
     }
 
     @Override

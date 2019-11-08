@@ -4,10 +4,16 @@ import com.google.gson.Gson;
 import io.jsonwebtoken.io.IOException;
 import models.UserModel;
 import org.apache.commons.io.IOUtils;
-
 import java.io.InputStream;
 import java.nio.charset.StandardCharsets;
 
+/**
+ * All functionalities from before the user are processed here.
+ * Here the call is made to the API. The authorize will return its value based on the response the API returns. to the front end.
+ *
+ * @author Ali Rezaa Ghariebiyan
+ * @version 08-11-2019
+ */
 public class UserController implements Controller{
 
     private UserModel userModel;
@@ -28,10 +34,16 @@ public class UserController implements Controller{
         return false;
     }
 
+    /**
+     * The call is made here. If the upstream is not empty,
+     * the object returned by the backend will be stored in the UserModel
+     *
+     * @author Ali Rezaa Ghariebiyan
+     * @version 08-11-2019
+     */
     private boolean authorizeUserFromBackEnd(String user, String password) throws IOException, java.io.IOException {
 
         InputStream userStream = AppController.getInstance().httpRequest("http://localhost:8080/login/"  + user + "/" + password, "GET");
-        System.out.println("http://localhost:8080/login/"  + user + "/" + password);
 
         if(userStream != null) {
             try {
