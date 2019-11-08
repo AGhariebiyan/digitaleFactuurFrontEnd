@@ -3,6 +3,7 @@ package controllers;
 import javafx.scene.Scene;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
+import models.UserModel;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -20,6 +21,7 @@ public class AppController extends ClassLoader {
 	private Stage primaryStage;
 	private Pane headerPane;
 	private Pane menuPane;
+	private UserModel currentUser;
 
 	/**
 	 * @author Mike van Es
@@ -72,7 +74,7 @@ public class AppController extends ClassLoader {
 
 	public static InputStream httpRequest(String url, String requestType){
 		try {
-//			System.out.println(url);
+
 			//The URL wich we are going to send to.
 			URL requestUrl = new URL(url);
 			HttpURLConnection con = (HttpURLConnection) requestUrl.openConnection();
@@ -93,7 +95,15 @@ public class AppController extends ClassLoader {
 
 		return null;
 	}
-	
+
+	public void setCurrentUser(UserModel currentUser) {
+		this.currentUser = currentUser;
+	}
+
+	public UserModel getCurrentUser() {
+		return currentUser;
+	}
+
 	/**
 	 * @author Oussama Fahchouch
 	 * @param primaryStage
