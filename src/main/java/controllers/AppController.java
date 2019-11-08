@@ -33,6 +33,7 @@ public class AppController extends ClassLoader {
 		return appController;
 	}
 
+
     /**
      * @author Mike van Es
      * Creates a new isntance of a given class and calls the function given in the parameters
