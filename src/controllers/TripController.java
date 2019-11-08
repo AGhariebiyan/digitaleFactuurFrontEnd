@@ -81,15 +81,6 @@ public class TripController implements Controller {
 	
 	/**
 	 * @author Oussama Fahchouch
-	 * @return ArrayList<String> fetchedTrips
-	 */
-	private ArrayList<String> getTripsMadeByUser() {
-		ArrayList<String> fetchedTrips = new ArrayList<String>();
-		return fetchedTrips;
-	}
-	
-	/**
-	 * @author Oussama Fahchouch
 	 * @return headerPane
 	 */
 	public Pane getHeaderPane() {
@@ -111,7 +102,8 @@ public class TripController implements Controller {
      */
     public ArrayList<TripModel>  fetchTrips(){
     	ArrayList<TripModel> fetchedTrips = new ArrayList<TripModel>();
-        InputStream tripStream = AppController.getInstance().httpRequest("http://localhost:8080/trips", "GET");
+    	//HIER MOET NOG USER ID KOMEN, WACHTEN OP ALI'S WERK
+        InputStream tripStream = AppController.getInstance().httpRequest("http://localhost:8080/trips/user/" + "2", "GET");
         
         try {
             String result = IOUtils.toString(tripStream, StandardCharsets.UTF_8);
