@@ -3,8 +3,9 @@
   <component name="ChangeListManager">
     <list default="true" id="4bfe40d3-9739-4d44-9577-d0ffcc2a04e6" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controllers/AppController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/AppController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/controllers/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/UserController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/models/UserModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/models/UserModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/models/HttpResponse.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/views/LoginView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/views/LoginView.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -73,7 +74,7 @@
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
   </component>
@@ -153,6 +154,8 @@
       <workItem from="1572735861165" duration="162000" />
       <workItem from="1573055197543" duration="9038000" />
       <workItem from="1573127564633" duration="15750000" />
+      <workItem from="1573146752812" duration="51000" />
+      <workItem from="1573210930349" duration="10744000" />
     </task>
     <task id="LOCAL-00001" summary="begin gemaakt aan login validation">
       <created>1573126641645</created>

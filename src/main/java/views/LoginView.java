@@ -34,7 +34,7 @@ public class LoginView implements View{
         Hyperlink btnRegistreren = new Hyperlink();
         btnRegistreren.setText("Geen account? Registreer nu!");
 
-        btnLogin.setOnAction(e -> getCredentials(username.getText(), password.getText()));
+        btnLogin.setOnAction(e -> getCredentials(username.getText().toLowerCase(), password.getText().toLowerCase()));
 
         // Logo
         VBox vBoxLogo = new VBox();

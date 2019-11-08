@@ -1,16 +1,12 @@
 package controllers;
 
 import com.google.gson.Gson;
-import com.google.gson.JsonObject;
-import com.google.gson.reflect.TypeToken;
 import io.jsonwebtoken.io.IOException;
 import models.UserModel;
 import org.apache.commons.io.IOUtils;
 
 import java.io.InputStream;
-import java.lang.reflect.Type;
 import java.nio.charset.StandardCharsets;
-import java.util.Collection;
 
 public class UserController implements Controller{
 
@@ -21,8 +17,7 @@ public class UserController implements Controller{
         try{
             if (authorizeUserFromBackEnd(username, passwd)){
                 return true;
-            }
-            if (authorizeUserFromBackEnd(username, passwd)){
+            }else{
                 return false;
             }
 
@@ -34,61 +29,25 @@ public class UserController implements Controller{
     }
 
     private boolean authorizeUserFromBackEnd(String user, String password) throws IOException, java.io.IOException {
-        //Make a call to the API to fetch all the  / example projects are shown below.
-        InputStream userStream = AppController.getInstance().httpRequest("http://localhost:8080/login/" + user + "/" + password, "GET");
 
-        try {
-            String result = IOUtils.toString(userStream, StandardCharsets.UTF_8);
+        InputStream userStream = AppController.getInstance().httpRequest("http://localhost:8080/login/"  + user + "/" + password, "GET");
+        System.out.println("http://localhost:8080/login/"  + user + "/" + password);
 
-            if(result.contains("[")) {
+        if(userStream != null) {
+            try {
+                String result = IOUtils.toString(userStream, StandardCharsets.UTF_8);
                 Gson gson = new Gson();
-                Type jsonObject = new TypeToken<Collection<JsonObject>>() {}.getType();
-                Collection<JsonObject> userCollection = gson.fromJson(result, jsonObject);
-                System.out.println("in de if");
-                for (JsonObject fetchedUser : userCollection) {
-                    UserModel tmpModel = new UserModel(
-                            Integer.parseInt(fetchedUser.get("userId").toString()),
-                            fetchedUser.get("username").toString().replaceAll("^\"|\"$", ""),
-                            fetchedUser.get("userToken").toString().replaceAll("^\"|\"$", "")
-                            );
-                    System.out.println("in de for");
-                }
+                UserModel userModel = gson.fromJson(result, UserModel.class);
 
+                appController.setCurrentUser(userModel);
+
+                return true;
+            } catch (IOException ex) {
+                ex.printStackTrace();
+                return false;
             }
-
-//        try {
-//            String result = IOUtils.toString(userStream, StandardCharsets.UTF_8);
-//
-//
-//            if(result.contains("[")) {
-//                System.out.println("lol!");
-//                Gson gson = new Gson();
-//                Type jsonObject = new TypeToken<Collection<JsonObject>>() {}.getType();
-//                Collection<JsonObject> users = gson.fromJson(result, jsonObject);
-//                System.out.println("for loop");
-//                for (JsonObject fetchuser : users) {
-//                    UserModel userModel = new UserModel(
-//                            Integer.parseInt(fetchuser.get("userId").toString()),
-//                            fetchuser.get("username").toString(),
-//                            fetchuser.get("password").toString(),
-//                            fetchuser.get("userToken").toString());
-//                    System.out.println(userModel.getUsername());
-//                }
-//
-//            }
-
-        } catch (IOException ex) {
-            ex.printStackTrace();
-        }
-
-//        Map<String, Object> account = new HashMap<>();
-//        account.put("username", user);
-//        account.put("password", password);
-//
-//        String json = new Gson().toJson(account);
-        if(userStream == null)
+        }else{
             return false;
-        else
-            return true;
+        }
     }
 }
