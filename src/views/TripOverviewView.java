@@ -1,15 +1,23 @@
 package views;
 
-import controllers.TripController;
 import javafx.scene.Scene;
+import javafx.scene.chart.PieChart.Data;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseButton;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.scene.shape.Circle;
 import javafx.scene.text.Font;
+import javafx.util.Callback;
+import controllers.AppController;
+import controllers.TripController;
 import models.TripModel;
 
 /**
@@ -18,6 +26,8 @@ import models.TripModel;
 public class TripOverviewView implements View {
 	private TripController tripController;
 	private Scene scene;
+	private TableView tableView;
+	private AlertView alertView;
 		
 	/**
 	 * @author Oussama Fahchouch
@@ -25,6 +35,7 @@ public class TripOverviewView implements View {
 	public TripOverviewView() {
 		this.tripController = new TripController();
 		this.scene = createView();
+        this.alertView = new AlertView();
 	}
 
 	/**
@@ -84,7 +95,7 @@ public class TripOverviewView implements View {
 		addButton.setMaxSize((75/1.5)*r, (75/1.5)*r);
 		addButton.setStyle("-fx-background-color: #4fb04f; -fx-font-size: 21px; -fx-text-fill: white;");
 		
-		addButton.setOnAction(e -> this.tripController.appController.loadView("main.java.views.AddTripView", "createView"));
+		addButton.setOnAction(e -> this.tripController.appController.loadView("views.AddTripView", "createView"));
 
 		addTripButtonPane.getChildren().addAll(addButton);
 				
@@ -111,7 +122,7 @@ public class TripOverviewView implements View {
      * @return tableView
      */
     private TableView TripOverviewTableView() {
-        TableView tableView = new TableView();
+        tableView = new TableView();
 
         TableColumn<String, TripModel> column1 = new TableColumn<>("Start locatie");
         column1.setCellValueFactory(new PropertyValueFactory<>("startLocation"));
@@ -119,8 +130,8 @@ public class TripOverviewView implements View {
         TableColumn<String, TripModel> column2 = new TableColumn<>("Eind locatie");
         column2.setCellValueFactory(new PropertyValueFactory<>("endLocation"));
         
-        TableColumn<String, TripModel> column3 = new TableColumn<>("Gereden kilometers");
-        column3.setCellValueFactory(new PropertyValueFactory<>("drivenKilometers"));
+//        TableColumn<String, TripModel> column3 = new TableColumn<>("Gereden kilometers");
+//        column3.setCellValueFactory(new PropertyValueFactory<>("drivenKilometers"));
         
         TableColumn<String, TripModel> column4 = new TableColumn<>("Kenteken");
         column4.setCellValueFactory(new PropertyValueFactory<>("licenseplate"));
@@ -128,19 +139,20 @@ public class TripOverviewView implements View {
         TableColumn<String, TripModel> column5 = new TableColumn<>("Project");
         column5.setCellValueFactory(new PropertyValueFactory<>("projectId"));
         
-        TableColumn<String, TripModel> column6 = new TableColumn<>("Verwijderen");
-        column6.setCellValueFactory(new PropertyValueFactory<>("deleteTrip"));
 
         tableView.getColumns().add(column1);
         tableView.getColumns().add(column2);
-        tableView.getColumns().add(column3);
+//        tableView.getColumns().add(column3);
         tableView.getColumns().add(column4);
         tableView.getColumns().add(column5);
-        tableView.getColumns().add(column6);
-
-//        for (int i = 0; i < tripController.getTrips().size(); i++){
-//            tableView.getItems().add(tripController.getTripsMadeByUser().get(i));
-//        }
+        
+        addButtonToTable();
+        
+        String delete = new String("del");
+        
+        for (int i = 0; i < tripController.fetchTrips().size(); i++){
+            tableView.getItems().add(tripController.fetchTrips().get(i));
+        }
         
         tableView.setMinSize((1245/1.5), (450/1.5));
         tableView.setTranslateX((50/1.5));
@@ -165,4 +177,50 @@ public class TripOverviewView implements View {
 		return this.scene;
 	};
 	
+	/**
+	 * @author Oussama Fahchouch
+	 */
+	private void addButtonToTable() {
+        TableColumn<Data, Void> colBtn = new TableColumn("Verwijderen");
+
+        Callback<TableColumn<Data, Void>, TableCell<Data, Void>> cellFactory = new Callback<TableColumn<Data, Void>, TableCell<Data, Void>>() {
+            @Override
+            public TableCell<Data, Void> call(final TableColumn<Data, Void> param) {
+                final TableCell<Data, Void> cell = new TableCell<Data, Void>() {
+             
+                    @Override
+                    public void updateItem(Void item, boolean empty) {
+                        super.updateItem(item, empty);
+                        if (empty) {
+                            setGraphic(null);
+                        } else {
+                    		Image image = new Image(this.getClass().getResource("/imgs/bin.png").toExternalForm());
+                    		ImageView imageView = new ImageView(image); 
+                    		imageView.setTranslateX(65);
+                        	setGraphic(imageView);
+                        }
+                    }
+                };
+                
+                cell.setOnMouseClicked((MouseEvent event) -> {
+                    if (event.getButton().equals(MouseButton.PRIMARY)) {
+                        int index = tableView.getSelectionModel().getSelectedIndex();
+                        TripModel trip = (TripModel) tableView.getItems().get(index);
+                        
+                        tripController.deleteTrip(trip.getTripId());
+
+                        alertView.alert("Rit " + trip.getTripId() + " is verwijderd.");		
+
+                        tripController.appController.loadView("views.TripOverviewView", "createView");
+                    }
+                });
+                
+                return cell;
+            }
+        };
+
+        colBtn.setCellFactory(cellFactory);
+
+        tableView.getColumns().add(colBtn);
+    }
 }
