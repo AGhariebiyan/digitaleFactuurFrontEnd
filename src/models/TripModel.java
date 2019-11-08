@@ -1,5 +1,10 @@
 package models;
 
+import javafx.scene.control.Button;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.layout.Pane;
+
 /**
  * @author Oussama Fahchouch
  */
@@ -12,6 +17,7 @@ public class TripModel {
 	private String endLocation;
 	private double startKilometergauge;
 	private double endKilometergauge;
+
 	
 	/**
 	 * @author Oussama Fahchouch
@@ -151,5 +157,9 @@ public class TripModel {
 	 */
 	public void setEndKilometergauge(double endKilometergauge) {
 		this.endKilometergauge = endKilometergauge;
+	}
+	
+	public int getDelId() {
+		return this.tripId;
 	}
 }
