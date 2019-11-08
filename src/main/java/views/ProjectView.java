@@ -23,7 +23,7 @@ import models.ProjectModel;
 import models.TripModel;
 
 import java.util.ArrayList;
-import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.Map;
 
 public class ProjectView implements View {
@@ -31,8 +31,8 @@ public class ProjectView implements View {
     private Scene scene;
     private ObservableList<ProjectModel> searchData = FXCollections.observableArrayList();
     private TextField searchTextField;
-
-    public final Map<WebEngine, String> gmapMap = new HashMap<>();
+    private WebEngine lastEngine;
+    public final Map<WebEngine, String> gmapMap = new LinkedHashMap<>();
 
     /**
      * @author Mike van Es
@@ -93,7 +93,6 @@ public class ProjectView implements View {
         ArrayList<TripModel> tripList = projectViewController.getTrips();
         gmapMap.clear();
         try{
-
             for (TripModel tripModel : tripList) {
                 Pane projectInsightPane = new Pane();
                 HBox projectInfo = new HBox();
@@ -150,6 +149,8 @@ public class ProjectView implements View {
             }
 
 
+            this.createCallBackWebEngine();
+
             return tabpane;
         }catch(java.lang.NullPointerException e){
             System.out.println("Kan bestand niet vinden van regel: ");
@@ -184,13 +185,28 @@ public class ProjectView implements View {
         Float endlat = tripModel.getEndLat();
         Float endlong = tripModel.getEndLong();
 
-        //Remove all values if we have any
-
+        //Save all values in a final array, so we can access it from the callback thread.
         gmapMap.put(webEngine, startlat+","+startlong+"END:"+endlat+","+endlong);
-        webEngine.getLoadWorker().stateProperty().addListener(new ChangeListener<Worker.State>() {
+
+        // Create the VBox
+        HBox webbox = new HBox();
+        webbox.setId("gmaps");
+        webbox.setTranslateY(150);
+        // Add the WebView to the VBox
+        webbox.getChildren().add(webView);
+
+        //Save the last used engine, when this thread fires all the maps will be loaded.
+        this.lastEngine = webEngine;
+        return webbox;
+    }
+
+    private void createCallBackWebEngine(){
+        lastEngine.getLoadWorker().stateProperty().addListener(new ChangeListener<Worker.State>() {
             public void changed(ObservableValue<? extends Worker.State> ov, Worker.State oldState, Worker.State newState) {
                 if (newState == Worker.State.SUCCEEDED) {
                     for (Map.Entry<WebEngine, String> entry : gmapMap.entrySet()) {
+
+                        //When the site is loaded call the js functions
                         //Parse the String
                         String[] split = entry.getValue().split("END:");
                         String startlat  =  split[0].split(",")[0];
@@ -199,26 +215,13 @@ public class ProjectView implements View {
                         String endlat  =  split[1].split(",")[0];
                         String endlong =  split[1].split(",")[1];
 
-                        try{
-                            entry.getKey().executeScript("addStartMarker("+startlat+", "+startlong+")");
-                            entry.getKey().executeScript("addEndMarker("+endlat+", "+endlong+")");
-                        }catch (netscape.javascript.JSException e){
-
-                        }
+                        entry.getKey().executeScript("addStartMarker("+startlat+", "+startlong+")");
+                        entry.getKey().executeScript("addEndMarker("+endlat+", "+endlong+")");
 
                     }
-
                 }
             }
         });
-//                }
-        // Create the VBox
-        HBox webbox = new HBox();
-        webbox.setId("gmaps");
-        webbox.setTranslateY(150);
-        // Add the WebView to the VBox
-        webbox.getChildren().add(webView);
-        return webbox;
     }
 
 
