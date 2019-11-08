@@ -24,8 +24,7 @@ public class DashboardView implements View {
 	private DashboardController dashboardController;
 	
 	public DashboardView() {
-//		this.scene = createView();
-		//dashboardController kan hier nog niet geinitialiseerd worden!
+
 	}
 	
 	/**

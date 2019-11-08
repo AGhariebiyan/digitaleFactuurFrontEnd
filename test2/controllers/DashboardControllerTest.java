@@ -18,6 +18,8 @@ public class DashboardControllerTest {
 
 	@Test
 	public void test() {
+		DashboardController d1 = new DashboardController();
+		
 	
 	}
 

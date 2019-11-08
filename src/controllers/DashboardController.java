@@ -18,69 +18,69 @@ import javafx.scene.layout.Pane;
  */
 public class DashboardController implements Controller {
 	
+	/**
+	 * @author Fifi
+	 *
+	 */
+	
 	public void setHeaderPane(Pane headerPane) {
 		Controller.appController.setHeaderPane(headerPane);
 	}
 	
+	/**
+	 * @author Fifi
+	 *
+	 */
 	public void setMenuPane(Pane menuPane) {
 		Controller.appController.setMenuPane(menuPane);
 	}
 	
+	/**
+	 * @author Fifi
+	 *
+	 */
+	
     public String getStringTotalProjectsFromBackEnd(){
-        // To store our response
-        
-        String line;  
-        StringBuilder content = null;
 
-        // Get the input stream of the connection
+ 
         try {
-            //BufferedReader input = new BufferedReader(new InputStreamReader(AppController.httpRequest("http://localhost:8080/trips", "GET")));
+           
              InputStream totalProjectsStream = AppController.getInstance().httpRequest("http://localhost:8080/trips/user/project", "GET");
                 
              String result = IOUtils.toString(totalProjectsStream, StandardCharsets.UTF_8);
              
-        
-            /*content = new StringBuilder();
-            while ((line = input.readLine()) != null) {
-                // Append each line of the response and separate them
-                content.append(line);
-                content.append(System.lineSeparator());
-                }*/
+       
                 return result;
           
             }catch(IOException ex) {
             ex.printStackTrace();
             }
-        //return content.toString();
+       
         return null;
     }
     
+    /**
+     * @author Fifi
+     *
+     */
+    
     public String getStringTotalTripsFromBackEnd(){
-        // To store our response
-        
-        String line;  
-        StringBuilder content = null;
-
-        // Get the input stream of the connection
+     
+  
+       
         try {
-            //BufferedReader input = new BufferedReader(new InputStreamReader(AppController.httpRequest("http://localhost:8080/trips", "GET")));
+            
              InputStream totalProjectsStream = AppController.getInstance().httpRequest("http://localhost:8080/trips/user", "GET");
                 
              String result = IOUtils.toString(totalProjectsStream, StandardCharsets.UTF_8);
              
         
-            /*content = new StringBuilder();
-            while ((line = input.readLine()) != null) {
-                // Append each line of the response and separate them
-                content.append(line);
-                content.append(System.lineSeparator());
-                }*/
                 return result;
           
             }catch(IOException ex) {
             ex.printStackTrace();
             }
-        //return content.toString();
+ 
         return null;
     }
 	
