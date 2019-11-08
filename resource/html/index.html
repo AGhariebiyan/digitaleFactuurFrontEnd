@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+	    <meta charset="utf-8">
+		<meta name="theme-color" content="#ffffff">
+		<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDyozfs6imtqXQB4fTez-leDxvLoZHDJCs"></script>	
+	</head>
+	<body >
+		
+		<main>
+			<div id="gmaps" style="height: 300px; width: 100%;"></div>
+		</main>
+	</body>
+
+	<script type="text/javascript">
+		var map;
+		var markersArray = new Array();
+		initGmaps();
+		// setBounds();
+		function initGmaps(){
+			var lakeGrove = new google.maps.LatLng(52.371807, 4.896029);
+
+			map = new google.maps.Map(
+				document.getElementById('gmaps'), {
+					zoom: 8,
+					center: lakeGrove,
+					disableDefaultUI: true
+					// styles: getGmapsStyles()
+			});
+			// var LGpolygon = new google.maps.Polygon({
+			// 	paths: getLakeGroveBoundaries(),
+			// 	strokeColor: '#efe05b',
+			// 	strokeOpacity: 0.8,
+			// 	strokeWeight: 3,
+			// 	fillColor: '#efe05b',
+			// 	fillOpacity: 0.35
+			// });
+			// LGpolygon.setMap(map);
+		}
+
+		function setBounds() {
+
+			var bounds = new google.maps.LatLngBounds();
+			for (var i=0; i < markersArray.length; i++) {
+				bounds.extend(markersArray[i].getPosition());
+			}
+			map.fitBounds(bounds);
+		}
+
+		function addStartMarker(lat, long){
+			lat = lat;
+			long = long;
+
+			var latlong = {lat: lat, lng: long};
+			var markerstart = new google.maps.Marker({
+				position: latlong,
+				map: map,
+				title: 'Hello World!'
+			});
+
+			markerstart.setMap(map);
+			markersArray.push(markerstart);
+			map.setCenter(markerstart.getPosition())
+		}
+
+		function addEndMarker(lat, long){
+			lat = lat;
+			long = long;
+
+			var latlong = {lat: lat, lng: long};
+			var markerend = new google.maps.Marker({
+				position: latlong,
+				map: map,
+				title: 'Hello World!'
+			});
+
+			markerend.setMap(map);
+			markersArray.push(markerend);
+			// map.setCenter(marker.getPosition())
+			setBounds()
+		}
+		
+		function getGmapsStyles(){
+			return [
+								{
+									"featureType": "all",
+									"elementType": "labels.text.fill",
+									"stylers": [
+										{
+											"saturation": 36
+										},
+										{
+											"color": "#000000"
+										},
+										{
+											"lightness": 40
+										}
+									]
+								},
+								{
+									"featureType": "all",
+									"elementType": "labels.text.stroke",
+									"stylers": [
+										{
+											"visibility": "on"
+										},
+										{
+											"color": "#000000"
+										},
+										{
+											"lightness": 16
+										}
+									]
+								},
+								{
+									"featureType": "all",
+									"elementType": "labels.icon",
+									"stylers": [
+										{
+											"visibility": "off"
+										}
+									]
+								},
+								{
+									"featureType": "administrative",
+									"elementType": "geometry.fill",
+									"stylers": [
+										{
+											"color": "#000000"
+										},
+										{
+											"lightness": 20
+										}
+									]
+								},
+								{
+									"featureType": "administrative",
+									"elementType": "geometry.stroke",
+									"stylers": [
+										{
+											"color": "#000000"
+										},
+										{
+											"lightness": 17
+										},
+										{
+											"weight": 1.2
+										}
+									]
+								},
+								{
+									"featureType": "landscape",
+									"elementType": "geometry",
+									"stylers": [
+										{
+											"color": "#000000"
+										},
+										{
+											"lightness": 20
+										}
+									]
+								},
+								{
+									"featureType": "poi",
+									"elementType": "geometry",
+									"stylers": [
+										{
+											"color": "#000000"
+										},
+										{
+											"lightness": 21
+										}
+									]
+								},
+								{
+									"featureType": "road.highway",
+									"elementType": "geometry.fill",
+									"stylers": [
+										{
+											"lightness": 17
+										},
+										{
+											"visibility": "on"
+										},
+										{
+											"color": "#ffffff"
+										}
+									]
+								},
+								{
+									"featureType": "road.highway",
+									"elementType": "geometry.stroke",
+									"stylers": [
+										{
+											"color": "#000000"
+										},
+										{
+											"lightness": 29
+										},
+										{
+											"weight": 0.2
+										}
+									]
+								},
+								{
+									"featureType": "road.arterial",
+									"elementType": "geometry",
+									"stylers": [
+										{
+											"color": "#000000"
+										},
+										{
+											"lightness": 18
+										}
+									]
+								},
+								{
+									"featureType": "road.local",
+									"elementType": "geometry",
+									"stylers": [
+										{
+											"color": "#000000"
+										},
+										{
+											"lightness": 16
+										}
+									]
+								},
+								{
+									"featureType": "transit",
+									"elementType": "geometry",
+									"stylers": [
+										{
+											"color": "#000000"
+										},
+										{
+											"lightness": 19
+										}
+									]
+								},
+								{
+									"featureType": "water",
+									"elementType": "geometry",
+									"stylers": [
+										{
+											"color": "#f7fdff"
+										},
+										{
+											"lightness": 17
+										}
+									]
+								}
+							]
+		}
+
+	</script>
+	
+</html>

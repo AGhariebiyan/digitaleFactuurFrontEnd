@@ -37,6 +37,9 @@ public class ProjectViewController {
 
 
     }
+    public String getProjectName(){
+        return projectModel.getProjectName();
+    }
 
     /**
      * @author Oussama Fahchouch

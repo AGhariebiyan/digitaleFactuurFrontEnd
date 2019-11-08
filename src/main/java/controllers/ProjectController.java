@@ -69,7 +69,6 @@ public class ProjectController {
                     for (TripModel trips : tripColl) {
                         tmpModel.addTrip(trips);
                     }
-                    System.out.println("PROJECT TOEVOEGEN"+ projectId);
                     projectModel.put(projectId, tmpModel);
                 }
             }
@@ -83,10 +82,16 @@ public class ProjectController {
         this.selectedProject = pid;
         Gson gson = new Gson();
         String projectString = gson.toJson(projectModel.get(pid));
-        appController.httpRequest("http://localhost:8080/project/setProject?project="+projectString,"POST");
-        appController.loadView("views.ProjectView", "createView");
 
+        String url = "http://localhost:8080/project/setProject?project="+projectString;
+        if(url.contains(" "))
+            url = url.replace(" ", "%20");
+
+        appController.httpRequest(url, "POST");
+        appController.loadView("views.ProjectView", "createView");
     }
+
+
     public Map<Integer, ProjectModel> getProjects(){
         return projectModel;
     }
