@@ -1,23 +1,18 @@
 package controllers;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonObject;
+import com.google.gson.reflect.TypeToken;
+import javafx.scene.layout.Pane;
+import models.TripModel;
+import org.apache.commons.io.IOUtils;
+
 import java.io.IOException;
 import java.io.InputStream;
 import java.lang.reflect.Type;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.List;
-
-import org.apache.commons.io.IOUtils;
-
-import com.google.gson.Gson;
-import com.google.gson.JsonObject;
-import com.google.gson.reflect.TypeToken;
-
-import javafx.scene.layout.Pane;
-import models.ProjectModel;
-import models.TripModel;
-import views.View;
 
 /**
  * @author Oussama Fahchouch
