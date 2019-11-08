@@ -22,7 +22,7 @@ public class TripModel {
 	 * @return the tripId
 	 */
 
-	public TripModel(int id, int projectId, int userId, String licensePlate, String startLocation, String endLocation, double startKilometergauge, double endKilometergauge, float startLat, float endLat, float startLong, float endLong) {
+	public TripModel(int id, int projectId, int userId, String licensePlate, String startLocation, String endLocation, double startKilometergauge, double endKilometergauge) {
 		this.tripId = id;
 		this.projectId = projectId;
 		this.userId = userId;
@@ -31,10 +31,6 @@ public class TripModel {
 		this.endLocation = endLocation;
 		this.startKilometergauge = startKilometergauge;
 		this.endKilometergauge = endKilometergauge;
-		this.startLat = startLat;
-		this.endLat = endLat;
-		this.startLong = startLong;
-		this.endLong = endLong;
 	}
 
 	public int getTripId() {

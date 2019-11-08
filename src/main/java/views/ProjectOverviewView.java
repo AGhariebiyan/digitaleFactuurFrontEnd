@@ -143,7 +143,14 @@ public class ProjectOverviewView implements View {
                     if (newValue == null) {
                         return;
                     }
-                    this.projectController.loadProjectView(((ProjectModel) newValue).getProjectId());
+
+                    if(((ProjectModel) newValue).getTotalTrips() == 0) {
+                        AlertView alert = new AlertView();
+                        alert.alert("Er zijn geen trips voor dit project");
+                        return;
+                    }else {
+                        this.projectController.loadProjectView(((ProjectModel) newValue).getProjectId());
+                    }
                 }
         );
 

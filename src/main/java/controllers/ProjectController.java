@@ -81,8 +81,8 @@ public class ProjectController {
     public void loadProjectView(int pid){
         this.selectedProject = pid;
         Gson gson = new Gson();
-        String projectString = gson.toJson(projectModel.get(pid));
 
+        String projectString = gson.toJson(projectModel.get(pid));
         String url = "http://localhost:8080/project/setProject?project="+projectString;
         if(url.contains(" "))
             url = url.replace(" ", "%20");
