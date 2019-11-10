@@ -21,7 +21,6 @@ public class TripModel {
 	 * @author Oussama Fahchouch
 	 * @return the tripId
 	 */
-
 	public TripModel(int id, int projectId, int userId, String licensePlate, String startLocation, String endLocation, double startKilometergauge, double endKilometergauge) {
 		this.tripId = id;
 		this.projectId = projectId;
@@ -32,7 +31,10 @@ public class TripModel {
 		this.startKilometergauge = startKilometergauge;
 		this.endKilometergauge = endKilometergauge;
 	}
-
+	
+	/**
+	 * @author Oussama Fahchouch
+	 */
 	public int getTripId() {
 		return tripId;
 	}
@@ -156,17 +158,45 @@ public class TripModel {
 	public void setEndKilometergauge(double endKilometergauge) {
 		this.endKilometergauge = endKilometergauge;
 	}
-
+	
+	/**
+	 * @author Mike van Es
+	 */
 	public void setStartLat(float startLat){this.startLat = startLat;}
+	
+	/**
+	 * @author Mike van Es
+	 */
 	public float getStartLat(){return this.startLat;}
 
+	/**
+	 * @author Mike van Es
+	 */
 	public void setEndLat(float endLat){this.endLat = endLat;}
+	
+	/**
+	 * @author Mike van Es
+	 */
 	public float getEndLat(){return this.endLat;}
 
+	/**
+	 * @author Mike van Es
+	 */
 	public void setStartLong(float startLong){this.startLong = startLong;}
+	
+	/**
+	 * @author Mike van Es
+	 */
 	public float getStartLong(){return this.startLong;}
 
+	/**
+	 * @author Mike van Es
+	 */
 	public void setEndLong(float endLong){this.endLat = endLong;}
+	
+	/**
+	 * @author Mike van Es
+	 */
 	public float getEndLong(){return this.endLong;}
 
 }

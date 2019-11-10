@@ -7,10 +7,6 @@ import java.util.ArrayList;
  * @author Mike van Es
  */
 public class ProjectModel {
-    /**
-     * @author Mike van Es
-     */
-
     private int id;
     private String name;
     private ArrayList<TripModel> tripModel = new ArrayList<>();

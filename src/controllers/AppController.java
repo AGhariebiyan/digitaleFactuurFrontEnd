@@ -72,7 +72,6 @@ public class AppController extends ClassLoader {
 	 * @param url
 	 * @return InpputStream
 	 */
-
 	public static InputStream httpRequest(String url, String requestType){
 		try {
 
@@ -96,11 +95,17 @@ public class AppController extends ClassLoader {
 
 		return null;
 	}
-
+	
+	 /**
+     * @author Ali Rezaa Ghariebiyan
+     */
 	public void setCurrentUser(UserModel currentUser) {
 		this.currentUser = currentUser;
 	}
-
+	
+	 /**
+     * @author Ali Rezaa Ghariebiyan
+     */
 	public UserModel getCurrentUser() {
 		return currentUser;
 	}

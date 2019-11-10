@@ -293,13 +293,13 @@ public class ProjectOverviewView implements View {
 
 
     /**
-     * @author Oussama Fahchouch
+     * @author Mike van Es
      */
     @Override
     public void updateView(){}
 
     /**
-     * @author Oussama Fahchouch
+     * @author Mike van Es
      */
     @Override
     public Scene getScene() {

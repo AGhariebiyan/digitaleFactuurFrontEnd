@@ -30,7 +30,10 @@ public class LoginView implements View{
         this.css = this.getClass().getResource("/css/login.css").toExternalForm();
         this.userController = new UserController();
     }
-
+    
+    /**
+     * @author Ali Rezaa Ghariebiyan
+     */
     @Override
     public Scene createView(){
         TextField username = new TextField();
@@ -96,11 +99,17 @@ public class LoginView implements View{
         }
     }
 
+    /**
+     * @author Ali Rezaa Ghariebiyan
+     */
     @Override
     public void updateView() {
 
     }
 
+    /**
+     * @author Ali Rezaa Ghariebiyan
+     */
     @Override
     public Scene getScene() {
         return this.scene;

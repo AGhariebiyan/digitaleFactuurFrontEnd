@@ -26,6 +26,9 @@ import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
+/**
+ * @author Mike van Es
+ */
 public class ProjectView implements View {
     private ProjectViewController projectViewController;
     private Scene scene;
@@ -83,6 +86,7 @@ public class ProjectView implements View {
 
     /**
      * Creates a tabpane of the trips of a given project.
+     * @author Mike van Es
      * @return TabPane
      */
     private TabPane addTabs(){
@@ -179,6 +183,7 @@ public class ProjectView implements View {
 
     /**
      * Creates webengines for google maps. gmapsMap constant gets filled with the references of the different engines. So we ca access from a different thread
+     * @author Mike van Es
      * @param tripModel
      * @return HBox
      */
@@ -209,6 +214,7 @@ public class ProjectView implements View {
 
     /**
      * Callback method for WebEngine, this method runs on a different thread.
+     * @author Mike van Es
      */
     private void createCallBackWebEngine(){
         lastEngine.getLoadWorker().stateProperty().addListener(new ChangeListener<Worker.State>() {
@@ -237,13 +243,13 @@ public class ProjectView implements View {
 
 
     /**
-     * @author Oussama Fahchouch
+     * @author Mike van Es
      */
     @Override
     public void updateView(){}
 
     /**
-     * @author Oussama Fahchouch
+     * @author Mike van Es
      */
     @Override
     public Scene getScene() {

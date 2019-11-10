@@ -17,7 +17,10 @@ import java.nio.charset.StandardCharsets;
 public class UserController implements Controller{
 
     private UserModel userModel;
-
+    
+    /**
+     * @author Ali Rezaa Ghariebiyan
+     */
     public boolean authorize(String username, String passwd) {
 
         try{

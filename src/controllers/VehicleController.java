@@ -20,14 +20,29 @@ public class VehicleController implements Controller {
 
     /**
      * @author Bram de Jong
-    //     * @param licenseplate
-    //     * @param projectId
-    //     * @param vehicleName
-    //     * @param vehicleType
+     * @param licenseplate
+     * @param projectId
+     * @param vehicleName
+     * @param vehicleType
      * @return
      */
     public boolean addVehicle(String licenseplate, int projectId, String vehicleName, String vehicleType) {
-        appController.httpRequest("http://localhost:8080/vehicles/vehicle/add/for-user/"+15+"/"+0+"/"+licenseplate+"/"+vehicleName+"/"+vehicleType,"POST");
+    	if(licenseplate.contains(" "))
+			licenseplate = licenseplate.replace(" ", "%20");
+
+		if(vehicleName.contains(" "))
+			vehicleName = vehicleName.replace(" ", "%20");
+
+		if(vehicleType.contains(" "))
+			vehicleType = vehicleType.replace(" ", "%20");
+		
+        AppController.httpRequest("http://localhost:8080/vehicles/vehicle/add/for-user/"
+        + AppController.getInstance().getCurrentUser().getUserId() + "/" 
+		+ 0 + "/"
+        + licenseplate + "/"
+		+ vehicleName + "/"
+        + vehicleType,"POST");
+        AppController.loadView("views.VehicleOverviewView", "createView");
         return true;
     }
 
@@ -37,7 +52,8 @@ public class VehicleController implements Controller {
      * @return
      */
     public boolean deleteVehicle(int index) {
-        appController.httpRequest("http://localhost:8080/vehicles/delete/"+vehicleModels.get(index).getLicensePlate(),"DELETE");
+        AppController.httpRequest("http://localhost:8080/vehicles/delete/" +
+		vehicleModels.get(index).getLicensePlate(),"DELETE");
         System.out.println(vehicleModels.get(index).getLicensePlate());
         return false;
     }
@@ -63,7 +79,7 @@ public class VehicleController implements Controller {
      * @return ArrayList<String> allVehicles
      */
     public ArrayList<VehicleModel> fetchAllVehicles() {
-        InputStream stream = appController.httpRequest("http://localhost:8080/vehicles","GET");
+        InputStream stream = AppController.httpRequest("http://localhost:8080/vehicles","GET");
         BufferedReader reader = new BufferedReader(new InputStreamReader(stream));
         int x = 0;
         try {
@@ -100,7 +116,7 @@ public class VehicleController implements Controller {
      * @return headerPane
      */
     public Pane getHeaderPane() {
-        return this.appController.getHeaderPane();
+        return Controller.appController.getHeaderPane();
     }
 
     /**
@@ -108,6 +124,6 @@ public class VehicleController implements Controller {
      * @return headerPane
      */
     public Pane getMenuPane() {
-        return this.appController.getMenuPane();
+        return Controller.appController.getMenuPane();
     }
 }

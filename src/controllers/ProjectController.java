@@ -16,6 +16,9 @@ import java.util.HashMap;
 import java.util.Map;
 
 
+/**
+ * @author @author Mike van Es
+ */
 public class ProjectController {
     private Map<Integer, ProjectModel> projectModel = new HashMap<>();
     private int selectedProject;
@@ -24,8 +27,9 @@ public class ProjectController {
     public ProjectController(){
         // Onload make the controller get the current projects per user / this function is now filled with example code.
     }
+    
     /**
-     * @author Oussama Fahchouch
+     * @author Mike van Es 
      * @return headerPane
      */
     public Pane getHeaderPane() {
@@ -33,7 +37,7 @@ public class ProjectController {
     }
 
     /**
-     * @author Oussama Fahchouch
+     * @author Mike van Es
      * @return headerPane
      */
     public Pane getMenuPane() {
@@ -43,6 +47,7 @@ public class ProjectController {
 
     /**
      * Fetches the projects from the back-end and parses the JSON string
+     * @author Mike van Es
      */
     public void fetchProjectsFromBackEnd(){
         //Make a call to the API to fetch all the projects / example projects are shown below.
@@ -81,6 +86,7 @@ public class ProjectController {
     /**
      * Loads a project insight view
      * Sends the projectmodel to the backend so we can later retrieve it in our new view.
+     * @author Mike van Es
      * @param pid - projectId
      */
     public void loadProjectView(int pid){
@@ -97,7 +103,7 @@ public class ProjectController {
     }
 
     /**
-     * Returns project
+     * @author Mike van Es
      * @return Map<Integer, ProjectModel>
      */
     public Map<Integer, ProjectModel> getProjects(){

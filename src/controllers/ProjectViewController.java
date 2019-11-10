@@ -11,6 +11,9 @@ import java.io.InputStream;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 
+/**
+ * @author Mike van Es
+ */
 public class ProjectViewController {
     private ProjectController projectController = new ProjectController();
     private AppController appController = AppController.getInstance();
@@ -18,6 +21,7 @@ public class ProjectViewController {
 
     /**
      * Controller for the project insight view
+     * @author Mike van Es
      */
     public ProjectViewController(){
         InputStream request = appController.httpRequest("http://localhost:8080/project/getProject", "GET");
@@ -31,6 +35,7 @@ public class ProjectViewController {
     }
 
     /**
+     * @author Mike van Es
      * Returns the amount of trips on a given project trips
      * @return ArrayList of TripsModel
      */
@@ -46,6 +51,7 @@ public class ProjectViewController {
 
     /**
      * Returns the string of the projectname
+     * @author Mike van Es
      * @return String of projectname
      */
     public String getProjectName(){
@@ -53,7 +59,7 @@ public class ProjectViewController {
     }
 
     /**
-     * @author Oussama Fahchouch
+     * @author Mike van Es
      * @return headerPane
      */
     public Pane getHeaderPane() {
@@ -61,7 +67,7 @@ public class ProjectViewController {
     }
 
     /**
-     * @author Oussama Fahchouch
+     * @author Mike van Es
      * @return headerPane
      */
     public Pane getMenuPane() {

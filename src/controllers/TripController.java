@@ -18,8 +18,6 @@ import java.util.Collection;
  * @author Oussama Fahchouch
  */
 public class TripController implements Controller {
-	private TripModel tripModel;
-	
 	/**
 	 * @author Oussama Fahchouch
 	 * @param projectId
@@ -30,10 +28,10 @@ public class TripController implements Controller {
 	 */
 	public void addTripForProject(int projectId, String licenseplate, String startLocation,
 			String endLocation) {
-		AppController.getInstance().httpRequest("http://localhost:8080/trips/trip/add/for-project/"
+		AppController.getInstance();
+		AppController.httpRequest("http://localhost:8080/trips/trip/add/for-project/"
 				+ projectId + "/"
-				//HIER MOET NOG DE USER KOMEN - EERST WACHTEN OP ALI'S WERK
-				+ "1" + "/"
+				+ AppController.getInstance().getCurrentUser().getUserId() + "/"
 			    + licenseplate + "/" 
 				+ startLocation + "/" 
 			    + endLocation + "/0/0", "POST");
@@ -56,8 +54,9 @@ public class TripController implements Controller {
 		if(endLocation.contains(" "))
 			endLocation = endLocation.replace(" ", "%20");
 
-		//HIER MOET NOG DE USER KOMEN - EERST WACHTEN OP ALI'S WERK
-		AppController.getInstance().httpRequest("http://localhost:8080/trips/trip/add/for-user/1/"
+		AppController.getInstance();
+		AppController.httpRequest("http://localhost:8080/trips/trip/add/for-user/" 
+				+ AppController.getInstance().getCurrentUser().getUserId() + "/"
 			    + licenseplate + "/" 
 				+ startLocation + "/" 
 			    + endLocation + "/0/0", "POST");
@@ -69,7 +68,8 @@ public class TripController implements Controller {
 	 * @return
 	 */
 	public void deleteTrip(int tripId) {
-        AppController.getInstance().httpRequest("http://localhost:8080/trips/delete/" + Integer.toString(tripId), "DELETE");
+        AppController.getInstance();
+		AppController.httpRequest("http://localhost:8080/trips/delete/" + Integer.toString(tripId), "DELETE");
 
 	}
 	
@@ -88,7 +88,7 @@ public class TripController implements Controller {
 	 * @return headerPane
 	 */
 	public Pane getHeaderPane() {
-		return this.appController.getHeaderPane();
+		return Controller.appController.getHeaderPane();
 	}
 	
 	/**
@@ -96,7 +96,7 @@ public class TripController implements Controller {
 	 * @return headerPane
 	 */
 	public Pane getMenuPane() {
-		return this.appController.getMenuPane();
+		return Controller.appController.getMenuPane();
 	}
 	
 	
@@ -106,8 +106,9 @@ public class TripController implements Controller {
      */
     public ArrayList<TripModel>  fetchTrips(){
     	ArrayList<TripModel> fetchedTrips = new ArrayList<TripModel>();
-    	//HIER MOET NOG USER ID KOMEN, WACHTEN OP ALI'S WERK
-        InputStream tripStream = AppController.getInstance().httpRequest("http://localhost:8080/trips/user/" + "2", "GET");
+        AppController.getInstance();
+		InputStream tripStream = AppController.httpRequest("http://localhost:8080/trips/user/" 
+    	+ AppController.getInstance().getCurrentUser().getUserId(), "GET");
         
         try {
             String result = IOUtils.toString(tripStream, StandardCharsets.UTF_8);

@@ -7,6 +7,8 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 import javafx.scene.shape.Circle;
 import javafx.scene.text.Font;
@@ -146,16 +148,20 @@ public class VehicleOverviewView implements View {
         deleteVehicleButtonPane.setMinSize((125/1.5), (125/1.5));
         deleteVehicleButtonPane.setTranslateX((1295/1.5));
         deleteVehicleButtonPane.setTranslateY((700/1.5));
-
-        Button addButton = new Button("D");
+        
+        Image image = new Image(this.getClass().getResource("/imgs/bin.png").toExternalForm());
+		ImageView imageView = new ImageView(image); 
+		imageView.setTranslateX(0);
+        Button addButton = new Button("", imageView);
 
         double r = (1.5/1.5);
         addButton.setShape(new Circle(r));
         addButton.setMinSize((75/1.5)*r, (75/1.5)*r);
         addButton.setMaxSize((75/1.5)*r, (75/1.5)*r);
-        addButton.setStyle("-fx-background-color: #4fb04f; -fx-font-size: 21px; -fx-text-fill: white;");
+        addButton.setStyle("-fx-background-color: #FF0000; -fx-font-size: 21px; -fx-text-fill: white;");
         addButton.setOnAction(e -> {vehicleController.deleteVehicle(tableView.getSelectionModel().getSelectedIndex());
             this.vehicleController.appController.loadView("views.VehicleOverviewView", "createView");});
+
         deleteVehicleButtonPane.getChildren().addAll(addButton);
         return deleteVehicleButtonPane;
     }
