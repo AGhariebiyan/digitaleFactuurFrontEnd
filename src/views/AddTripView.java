@@ -11,6 +11,7 @@ import javafx.geometry.Insets;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
@@ -149,12 +150,29 @@ public class AddTripView implements View {
 			inputFieldsAddTripVBox.getChildren().add(inputFieldRow);
 		}
 		
-		Label labelInputFieldsHBoxRow1 = new Label("Project id:");
-		TextField textFieldInputFieldsHBoxRow1 = new TextField ();
-		textFieldInputFieldsHBoxRow1.setId("projectIdTextField");
-		textFieldInputFieldsHBoxRow1.setPromptText("project id..");
-		inputFieldsHBoxRow1.getChildren().addAll(labelInputFieldsHBoxRow1, textFieldInputFieldsHBoxRow1);
-		
+		Label labelInputFieldsHBoxRow1 = new Label("Project id:");		
+		TextField textFieldInputFieldsHBoxRow1 = new TextField ("0");
+        final List<Integer> comboBoxProjectIdItems = tripController.fetchAllUniqueProjectIds();
+        ComboBox comboBoxProjectId = new ComboBox();
+        VBox vBoxProjectId = new VBox();
+
+        comboBoxProjectId.getItems().addAll(comboBoxProjectIdItems);
+
+        comboBoxProjectId.setOnAction(event -> {
+        	textFieldInputFieldsHBoxRow1.setText(comboBoxProjectId.getValue().toString());
+        });
+
+        vBoxProjectId.getChildren().addAll(comboBoxProjectId);
+        
+        comboBoxProjectId.setPadding(new Insets((5/1.5), (5/1.5), (5/1.5), (5/1.5)));
+
+        comboBoxProjectId.setMinSize((475/1.5), (7.5/1.5));
+        comboBoxProjectId.setTranslateX((125/1.5));
+        comboBoxProjectId.setTranslateY((0/1.5));
+        
+        textFieldInputFieldsHBoxRow1.setId("projectIdTextField");
+        inputFieldsHBoxRow1.getChildren().addAll(labelInputFieldsHBoxRow1, vBoxProjectId);
+
 		Label labelInputFieldsHBoxRow2 = new Label("Start locatie:");
 		TextField textFieldInputFieldsHBoxRow2 = new TextField ();
 		textFieldInputFieldsHBoxRow2.setId("startLocationTextField");
@@ -169,9 +187,26 @@ public class AddTripView implements View {
 		
 		Label labelInputFieldsHBoxRow4 = new Label("Kenteken voertuig:");
 		TextField textFieldInputFieldsHBoxRow4 = new TextField ();
-		textFieldInputFieldsHBoxRow4.setId("licenseplateTextField");
-		textFieldInputFieldsHBoxRow4.setPromptText("kenteken voertuig..");
-		inputFieldsHBoxRow4.getChildren().addAll(labelInputFieldsHBoxRow4, textFieldInputFieldsHBoxRow4);
+        final List<String> comboBoxLicenseplateItems4 = tripController.fetchAllUniqueLicenseplates();
+        ComboBox comboBoxLicenseplate = new ComboBox();
+        VBox vBoxLicenseplate = new VBox();
+
+        comboBoxLicenseplate.getItems().addAll(comboBoxLicenseplateItems4);
+
+        comboBoxLicenseplate.setOnAction(event -> {
+        	textFieldInputFieldsHBoxRow4.setText(comboBoxLicenseplate.getValue().toString());
+        });
+
+        vBoxLicenseplate.getChildren().addAll(comboBoxLicenseplate);
+        
+        comboBoxLicenseplate.setPadding(new Insets((5/1.5), (5/1.5), (5/1.5), (5/1.5)));
+
+        comboBoxLicenseplate.setMinSize((475/1.5), (7.5/1.5));
+        comboBoxLicenseplate.setTranslateX((125/1.5));
+        comboBoxLicenseplate.setTranslateY((0/1.5));
+        
+        textFieldInputFieldsHBoxRow4.setId("projectIdTextField");
+        inputFieldsHBoxRow4.getChildren().addAll(labelInputFieldsHBoxRow4, vBoxLicenseplate);
 		
 		List<Label> labelList = Arrays.asList(labelInputFieldsHBoxRow1, labelInputFieldsHBoxRow2, labelInputFieldsHBoxRow3, labelInputFieldsHBoxRow4);
 
@@ -205,7 +240,7 @@ public class AddTripView implements View {
 							) {
 						
 				        alertView.alert("De rit is niet goed aangegeven. Probeer het opnieuw");
-					} else if(!textFieldInputFieldsHBoxRow1.getText().isEmpty()) { 
+					} else if(!textFieldInputFieldsHBoxRow4.getText().isEmpty()) { 
 						AppController.getInstance();
 						tripController.addTripForProject(Integer.parseInt(textFieldInputFieldsHBoxRow1.getText()), 
 								textFieldInputFieldsHBoxRow4.getText(), 

@@ -149,14 +149,11 @@ public class AddVehicleView implements View {
         licensePlate.setId("licenseplateTextField");
         licensePlate.setPromptText("kenteken..");
         inputFieldsHBoxRow1.getChildren().addAll(labelInputFieldsHBoxRow1, licensePlate);
-
+        
         Label labelInputFieldsHBoxRow2 = new Label("Project ID:");        
         TextField projectId = new TextField ("0");
-
         final List<Integer> comboBoxProjectIdItems = vehicleController.fetchAllUniqueProjectIds();
-
         ComboBox comboBoxProjectId = new ComboBox();
-
         VBox vBoxProjectId = new VBox();
 
         comboBoxProjectId.getItems().addAll(comboBoxProjectIdItems);
@@ -177,7 +174,6 @@ public class AddVehicleView implements View {
         projectId.setPromptText("project id..");
         inputFieldsHBoxRow2.getChildren().addAll(labelInputFieldsHBoxRow2, vBoxProjectId);
         
-        //
         Label labelInputFieldsHBoxRow3 = new Label("Voertuig naam:");
         TextField vehicleName = new TextField ();
         vehicleName.setId("vehicleNameTextField");
@@ -186,12 +182,8 @@ public class AddVehicleView implements View {
         
         Label labelInputFieldsHBoxRow4 = new Label("Voertuig type:");
         TextField textFieldVehicleType = new TextField ();
-        
-        //
         final String[] comboBoxVehicleTypeItems = {"Hatchback", "Sedan", "Stationwagen", "Coupé", "SUV", "Bestelwagen", "Motor"};
-
         ComboBox comboBoxVehicleType = new ComboBox();
-
         VBox vBoxVehicleType = new VBox();
 
         comboBoxVehicleType.getItems().addAll(comboBoxVehicleTypeItems);

@@ -136,6 +136,15 @@ public class TripController implements Controller {
         }
         return null;
     }
+    
+    /**
+     * @author Oussama Fahchouch
+     * @return ArrayList<String> uniqueLicenseplates
+     */
+    public List<String> fetchAllUniqueLicenseplates() {
+    	VehicleController vehicleController = new VehicleController();
+    	return vehicleController.fetchAllUniqueLicenseplates();
+    }
 	
     /**
      * @author Mike van Es
