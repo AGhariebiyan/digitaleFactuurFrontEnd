@@ -10,6 +10,7 @@ import java.io.BufferedReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * @author Bram de Jong
@@ -17,6 +18,7 @@ import java.util.ArrayList;
 public class VehicleController implements Controller {
     private VehicleModel vehicleModel;
     ArrayList<VehicleModel> vehicleModels = new ArrayList();
+    private TripController tripController = new TripController();
 
     /**
      * @author Bram de Jong
@@ -95,7 +97,6 @@ public class VehicleController implements Controller {
                 vehicleModels.add(tempModel);
                 x++;
             }
-
         } catch (Exception IOException) {
 
         }
@@ -125,5 +126,9 @@ public class VehicleController implements Controller {
      */
     public Pane getMenuPane() {
         return Controller.appController.getMenuPane();
+    }
+    
+    public List<Integer> fetchAllUniqueProjectIds() {
+    	return tripController.fetchAllUniqueProjectIds();
     }
 }

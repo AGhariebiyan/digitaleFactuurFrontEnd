@@ -281,7 +281,7 @@ public class DashboardView implements View {
 		logoutPane.setTranslateY((1010/1.5));
 		logoutPane.setStyle("-fx-background-color: #DFE1E0");
 		
-		Button logoutButton = new Button("   Logout");
+		Button logoutButton = new Button("   Uitloggen");
 		logoutButton.setPrefWidth((220/1.5));
 		
 		Image logoutImage = new Image(this.getClass().getResource("/imgs/logout.png").toExternalForm());
