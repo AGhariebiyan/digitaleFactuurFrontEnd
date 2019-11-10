@@ -1,5 +1,8 @@
 package views;
 
+import java.awt.Desktop;
+import java.net.URL;
+
 import controllers.UserController;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -45,6 +48,13 @@ public class LoginView implements View{
         Hyperlink btnRegistreren = new Hyperlink();
         btnRegistreren.setText("Geen account? Registreer nu!");
         Text melding = new Text("");
+        
+//        btnRegistreren.setOnAction(e -> { 
+//        	try {
+//        	    Desktop.getDesktop().browse(new URL("https://www.digitalefactuur.nl/prijzen--aanmelden#/").toURI());
+//        	} catch (Exception excep) {System.out.println(excep);}
+//        	
+//        });
 
         // On Click invoke the getCredentials method with the user and password
         btnLogin.setOnAction(event -> {
