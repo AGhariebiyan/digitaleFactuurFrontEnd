@@ -88,7 +88,7 @@ public class AddTripView implements View {
 	}
 
 	/**
-	 * @author Oussama Fahchouch
+	 * @author Mike van Es, Ousama Fahchouch
 	 * @return addTripButtonPane
 	 */
 	private Pane addTripButtonPane() {
