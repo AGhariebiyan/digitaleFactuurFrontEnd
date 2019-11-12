@@ -1,8 +1,5 @@
 package views;
 
-import java.util.Arrays;
-import java.util.List;
-
 import controllers.AppController;
 import controllers.TripController;
 import javafx.event.ActionEvent;
@@ -21,6 +18,11 @@ import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.scene.shape.Circle;
 import javafx.scene.text.Font;
+import javafx.scene.web.WebEngine;
+import javafx.scene.web.WebView;
+
+import java.util.Arrays;
+import java.util.List;
 
 /**
  * @author Oussama Fahchouch
@@ -29,14 +31,21 @@ public class AddTripView implements View {
 	private TripController tripController;
 	private Scene scene;
 	private AlertView alertView;
+
+	private WebView webViewStart = new WebView();
+	private WebView webViewEnd = new WebView();
+
+	private final WebEngine webEngineStartLoc = webViewStart.getEngine();
+	private final WebEngine webEngineEndLoc = webViewEnd.getEngine();
 	
 	/**
 	 * @author Oussama Fahchouch
 	 */
 	public AddTripView() {
 		this.tripController = new TripController();
-		this.scene = createView();
-        this.alertView = new AlertView();
+		this.scene 			= createView();
+        this.alertView 		= new AlertView();
+
 	}
 	
 	/**
@@ -174,16 +183,25 @@ public class AddTripView implements View {
         inputFieldsHBoxRow1.getChildren().addAll(labelInputFieldsHBoxRow1, vBoxProjectId);
 
 		Label labelInputFieldsHBoxRow2 = new Label("Start locatie:");
-		TextField textFieldInputFieldsHBoxRow2 = new TextField ();
-		textFieldInputFieldsHBoxRow2.setId("startLocationTextField");
-		textFieldInputFieldsHBoxRow2.setPromptText("start locatie..");
-		inputFieldsHBoxRow2.getChildren().addAll(labelInputFieldsHBoxRow2, textFieldInputFieldsHBoxRow2);
-		
+		this.webEngineStartLoc.load(this.getClass().getResource("/html/autocomplete.html").toString());
+		webViewStart.setMaxHeight(200);
+		webViewStart.setMaxWidth(400);
+		webViewStart.setTranslateX(75);
+		webViewStart.setTranslateY(-10);
+		labelInputFieldsHBoxRow2.setTranslateY(20);
+		inputFieldsHBoxRow2.getChildren().addAll(labelInputFieldsHBoxRow2, webViewStart);
+//		inputFieldsHBoxRow2.toFront();
+
 		Label labelInputFieldsHBoxRow3 = new Label("Eind locatie:");
-		TextField textFieldInputFieldsHBoxRow3 = new TextField ();
-		textFieldInputFieldsHBoxRow3.setId("endLocationTextField");
-		textFieldInputFieldsHBoxRow3.setPromptText("eind locatie..");
-		inputFieldsHBoxRow3.getChildren().addAll(labelInputFieldsHBoxRow3, textFieldInputFieldsHBoxRow3);
+		this.webEngineEndLoc.load(this.getClass().getResource("/html/autocomplete.html").toString());
+		webViewEnd.setMaxHeight(200);
+		webViewEnd.setMaxWidth(400);
+		webViewEnd.setTranslateX(75);
+		webViewEnd.setTranslateY(-150);
+		labelInputFieldsHBoxRow3.setTranslateY(-120);
+		inputFieldsHBoxRow3.getChildren().addAll(labelInputFieldsHBoxRow3, webViewEnd);
+//		inputFieldsHBoxRow3.toFront();
+
 		
 		Label labelInputFieldsHBoxRow4 = new Label("Kenteken voertuig:");
 		TextField textFieldInputFieldsHBoxRow4 = new TextField ();
@@ -207,16 +225,17 @@ public class AddTripView implements View {
         
         textFieldInputFieldsHBoxRow4.setId("projectIdTextField");
         inputFieldsHBoxRow4.getChildren().addAll(labelInputFieldsHBoxRow4, vBoxLicenseplate);
+		inputFieldsHBoxRow4.setTranslateY(-200);
 		
-		List<Label> labelList = Arrays.asList(labelInputFieldsHBoxRow1, labelInputFieldsHBoxRow2, labelInputFieldsHBoxRow3, labelInputFieldsHBoxRow4);
+		List<Label> labelList = Arrays.asList(labelInputFieldsHBoxRow1,labelInputFieldsHBoxRow2, labelInputFieldsHBoxRow3, labelInputFieldsHBoxRow4);
 
 		for (Label label: labelList) {
 			label.setStyle("-fx-font-size: 16px;");
 			label.setMinSize((250/1.5), (50/1.5));
 		}
 		
-		List<TextField> textFieldList = Arrays.asList(textFieldInputFieldsHBoxRow1, textFieldInputFieldsHBoxRow2, textFieldInputFieldsHBoxRow3, textFieldInputFieldsHBoxRow4);
-		
+		List<TextField> textFieldList = Arrays.asList(textFieldInputFieldsHBoxRow1, textFieldInputFieldsHBoxRow4);
+
 		for (TextField textField: textFieldList) {
 			textField.setPrefWidth((475/1.5));
 			textField.setStyle("-fx-font-size: 16px;");
@@ -227,32 +246,31 @@ public class AddTripView implements View {
 		Button createTripButton = new Button("create");
 		createTripButton.setStyle("-fx-font-size: 16px; -fx-background-color: #1E71EA; -fx-text-fill: white;");
 		createTripButton.setTranslateX((750/1.5));
-		createTripButton.setTranslateY((50/1.5));
+		createTripButton.setTranslateY(-190);
 		
 		createTripButton.setOnAction(new EventHandler<ActionEvent>() {
 
 			@Override
 			    public void handle(ActionEvent e) {
-				
-					if(textFieldInputFieldsHBoxRow4.getText().isEmpty() ||
-							textFieldInputFieldsHBoxRow2.getText().isEmpty() ||
-							textFieldInputFieldsHBoxRow3.getText().isEmpty()
-							) {
-						
+					System.out.println(webEngineStartLoc);
+					String startLocStr = (String) webEngineStartLoc.executeScript("getPlace()");
+					String endLocStr = (String) webEngineEndLoc.executeScript("getPlace()");
+					if(textFieldInputFieldsHBoxRow4.getText().isEmpty() || endLocStr.equals("undefined") || startLocStr.equals("undefined")) {
+
 				        alertView.alert("De rit is niet goed aangegeven. Probeer het opnieuw");
-					} else if(!textFieldInputFieldsHBoxRow4.getText().isEmpty()) { 
+					} else if(!textFieldInputFieldsHBoxRow4.getText().isEmpty() ) {
 						AppController.getInstance();
-						tripController.addTripForProject(Integer.parseInt(textFieldInputFieldsHBoxRow1.getText()), 
-								textFieldInputFieldsHBoxRow4.getText(), 
-								textFieldInputFieldsHBoxRow2.getText(), 
-								textFieldInputFieldsHBoxRow3.getText());
+						tripController.addTripForProject(Integer.parseInt(textFieldInputFieldsHBoxRow1.getText()),
+								textFieldInputFieldsHBoxRow4.getText(),
+								startLocStr,
+								endLocStr);
 						
 						alertView.alert("De rit is toegevoegd. U wordt nu doorverwezen naar het ritten overzicht.");		
 		                tripController.appController.loadView("views.TripOverviewView", "createView");
 					} else { 						
-						tripController.addTripByUser(textFieldInputFieldsHBoxRow4.getText(), 
-								textFieldInputFieldsHBoxRow2.getText(), 
-								textFieldInputFieldsHBoxRow3.getText());
+						tripController.addTripByUser(textFieldInputFieldsHBoxRow4.getText(),
+								startLocStr,
+								endLocStr);
 						
 						alertView.alert("De rit is toegevoegd. U wordt nu doorverwezen naar het ritten overzicht.");		
 		                tripController.appController.loadView("views.TripOverviewView", "createView");
@@ -264,6 +282,8 @@ public class AddTripView implements View {
 		
 		return inputFieldsAddTripVBox;
 	}
+
+
 
 	/**
 	 * @author Oussama Fahchouch
