@@ -35,7 +35,6 @@ public class AddTripView implements View {
 	 */
 	public AddTripView() {
 		this.tripController = new TripController();
-		this.scene = createView();
         this.alertView = new AlertView();
 	}
 	
