@@ -2,16 +2,22 @@ package views;
 
 import controllers.VehicleController;
 import javafx.scene.Scene;
+import javafx.scene.chart.PieChart.Data;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseButton;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.scene.shape.Circle;
 import javafx.scene.text.Font;
+import javafx.util.Callback;
+import models.TripModel;
 import models.VehicleModel;
 
 /**
@@ -20,6 +26,7 @@ import models.VehicleModel;
 public class VehicleOverviewView implements View {
     private VehicleController vehicleController;
     private Scene scene;
+	private AlertView alertView;
     private TableView tableView = new TableView();
 
     /**
@@ -28,6 +35,7 @@ public class VehicleOverviewView implements View {
     public VehicleOverviewView() {
         this.vehicleController = new VehicleController();
 //        this.scene = createView();
+        this.alertView = new AlertView();
     }
 
     /**
@@ -63,7 +71,7 @@ public class VehicleOverviewView implements View {
         headerLabel.setTranslateX((50/1.5));
         headerLabel.setTranslateY((25/1.5));
 
-        vehiclesOverviewPane.getChildren().addAll(headerLabel, addVehicleButtonPane(), deleteVehicleButtonPane(), VehicleOverviewTableView());
+        vehiclesOverviewPane.getChildren().addAll(headerLabel, addVehicleButtonPane(), VehicleOverviewTableView());
 
         return vehiclesOverviewPane;
     }
@@ -128,7 +136,7 @@ public class VehicleOverviewView implements View {
         tableView.getColumns().add(column3);
         tableView.getColumns().add(column4);
 
-
+        addDeleteButtonToTable();
 
         for (VehicleModel vm: vehicleController.fetchAllVehicles()){
             tableView.getItems().add(vm);
@@ -165,6 +173,7 @@ public class VehicleOverviewView implements View {
         deleteVehicleButtonPane.getChildren().addAll(addButton);
         return deleteVehicleButtonPane;
     }
+    
     /**
      * @author Bram de Jong
      */
@@ -181,5 +190,51 @@ public class VehicleOverviewView implements View {
     public Scene getScene() {
         return this.scene;
     };
+    
+    /**
+	 * @author Oussama Fahchouch
+	 */
+	private void addDeleteButtonToTable() {
+        TableColumn<Data, Void> colBtn = new TableColumn("Verwijderen");
 
+        Callback<TableColumn<Data, Void>, TableCell<Data, Void>> cellFactory = new Callback<TableColumn<Data, Void>, TableCell<Data, Void>>() {
+            @Override
+            public TableCell<Data, Void> call(final TableColumn<Data, Void> param) {
+                final TableCell<Data, Void> cell = new TableCell<Data, Void>() {
+             
+                    @Override
+                    public void updateItem(Void item, boolean empty) {
+                        super.updateItem(item, empty);
+                        if (empty) {
+                            setGraphic(null);
+                        } else {
+                    		Image image = new Image(this.getClass().getResource("/imgs/bin.png").toExternalForm());
+                    		ImageView imageView = new ImageView(image); 
+                    		imageView.setTranslateX(65);
+                        	setGraphic(imageView);
+                        }
+                    }
+                };
+                
+                cell.setOnMouseClicked((MouseEvent event) -> {
+                    if (event.getButton().equals(MouseButton.PRIMARY)) {
+                        int index = tableView.getSelectionModel().getSelectedIndex();
+                        VehicleModel vehicle = (VehicleModel) tableView.getItems().get(index);
+                        
+                        vehicleController.deleteVehicle(index);
+                        
+                        alertView.alert("Voertuig met kenteken " + vehicle.getLicensePlate() + " is verwijderd.");		
+
+                        vehicleController.appController.loadView("views.VehicleOverviewView", "createView");
+                    }
+                });
+                
+                return cell;
+            }
+        };
+
+        colBtn.setCellFactory(cellFactory);
+
+        tableView.getColumns().add(colBtn);
+    }
 }

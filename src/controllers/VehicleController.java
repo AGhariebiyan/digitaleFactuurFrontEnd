@@ -65,7 +65,6 @@ public class VehicleController implements Controller {
     public boolean deleteVehicle(int index) {
         AppController.httpRequest("http://localhost:8080/vehicles/delete/" +
 		vehicleModels.get(index).getLicensePlate(),"DELETE");
-        System.out.println(vehicleModels.get(index).getLicensePlate());
         return false;
     }
 

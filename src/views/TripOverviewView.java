@@ -130,9 +130,6 @@ public class TripOverviewView implements View {
         TableColumn<String, TripModel> column2 = new TableColumn<>("Eind locatie");
         column2.setCellValueFactory(new PropertyValueFactory<>("endLocation"));
         
-//        TableColumn<String, TripModel> column3 = new TableColumn<>("Gereden kilometers");
-//        column3.setCellValueFactory(new PropertyValueFactory<>("drivenKilometers"));
-        
         TableColumn<String, TripModel> column4 = new TableColumn<>("Kenteken");
         column4.setCellValueFactory(new PropertyValueFactory<>("licenseplate"));
         
@@ -142,11 +139,10 @@ public class TripOverviewView implements View {
 
         tableView.getColumns().add(column1);
         tableView.getColumns().add(column2);
-//        tableView.getColumns().add(column3);
         tableView.getColumns().add(column4);
         tableView.getColumns().add(column5);
         
-        addButtonToTable();
+        addDeleteButtonToTable();
         
         String delete = new String("del");
         
@@ -180,7 +176,7 @@ public class TripOverviewView implements View {
 	/**
 	 * @author Oussama Fahchouch
 	 */
-	private void addButtonToTable() {
+	private void addDeleteButtonToTable() {
         TableColumn<Data, Void> colBtn = new TableColumn("Verwijderen");
 
         Callback<TableColumn<Data, Void>, TableCell<Data, Void>> cellFactory = new Callback<TableColumn<Data, Void>, TableCell<Data, Void>>() {
