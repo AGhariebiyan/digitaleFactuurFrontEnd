@@ -5,6 +5,7 @@ import javafx.geometry.Insets;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
@@ -30,7 +31,6 @@ public class AddVehicleView implements View {
      */
     public AddVehicleView() {
         this.vehicleController = new VehicleController();
-        this.scene = createView();
     }
 
     /**
@@ -148,24 +148,58 @@ public class AddVehicleView implements View {
         licensePlate.setId("licenseplateTextField");
         licensePlate.setPromptText("kenteken..");
         inputFieldsHBoxRow1.getChildren().addAll(labelInputFieldsHBoxRow1, licensePlate);
+        
+        Label labelInputFieldsHBoxRow2 = new Label("Project ID:");        
+        TextField projectId = new TextField ("0");
+        final List<Integer> comboBoxProjectIdItems = vehicleController.fetchAllUniqueProjectIds();
+        ComboBox comboBoxProjectId = new ComboBox();
+        VBox vBoxProjectId = new VBox();
 
-        Label labelInputFieldsHBoxRow2 = new Label("Project ID:");
-        TextField projectId = new TextField ();
+        comboBoxProjectId.getItems().addAll(comboBoxProjectIdItems);
+
+        comboBoxProjectId.setOnAction(event -> {
+        	projectId.setText(comboBoxProjectId.getValue().toString());
+        });
+
+        vBoxProjectId.getChildren().addAll(comboBoxProjectId);
+        
+        comboBoxProjectId.setPadding(new Insets((5/1.5), (5/1.5), (5/1.5), (5/1.5)));
+
+        comboBoxProjectId.setMinSize((475/1.5), (7.5/1.5));
+        comboBoxProjectId.setTranslateX((125/1.5));
+        comboBoxProjectId.setTranslateY((0/1.5));
+        
         projectId.setId("projectIdTextField");
         projectId.setPromptText("project id..");
-        inputFieldsHBoxRow2.getChildren().addAll(labelInputFieldsHBoxRow2, projectId);
-
+        inputFieldsHBoxRow2.getChildren().addAll(labelInputFieldsHBoxRow2, vBoxProjectId);
+        
         Label labelInputFieldsHBoxRow3 = new Label("Voertuig naam:");
         TextField vehicleName = new TextField ();
         vehicleName.setId("vehicleNameTextField");
         vehicleName.setPromptText("voertuig naam..");
         inputFieldsHBoxRow3.getChildren().addAll(labelInputFieldsHBoxRow3, vehicleName);
-
+        
         Label labelInputFieldsHBoxRow4 = new Label("Voertuig type:");
-        TextField vehicleType = new TextField ();
-//        vehicleType.setId("vehicleTypeTextField");
-        vehicleType.setPromptText("voertuig type..");
-        inputFieldsHBoxRow4.getChildren().addAll(labelInputFieldsHBoxRow4, vehicleType);
+        TextField textFieldVehicleType = new TextField ();
+        final String[] comboBoxVehicleTypeItems = {"Hatchback", "Sedan", "Stationwagen", "Coupé", "SUV", "Bestelwagen", "Motor"};
+        ComboBox comboBoxVehicleType = new ComboBox();
+        VBox vBoxVehicleType = new VBox();
+
+        comboBoxVehicleType.getItems().addAll(comboBoxVehicleTypeItems);
+
+        comboBoxVehicleType.setOnAction(event -> {
+            textFieldVehicleType.setText(comboBoxVehicleType.getValue().toString());
+        });
+
+        vBoxVehicleType.getChildren().addAll(comboBoxVehicleType);
+        
+        comboBoxVehicleType.setPadding(new Insets((5/1.5), (5/1.5), (5/1.5), (5/1.5)));
+
+        comboBoxVehicleType.setMinSize((475/1.5), (5/1.5));
+        comboBoxVehicleType.setTranslateX((125/1.5));
+        comboBoxVehicleType.setTranslateY((0/1.5));
+        
+        inputFieldsHBoxRow4.getChildren().addAll(labelInputFieldsHBoxRow4, vBoxVehicleType);
 
         List<Label> labelList = Arrays.asList(labelInputFieldsHBoxRow1, labelInputFieldsHBoxRow2, labelInputFieldsHBoxRow3, labelInputFieldsHBoxRow4);
 
@@ -174,7 +208,7 @@ public class AddVehicleView implements View {
             label.setMinSize((250/1.5), (50/1.5));
         }
 
-        List<TextField> textFieldList = Arrays.asList(licensePlate, projectId, vehicleName, vehicleType);
+        List<TextField> textFieldList = Arrays.asList(licensePlate, projectId, vehicleName);
 
         for (TextField textField: textFieldList) {
             textField.setPrefWidth((475/1.5));
@@ -189,7 +223,7 @@ public class AddVehicleView implements View {
         createVehicleButton.setTranslateY((50/1.5));
 
         createVehicleButton.setOnAction(
-                e -> this.vehicleController.addVehicle(licensePlate.getText(),Integer.parseInt(projectId.getText()),vehicleName.getText(),vehicleType.getText()));
+                e -> this.vehicleController.addVehicle(licensePlate.getText(),Integer.parseInt(projectId.getText()),vehicleName.getText(),textFieldVehicleType.getText()));
 
         inputFieldsHBoxRow5.getChildren().addAll(createVehicleButton);
 

@@ -1,18 +1,21 @@
 package controllers;
 
-import com.google.gson.Gson;
-import com.google.gson.JsonObject;
-import com.google.gson.reflect.TypeToken;
-import javafx.scene.layout.Pane;
-import models.TripModel;
-import org.apache.commons.io.IOUtils;
-
 import java.io.IOException;
 import java.io.InputStream;
 import java.lang.reflect.Type;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
+
+import org.apache.commons.io.IOUtils;
+
+import com.google.gson.Gson;
+import com.google.gson.JsonObject;
+import com.google.gson.reflect.TypeToken;
+
+import javafx.scene.layout.Pane;
+import models.TripModel;
 
 /**
  * @author Oussama Fahchouch
@@ -26,8 +29,16 @@ public class TripController implements Controller {
 	 * @param endLocation
 	 * @return
 	 */
-	public void addTripForProject(int projectId, String licenseplate, String startLocation,
-			String endLocation) {
+	public void addTripForProject(int projectId, String licenseplate, String startLocation, String endLocation) {
+		if(licenseplate.contains(" "))
+			licenseplate = licenseplate.replace(" ", "%20");
+
+		if(startLocation.contains(" "))
+			startLocation = startLocation.replace(" ", "%20");
+
+		if(endLocation.contains(" "))
+			endLocation = endLocation.replace(" ", "%20");
+		
 		AppController.getInstance();
 		AppController.httpRequest("http://localhost:8080/trips/trip/add/for-project/"
 				+ projectId + "/"
@@ -99,6 +110,41 @@ public class TripController implements Controller {
 		return Controller.appController.getMenuPane();
 	}
 	
+	/**
+     * @author Oussama Fahchouch
+     * @return ArrayList<Integer> uniqueProjectIds
+     */
+    public List<Integer>  fetchAllUniqueProjectIds(){
+    	List<Integer> fetchedUniqueProjectIds;
+        AppController.getInstance();
+		InputStream tripStream = AppController.httpRequest("http://localhost:8080/trips/fetch/unique-projectids", "GET");
+        
+        try {
+            String result = IOUtils.toString(tripStream, StandardCharsets.UTF_8);
+            
+            if(result.contains("[")) {
+                Gson gson = new Gson();
+                Type jsonObject = new TypeToken<Collection<Integer>>() {}.getType();
+                Collection<Integer> allUniqueProjectIdsColl = gson.fromJson(result, jsonObject);
+
+                fetchedUniqueProjectIds = (List<Integer>) allUniqueProjectIdsColl;
+                
+                return fetchedUniqueProjectIds;
+            }
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
+        return null;
+    }
+    
+    /**
+     * @author Oussama Fahchouch
+     * @return ArrayList<String> uniqueLicenseplates
+     */
+    public List<String> fetchAllUniqueLicenseplates() {
+    	VehicleController vehicleController = new VehicleController();
+    	return vehicleController.fetchAllUniqueLicenseplates();
+    }
 	
     /**
      * @author Mike van Es

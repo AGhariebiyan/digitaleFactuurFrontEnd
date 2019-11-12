@@ -1,15 +1,25 @@
 package controllers;
 
+import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import com.google.gson.JsonSyntaxException;
+import com.google.gson.reflect.TypeToken;
+
 import javafx.scene.layout.Pane;
 import models.VehicleModel;
 
 import java.io.BufferedReader;
+import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.lang.reflect.Type;
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
+
+import org.apache.commons.io.IOUtils;
 
 /**
  * @author Bram de Jong
@@ -17,6 +27,7 @@ import java.util.ArrayList;
 public class VehicleController implements Controller {
     private VehicleModel vehicleModel;
     ArrayList<VehicleModel> vehicleModels = new ArrayList();
+    private TripController tripController = new TripController();
 
     /**
      * @author Bram de Jong
@@ -54,7 +65,6 @@ public class VehicleController implements Controller {
     public boolean deleteVehicle(int index) {
         AppController.httpRequest("http://localhost:8080/vehicles/delete/" +
 		vehicleModels.get(index).getLicensePlate(),"DELETE");
-        System.out.println(vehicleModels.get(index).getLicensePlate());
         return false;
     }
 
@@ -95,7 +105,6 @@ public class VehicleController implements Controller {
                 vehicleModels.add(tempModel);
                 x++;
             }
-
         } catch (Exception IOException) {
 
         }
@@ -125,5 +134,44 @@ public class VehicleController implements Controller {
      */
     public Pane getMenuPane() {
         return Controller.appController.getMenuPane();
+    }
+    
+    /**
+     * @author Oussama Fahchouch
+     * @return List<Integer> fetchedUniqueProjectIds
+     */
+    public List<Integer> fetchAllUniqueProjectIds() {
+    	return tripController.fetchAllUniqueProjectIds();
+    }
+    
+    /**
+     * @author Oussama Fahchouch
+     * @return ArrayList<String> uniqueLicenseplates
+     */
+    public List<String>  fetchAllUniqueLicenseplates(){
+    	List<String> fetchedUniqueLicenseplates;
+        AppController.getInstance();
+		InputStream tripStream = AppController.httpRequest("http://localhost:8080/vehicles/fetch/unique-licenseplates", "GET");
+        
+        try {
+            String result = IOUtils.toString(tripStream, StandardCharsets.UTF_8);
+            
+            if(result.contains("[")) {
+                Gson gson = new Gson();
+                Type jsonObject = new TypeToken<Collection<String>>() {}.getType();
+                Collection<String> allUniqueLicenseplatesColl = gson.fromJson(result, jsonObject);
+
+                fetchedUniqueLicenseplates = (List<String>) allUniqueLicenseplatesColl;
+                
+                for(String lplate :fetchedUniqueLicenseplates) {
+                	System.out.println(lplate);
+                }
+                
+                return fetchedUniqueLicenseplates;
+            }
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
+        return null;
     }
 }
