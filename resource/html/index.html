@@ -4,12 +4,14 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 	    <meta charset="utf-8">
 		<meta name="theme-color" content="#ffffff">
-		<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDyozfs6imtqXQB4fTez-leDxvLoZHDJCs"></script>	
+		<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDyozfs6imtqXQB4fTez-leDxvLoZHDJCs&libraries=places" ></script>
 	</head>
 	<body >
 		
 		<main>
 			<div id="gmaps" style="height: 300px; width: 100%;"></div>
+<!--			<input id="searchInput">-->
+<!--			<button onClick = "addByAdress('Leiden', 'Amsterdam')">D</button>-->
 		</main>
 	</body>
 
@@ -17,9 +19,14 @@
 		var map;
 		var geocoder;
 		var markersArray = new Array();
+		var directionsDisplay;
+		var directionsService = new google.maps.DirectionsService();
 		initGmaps();
-		// setBounds();
+		// addByAdress("Leiden", "amsterdam")
+		// addGooglePlaces();
+
 		function initGmaps(){
+			directionsDisplay = new google.maps.DirectionsRenderer();
 			var adam = new google.maps.LatLng(52.371807, 4.896029);
 
 			map = new google.maps.Map(
@@ -28,38 +35,36 @@
 					center: adam,
 					disableDefaultUI: true
 			});
-
+			directionsDisplay.setMap(map);
 			geocoder = new google.maps.Geocoder();
 		}
 
 		function addByAdress(start, end) {
 			geocoder.geocode({'address': start}, function(results, status) {
 				if (status === 'OK') {
-					map.setCenter(results[0].geometry.location);
-					var markerS = new google.maps.Marker({
-						map: map,
-						position: results[0].geometry.location
-					});
-					map.setCenter(markerS.getPosition())
-					markersArray.push(markerS);
+					markersArray.push(results[0].geometry.location.lat(), results[0].geometry.location.lng());
 
 					geocoder.geocode({'address': end}, function(results, status) {
 						if (status === 'OK') {
-							map.setCenter(results[0].geometry.location);
-							var markerE = new google.maps.Marker({
-								map: map,
-								position: results[0].geometry.location
-							});
-
-							markersArray.push(markerE);
-							// map.setCenter(marker.getPosition())
-							setBounds()
+							markersArray.push(results[0].geometry.location.lat(), results[0].geometry.location.lng());
+							setRoute();
 						}
 					});
 
 				}
 			});
 		}
+
+		// function addGooglePlaces() {
+		// 	var input = document.getElementById('searchInput');
+		// 	var autocomplete = new google.maps.places.Autocomplete(input);
+		// 	autocomplete.addListener('place_changed', function () {
+		// 		var place = autocomplete.getPlace();
+		// 		var lat = place.geometry.location.lat();
+		// 		var long = place.geometry.location.lng();
+		// 		markersArray.push(lat, long);
+		// 	});
+		// }
 
 		function setBounds() {
 
@@ -70,6 +75,34 @@
 			map.fitBounds(bounds);
 		}
 
+		function setRoute() {
+			// console.log(markersArray);
+			// console.log(markersArray.length);
+			if(markersArray.length == 4){
+				console.log("Test");
+				var start = new google.maps.LatLng(markersArray[0], markersArray[1]);
+				//var end = new google.maps.LatLng(38.334818, -181.884886);
+				var end = new google.maps.LatLng(markersArray[2], markersArray[3]);
+				var bounds = new google.maps.LatLngBounds();
+				bounds.extend(start);
+				bounds.extend(end);
+				map.fitBounds(bounds);
+				var request = {
+					origin: start,
+					destination: end,
+					travelMode: google.maps.TravelMode.DRIVING
+				};
+				directionsService.route(request, function (response, status) {
+					if (status == google.maps.DirectionsStatus.OK) {
+						directionsDisplay.setDirections(response);
+						directionsDisplay.setMap(map);
+					} else {
+						alert("Directions Request from " + start.toUrlValue(6) + " to " + end.toUrlValue(6) + " failed: " + status);
+					}
+				});
+			}
+		}
+
 		function addStartMarker(lat, long){
 			lat = lat;
 			long = long;
@@ -78,12 +111,12 @@
 			var markerstart = new google.maps.Marker({
 				position: latlong,
 				map: map,
-				title: 'Hello World!'
+				title: 'Start'
 			});
 
 			markerstart.setMap(map);
-			markersArray.push(markerstart);
-			map.setCenter(markerstart.getPosition())
+			// markersArray.push(markerstart);
+			// map.setCenter(markerstart.getPosition())
 		}
 
 		function addEndMarker(lat, long){
@@ -94,7 +127,7 @@
 			var markerend = new google.maps.Marker({
 				position: latlong,
 				map: map,
-				title: 'Hello World!'
+				title: 'Eind'
 			});
 
 			markerend.setMap(map);

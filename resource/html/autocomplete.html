@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="theme-color" content="#ffffff">
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDyozfs6imtqXQB4fTez-leDxvLoZHDJCs&libraries=places" ></script>
+</head>
+<body >
+<style>
+    input{
+        padding: 15px;
+        border: 1px solid #ccc;
+        border-radius: 3px;
+        margin-bottom: 10px;
+        width: 70%;
+        height: 30%;
+        box-sizing: border-box;
+        font-family: montserrat;
+        color: #2C3E50;
+        font-size: 13px;
+
+    }
+    .pac-container {
+        height: 30px;
+        overflow-y: scroll;
+    }
+</style>
+<main>
+<!--    <div id="gmaps" style="height: 300px; width: 100%;"></div>-->
+    <input id="searchInput">
+<!--    <button onClick = "getPlace()">D</button>-->
+</main>
+</body>
+
+<script type="text/javascript">
+    var placeName;
+    addGooglePlaces();
+    function addGooglePlaces() {
+    	var input = document.getElementById('searchInput');
+    	var autocomplete = new google.maps.places.Autocomplete(input);
+    	autocomplete.addListener('place_changed', function () {
+    		var place = autocomplete.getPlace();
+    		var lat = place.geometry.location.lat();
+    		var long = place.geometry.location.lng();
+            placeName = place['name'];
+    		// markersArray.push(lat, long);
+    	});
+    }
+
+    function getPlace(){
+        return placeName;
+    }
+
+</script>
+
+</html>
