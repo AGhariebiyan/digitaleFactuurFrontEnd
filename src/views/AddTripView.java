@@ -185,20 +185,20 @@ public class AddTripView implements View {
 		Label labelInputFieldsHBoxRow2 = new Label("Start locatie:");
 		this.webEngineStartLoc.load(this.getClass().getResource("/html/autocomplete.html").toString());
 		webViewStart.setMaxHeight(200);
-		webViewStart.setMaxWidth(400);
+		webViewStart.setMaxWidth(470);
 		webViewStart.setTranslateX(75);
-		webViewStart.setTranslateY(-10);
-		labelInputFieldsHBoxRow2.setTranslateY(20);
+		webViewStart.setTranslateY(0);
+		labelInputFieldsHBoxRow2.setTranslateY(15);
 		inputFieldsHBoxRow2.getChildren().addAll(labelInputFieldsHBoxRow2, webViewStart);
 //		inputFieldsHBoxRow2.toFront();
 
 		Label labelInputFieldsHBoxRow3 = new Label("Eind locatie:");
 		this.webEngineEndLoc.load(this.getClass().getResource("/html/autocomplete.html").toString());
 		webViewEnd.setMaxHeight(200);
-		webViewEnd.setMaxWidth(400);
+		webViewEnd.setMaxWidth(470);
 		webViewEnd.setTranslateX(75);
 		webViewEnd.setTranslateY(-150);
-		labelInputFieldsHBoxRow3.setTranslateY(-120);
+		labelInputFieldsHBoxRow3.setTranslateY(-135);
 		inputFieldsHBoxRow3.getChildren().addAll(labelInputFieldsHBoxRow3, webViewEnd);
 //		inputFieldsHBoxRow3.toFront();
 
