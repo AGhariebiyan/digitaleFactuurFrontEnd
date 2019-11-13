@@ -44,7 +44,7 @@ public class DashboardView implements View {
 		
 		totalTripsPane.setMinSize((450/1.5), (350/1.5));
 		totalTripsPane.setTranslateX((550/1.5));
-		totalTripsPane.setTranslateY((250/1.5));
+		totalTripsPane.setTranslateY((275/1.5));
 		Label totalTripsLabel = new Label("Totale ritten");
 		totalTripsPane.getChildren().addAll(totalTripsLabel);	
 		totalTripsLabel.setTextFill(Color.WHITE);
@@ -66,7 +66,7 @@ public class DashboardView implements View {
 		totalProjectsPane.setStyle("-fx-background-color: #3A4F62");
 		totalProjectsPane.setMinSize((450/1.5), (350/1.5));
 		totalProjectsPane.setTranslateX((1175/1.5));
-		totalProjectsPane.setTranslateY((250/1.5));
+		totalProjectsPane.setTranslateY((275/1.5));
 		Label totalProjectsLabel = new Label("Totale projecten");
 		totalProjectsPane.getChildren().addAll(totalProjectsLabel);	
 		totalProjectsLabel.setTextFill(Color.WHITE);
@@ -87,7 +87,7 @@ public class DashboardView implements View {
 		//addTripPane.setBorder(blackBorder);
 		addTripPane.setMinSize((1075/1.5), (300/1.5));
 		addTripPane.setTranslateX((550/1.5));
-		addTripPane.setTranslateY((675/1.5));
+		addTripPane.setTranslateY((700/1.5));
 		Image addButtonImage = new Image(this.getClass().getResource("/imgs/addButton.png").toExternalForm());
         ImageView addButtonImageView = new ImageView(addButtonImage);
 
@@ -106,7 +106,7 @@ public class DashboardView implements View {
 		Label welkomLabel = new Label("Welkom bij DigitaleFactuur!");
 		welkomLabel.setTextFill(Color.WHITE);
 		welkomLabel.setTranslateX(450);
-		welkomLabel.setTranslateY(65);
+		welkomLabel.setTranslateY(70);
 
 		welkomLabel.setFont(new Font(45));
 		
