@@ -34,7 +34,6 @@ public class VehicleOverviewView implements View {
      */
     public VehicleOverviewView() {
         this.vehicleController = new VehicleController();
-//        this.scene = createView();
         this.alertView = new AlertView();
     }
 

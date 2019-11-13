@@ -31,7 +31,6 @@ public class AddVehicleView implements View {
      */
     public AddVehicleView() {
         this.vehicleController = new VehicleController();
-        this.scene = createView();
     }
 
     /**

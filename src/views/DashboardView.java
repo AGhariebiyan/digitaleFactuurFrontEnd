@@ -22,10 +22,6 @@ public class DashboardView implements View {
 	private Stage primaryStage;
 	private DashboardController dashboardController;
 	
-	public DashboardView() {
-
-	}
-	
 	/**
 	 * @author fifi
 	 * @return Scene

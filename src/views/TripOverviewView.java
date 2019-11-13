@@ -34,7 +34,6 @@ public class TripOverviewView implements View {
 	 */
 	public TripOverviewView() {
 		this.tripController = new TripController();
-		this.scene = createView();
         this.alertView = new AlertView();
 	}
 
