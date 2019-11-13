@@ -292,17 +292,4 @@ public class ProjectOverviewView implements View {
     }
 
 
-    /**
-     * @author Mike van Es
-     */
-    @Override
-    public void updateView(){}
-
-    /**
-     * @author Mike van Es
-     */
-    @Override
-    public Scene getScene() {
-        return this.scene;
-    };
 }

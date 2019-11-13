@@ -230,18 +230,5 @@ public class AddVehicleView implements View {
         return inputFieldsAddVehicleVBox;
     }
 
-    /**
-     * @author Bram de Jong
-     */
-    @Override
-    public void updateView(){}
-
-    /**
-     * @author Bram de Jong
-     * @return Scene
-     */
-    @Override
-    public Scene getScene() {
-        return this.scene;
-    };
+    
 }

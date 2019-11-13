@@ -157,20 +157,7 @@ public class TripOverviewView implements View {
         return tableView;
     }
 	
-	/**
-	 * @author Oussama Fahchouch
-	 */
-	@Override
-	public void updateView(){}
-
-	/**
-	 * @author Oussama Fahchouch
-	 * @return Scene
-	 */
-	@Override
-	public Scene getScene() {
-		return this.scene;
-	};
+	
 	
 	/**
 	 * @author Oussama Fahchouch

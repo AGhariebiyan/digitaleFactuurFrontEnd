@@ -303,18 +303,5 @@ public class DashboardView implements View {
 		return logoutPane;
 	}
 	
-	/**
-	 * @author fifi
-	 */
-	@Override
-	public void updateView() {		
-	}
 
-	/**
-	 * @author fifi
-	 */
-	@Override
-	public Scene getScene() {
-		return this.scene;
-	}
 }

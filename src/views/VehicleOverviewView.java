@@ -173,22 +173,7 @@ public class VehicleOverviewView implements View {
         return deleteVehicleButtonPane;
     }
     
-    /**
-     * @author Bram de Jong
-     */
-    @Override
-    public void updateView(){}
-
-
-
-    /**
-     * @author Bram de Jong
-     * @return Scene
-     */
-    @Override
-    public Scene getScene() {
-        return this.scene;
-    };
+  
     
     /**
 	 * @author Oussama Fahchouch

@@ -1,6 +1,7 @@
 package views;
 
 import controllers.AppController;
+import controllers.Controller;
 import controllers.TripController;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -110,7 +111,7 @@ public class AddTripView implements View {
 		addButton.setMaxSize((75/1.5)*r, (75/1.5)*r);
 		addButton.setStyle("-fx-background-color: #2F4051; -fx-font-size: 21px; -fx-text-fill: white;");
 		
-		addButton.setOnAction(e -> this.tripController.appController.loadView("views.TripOverviewView", "createView"));
+		addButton.setOnAction(e -> AppController.loadView("views.TripOverviewView", "createView"));
 
 
 		addTripButtonPane.getChildren().addAll(addButton);
@@ -266,14 +267,14 @@ public class AddTripView implements View {
 								endLocStr);
 						
 						alertView.alert("De rit is toegevoegd. U wordt nu doorverwezen naar het ritten overzicht.");		
-		                tripController.appController.loadView("views.TripOverviewView", "createView");
+		                AppController.loadView("views.TripOverviewView", "createView");
 					} else { 						
 						tripController.addTripByUser(textFieldInputFieldsHBoxRow4.getText(),
 								startLocStr,
 								endLocStr);
 						
 						alertView.alert("De rit is toegevoegd. U wordt nu doorverwezen naar het ritten overzicht.");		
-		                tripController.appController.loadView("views.TripOverviewView", "createView");
+		                AppController.loadView("views.TripOverviewView", "createView");
 					}
 			     }
 			 });
@@ -285,18 +286,5 @@ public class AddTripView implements View {
 
 
 
-	/**
-	 * @author Oussama Fahchouch
-	 */
-	@Override
-	public void updateView(){}
-
-	/**
-	 * @author Oussama Fahchouch
-	 * @return Scene
-	 */
-	@Override
-	public Scene getScene() {
-		return this.scene;
-	};
+	
 }

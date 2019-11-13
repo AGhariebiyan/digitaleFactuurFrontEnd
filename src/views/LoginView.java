@@ -109,20 +109,5 @@ public class LoginView implements View{
         }
     }
 
-    /**
-     * @author Ali Rezaa Ghariebiyan
-     */
-    @Override
-    public void updateView() {
-
-    }
-
-    /**
-     * @author Ali Rezaa Ghariebiyan
-     */
-    @Override
-    public Scene getScene() {
-        return this.scene;
-    }
 
 }

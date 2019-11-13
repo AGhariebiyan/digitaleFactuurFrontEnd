@@ -12,14 +12,5 @@ public interface View {
 	 */
 	Scene createView();
 	
-	/**
-	 * @author Oussama Fahchouch
-	 */
-	public void updateView();
-
-    /**
-	 * @author Oussama Fahchouch
-	 * @return Scene 
-	 */
-	Scene getScene();
+	
 }
