@@ -89,7 +89,7 @@ public class VehicleController implements Controller {
      * @return ArrayList<String> allVehicles
      */
     public ArrayList<VehicleModel> fetchAllVehicles() {
-        InputStream stream = AppController.httpRequest("http://localhost:8080/vehicles","GET");
+        InputStream stream = AppController.httpRequest("http://localhost:8080/vehicles/user/" + AppController.getInstance().getCurrentUser().getUserId(),"GET");
         BufferedReader reader = new BufferedReader(new InputStreamReader(stream));
         int x = 0;
         try {
@@ -151,7 +151,8 @@ public class VehicleController implements Controller {
     public List<String>  fetchAllUniqueLicenseplates(){
     	List<String> fetchedUniqueLicenseplates;
         AppController.getInstance();
-		InputStream tripStream = AppController.httpRequest("http://localhost:8080/vehicles/fetch/unique-licenseplates", "GET");
+		InputStream tripStream = AppController.httpRequest("http://localhost:8080/vehicles/fetch/unique-licenseplates/" + 
+        AppController.getInstance().getCurrentUser().getUserId(), "GET");
         
         try {
             String result = IOUtils.toString(tripStream, StandardCharsets.UTF_8);

@@ -44,9 +44,7 @@ public class AddTripView implements View {
 	 */
 	public AddTripView() {
 		this.tripController = new TripController();
-		this.scene 			= createView();
         this.alertView 		= new AlertView();
-
 	}
 	
 	/**
@@ -182,7 +180,8 @@ public class AddTripView implements View {
         
         textFieldInputFieldsHBoxRow1.setId("projectIdTextField");
         inputFieldsHBoxRow1.getChildren().addAll(labelInputFieldsHBoxRow1, vBoxProjectId);
-
+        
+        // Mike van Es heeft dit er later bijgezet
 		Label labelInputFieldsHBoxRow2 = new Label("Start locatie:");
 		this.webEngineStartLoc.load(this.getClass().getResource("/html/autocomplete.html").toString());
 		webViewStart.setMaxHeight(200);
@@ -191,7 +190,6 @@ public class AddTripView implements View {
 		webViewStart.setTranslateY(0);
 		labelInputFieldsHBoxRow2.setTranslateY(15);
 		inputFieldsHBoxRow2.getChildren().addAll(labelInputFieldsHBoxRow2, webViewStart);
-//		inputFieldsHBoxRow2.toFront();
 
 		Label labelInputFieldsHBoxRow3 = new Label("Eind locatie:");
 		this.webEngineEndLoc.load(this.getClass().getResource("/html/autocomplete.html").toString());
@@ -201,8 +199,7 @@ public class AddTripView implements View {
 		webViewEnd.setTranslateY(-150);
 		labelInputFieldsHBoxRow3.setTranslateY(-135);
 		inputFieldsHBoxRow3.getChildren().addAll(labelInputFieldsHBoxRow3, webViewEnd);
-//		inputFieldsHBoxRow3.toFront();
-
+		// tot hier loopt de code van Mike
 		
 		Label labelInputFieldsHBoxRow4 = new Label("Kenteken voertuig:");
 		TextField textFieldInputFieldsHBoxRow4 = new TextField ();
@@ -253,9 +250,11 @@ public class AddTripView implements View {
 
 			@Override
 			    public void handle(ActionEvent e) {
-					System.out.println(webEngineStartLoc);
+					//webEngine start & endLoc is gemaakt door Mike van Es
 					String startLocStr = (String) webEngineStartLoc.executeScript("getPlace()");
 					String endLocStr = (String) webEngineEndLoc.executeScript("getPlace()");
+					//tot hier
+					
 					if(textFieldInputFieldsHBoxRow4.getText().isEmpty() || endLocStr.equals("undefined") || startLocStr.equals("undefined")) {
 
 				        alertView.alert("De rit is niet goed aangegeven. Probeer het opnieuw");

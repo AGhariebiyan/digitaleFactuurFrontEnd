@@ -143,8 +143,6 @@ public class TripOverviewView implements View {
         
         addDeleteButtonToTable();
         
-        String delete = new String("del");
-        
         for (int i = 0; i < tripController.fetchTrips().size(); i++){
             tableView.getItems().add(tripController.fetchTrips().get(i));
         }

@@ -117,7 +117,7 @@ public class TripController implements Controller {
     public List<Integer>  fetchAllUniqueProjectIds(){
     	List<Integer> fetchedUniqueProjectIds;
         AppController.getInstance();
-		InputStream tripStream = AppController.httpRequest("http://localhost:8080/trips/fetch/unique-projectids", "GET");
+		InputStream tripStream = AppController.httpRequest("http://localhost:8080/trips/fetch/unique-projectids/" + AppController.getInstance().getCurrentUser().getUserId(), "GET");
         
         try {
             String result = IOUtils.toString(tripStream, StandardCharsets.UTF_8);
