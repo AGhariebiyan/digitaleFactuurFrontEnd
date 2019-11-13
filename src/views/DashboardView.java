@@ -48,7 +48,7 @@ public class DashboardView implements View {
 		
 		totalTripsPane.setMinSize((450/1.5), (350/1.5));
 		totalTripsPane.setTranslateX((550/1.5));
-		totalTripsPane.setTranslateY((175/1.5));
+		totalTripsPane.setTranslateY((250/1.5));
 		Label totalTripsLabel = new Label("Totale ritten");
 		totalTripsPane.getChildren().addAll(totalTripsLabel);	
 		totalTripsLabel.setTextFill(Color.WHITE);
@@ -70,7 +70,7 @@ public class DashboardView implements View {
 		totalProjectsPane.setStyle("-fx-background-color: #3A4F62");
 		totalProjectsPane.setMinSize((450/1.5), (350/1.5));
 		totalProjectsPane.setTranslateX((1175/1.5));
-		totalProjectsPane.setTranslateY((175/1.5));
+		totalProjectsPane.setTranslateY((250/1.5));
 		Label totalProjectsLabel = new Label("Totale projecten");
 		totalProjectsPane.getChildren().addAll(totalProjectsLabel);	
 		totalProjectsLabel.setTextFill(Color.WHITE);
@@ -106,9 +106,19 @@ public class DashboardView implements View {
 		addTripButton.setOnAction(e -> AppController.getInstance().loadView("views.TripOverviewView", "createView"));
 
 		addTripPane.getChildren().addAll(addTripButton);	
+		
+		Label welkomLabel = new Label("Welkom bij DigitaleFactuur!");
+		welkomLabel.setTextFill(Color.WHITE);
+		welkomLabel.setTranslateX(450);
+		welkomLabel.setTranslateY(65);
+
+		welkomLabel.setFont(new Font(45));
+		
+		
+		
 
 		
-		rootPane.getChildren().addAll(createLeftBoardViewPane(), createHeaderPane(),totalTripsPane,totalProjectsPane,addTripPane);	
+		rootPane.getChildren().addAll(createLeftBoardViewPane(), createHeaderPane(),totalTripsPane,totalProjectsPane,addTripPane,welkomLabel);	
 		
 		
 		this.dashboardController.setHeaderPane(createHeaderPane());
