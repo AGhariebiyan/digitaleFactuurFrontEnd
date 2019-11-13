@@ -184,6 +184,4 @@ public class TripController implements Controller {
         }
         return null;
     }
-    
-    
 }

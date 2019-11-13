@@ -30,12 +30,9 @@ import java.util.List;
  */
 public class AddTripView implements View {
 	private TripController tripController;
-	private Scene scene;
 	private AlertView alertView;
-
 	private WebView webViewStart = new WebView();
 	private WebView webViewEnd = new WebView();
-
 	private final WebEngine webEngineStartLoc = webViewStart.getEngine();
 	private final WebEngine webEngineEndLoc = webViewEnd.getEngine();
 	
@@ -44,7 +41,7 @@ public class AddTripView implements View {
 	 */
 	public AddTripView() {
 		this.tripController = new TripController();
-        this.alertView 		= new AlertView();
+        this.alertView = new AlertView();
 	}
 	
 	/**
@@ -282,8 +279,4 @@ public class AddTripView implements View {
 		
 		return inputFieldsAddTripVBox;
 	}
-
-
-
-	
 }

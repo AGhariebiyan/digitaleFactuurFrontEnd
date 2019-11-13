@@ -14,6 +14,7 @@ import java.net.URL;
 /**
  * @author Mike van Es
  * @author Oussama Fahchouch
+ * @author Ali Rezaa Ghariebiyan
  * Singelton for getting the appcontoller in any place, so we can switch scenes.
  */
 public class AppController extends ClassLoader {

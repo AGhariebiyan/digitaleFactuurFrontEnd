@@ -25,7 +25,6 @@ import models.TripModel;
  */
 public class TripOverviewView implements View {
 	private TripController tripController;
-	private Scene scene;
 	private TableView tableView;
 	private AlertView alertView;
 		
