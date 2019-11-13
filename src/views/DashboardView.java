@@ -70,7 +70,7 @@ public class DashboardView implements View {
 		Label totalProjectsLabel = new Label("Totale projecten");
 		totalProjectsPane.getChildren().addAll(totalProjectsLabel);	
 		totalProjectsLabel.setTextFill(Color.WHITE);
-		totalProjectsLabel.setTranslateX(55);
+		totalProjectsLabel.setTranslateX(35);
 		totalProjectsLabel.setTranslateY(25);
 
 		Label totalProjectsLabelNumber = new Label(this.dashboardController.getStringTotalProjectsFromBackEnd());
@@ -98,7 +98,7 @@ public class DashboardView implements View {
 		addTripButton.setMinSize((50),50);
 		addTripButton.setTranslateX(125);
 		addTripButton.setTranslateY(50);
-		addTripButton.setFont(new Font(27));
+		addTripButton.setFont(new Font(20));
 		addTripButton.setOnAction(e -> AppController.getInstance().loadView("views.TripOverviewView", "createView"));
 
 		addTripPane.getChildren().addAll(addTripButton);	
