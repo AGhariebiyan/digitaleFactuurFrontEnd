@@ -103,18 +103,7 @@ public class DashboardView implements View {
 
 		addTripPane.getChildren().addAll(addTripButton);	
 		
-		Label welkomLabel = new Label("Welkom bij DigitaleFactuur!");
-		welkomLabel.setTextFill(Color.WHITE);
-		welkomLabel.setTranslateX(450);
-		welkomLabel.setTranslateY(70);
-
-		welkomLabel.setFont(new Font(45));
-		
-		
-		
-
-		
-		rootPane.getChildren().addAll(createLeftBoardViewPane(), createHeaderPane(),totalTripsPane,totalProjectsPane,addTripPane,welkomLabel);	
+		rootPane.getChildren().addAll(createLeftBoardViewPane(), createHeaderPane(),totalTripsPane,totalProjectsPane,addTripPane);	
 		
 		
 		this.dashboardController.setHeaderPane(createHeaderPane());
