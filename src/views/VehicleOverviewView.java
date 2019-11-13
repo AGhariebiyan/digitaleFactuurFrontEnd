@@ -221,10 +221,4 @@ public class VehicleOverviewView implements View {
 
         tableView.getColumns().add(colBtn);
     }
-	
-    /**
-     * @author Bram de Jong
-     */
-    @Override
-    public void updateView(){}
 }
