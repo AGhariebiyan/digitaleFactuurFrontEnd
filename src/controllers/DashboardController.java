@@ -38,9 +38,10 @@ public class DashboardController implements Controller {
 	 * @author Fifi
 	 *
 	 */
-    public String getStringTotalProjectsFromBackEnd(){
+    public static String getStringTotalProjectsFromBackEnd(){
         try {
-        	InputStream totalProjectsStream = AppController.getInstance().httpRequest("http://localhost:8080/trips/amount-of-projects/user/" +
+        	AppController.getInstance();
+			InputStream totalProjectsStream = AppController.httpRequest("http://localhost:8080/trips/amount-of-projects/user/" +
 			Controller.appController.getCurrentUser().getUserId(), "GET");
         	
              String result = IOUtils.toString(totalProjectsStream, StandardCharsets.UTF_8);
@@ -59,7 +60,8 @@ public class DashboardController implements Controller {
     public String getStringTotalTripsFromBackEnd(){
 
         try {
-        	InputStream totalProjectsStream = AppController.getInstance().httpRequest("http://localhost:8080/trips/amount-of-trips/user/" + 
+        	AppController.getInstance();
+			InputStream totalProjectsStream = AppController.httpRequest("http://localhost:8080/trips/amount-of-trips/user/" + 
         	Controller.appController.getCurrentUser().getUserId(), "GET");                
              String result = IOUtils.toString(totalProjectsStream, StandardCharsets.UTF_8);
 
