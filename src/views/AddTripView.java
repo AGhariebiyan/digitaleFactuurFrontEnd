@@ -157,7 +157,7 @@ public class AddTripView implements View {
 		
 		Label labelInputFieldsHBoxRow1 = new Label("Project id:");		
 		TextField textFieldInputFieldsHBoxRow1 = new TextField ("0");
-        final List<Integer> comboBoxProjectIdItems = tripController.fetchAllUniqueProjectIds();
+        List<Integer> comboBoxProjectIdItems = tripController.fetchAllProjects();
         ComboBox comboBoxProjectId = new ComboBox();
         VBox vBoxProjectId = new VBox();
 
@@ -241,7 +241,7 @@ public class AddTripView implements View {
 		Button createTripButton = new Button("create");
 		createTripButton.setStyle("-fx-font-size: 16px; -fx-background-color: #1E71EA; -fx-text-fill: white;");
 		createTripButton.setTranslateX((750/1.5));
-		createTripButton.setTranslateY(-190);
+		createTripButton.setTranslateY(-250);
 		
 		createTripButton.setOnAction(new EventHandler<ActionEvent>() {
 

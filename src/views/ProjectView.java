@@ -67,7 +67,7 @@ public class ProjectView implements View {
     private Pane createProjectPane() {
         Pane ProjectPane = new Pane();
 
-        ProjectPane.setMinSize((1345/1.5), (750/1.5));
+        ProjectPane.setMinSize((1345/1.5), (1200/1.5));
         ProjectPane.setTranslateX((450/1.5));
         ProjectPane.setTranslateY((100/1.5));
         //Add this for the correct panel styling

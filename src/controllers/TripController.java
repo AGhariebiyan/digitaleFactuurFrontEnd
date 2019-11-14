@@ -7,6 +7,7 @@ import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
+import java.util.Map;
 
 import org.apache.commons.io.IOUtils;
 
@@ -15,6 +16,7 @@ import com.google.gson.JsonObject;
 import com.google.gson.reflect.TypeToken;
 
 import javafx.scene.layout.Pane;
+import models.ProjectModel;
 import models.TripModel;
 
 /**
@@ -38,8 +40,8 @@ public class TripController implements Controller {
 
 		if(endLocation.contains(" "))
 			endLocation = endLocation.replace(" ", "%20");
+
 		
-		AppController.getInstance();
 		AppController.httpRequest("http://localhost:8080/trips/trip/add/for-project/"
 				+ projectId + "/"
 				+ AppController.getInstance().getCurrentUser().getUserId() + "/"
@@ -183,5 +185,18 @@ public class TripController implements Controller {
             ex.printStackTrace();
         }
         return null;
+    }
+    
+    public List<Integer> fetchAllProjects() {
+    	ProjectController projectController = new ProjectController();
+    	projectController.fetchProjectsFromBackEnd();
+    	Map<Integer, ProjectModel> projectsMap = projectController.getProjects();
+    	List<Integer> projectIds = new ArrayList<>();
+    	System.out.println(projectsMap.values());
+    	for (ProjectModel project : projectsMap.values()) {
+    		projectIds.add(project.getProjectId());
+    	}
+    	
+    	return projectIds;
     }
 }

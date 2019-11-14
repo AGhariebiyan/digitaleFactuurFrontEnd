@@ -17,9 +17,8 @@ import javafx.stage.Stage;
  * @author fifi
  */
 public class DashboardView implements View {
-	private Scene scene;
-	private Border blackBorder = new Border(new BorderStroke(Color.BLACK, BorderStrokeStyle.SOLID, CornerRadii.EMPTY, BorderWidths.DEFAULT));
-	private Stage primaryStage;
+	
+
 	private DashboardController dashboardController;
 	
 	/**
@@ -110,7 +109,7 @@ public class DashboardView implements View {
 		this.dashboardController.setMenuPane(createLeftBoardViewPane());
 		
 		Scene scene = new Scene(rootPane, (1920/1.5), (1080/1.5));
-		this.scene = scene;
+		scene = scene;
 		return scene;
 	}
 	

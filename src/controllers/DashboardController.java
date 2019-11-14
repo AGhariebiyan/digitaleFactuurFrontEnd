@@ -1,6 +1,9 @@
 package controllers;
 
 import java.nio.charset.StandardCharsets;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
 
 import org.apache.commons.io.IOUtils;
 
@@ -10,6 +13,7 @@ import java.io.InputStream;
 import javafx.scene.Node;
 
 import javafx.scene.layout.Pane;
+import models.ProjectModel;
 
 
 /**
@@ -38,19 +42,17 @@ public class DashboardController implements Controller {
 	 * @author Fifi
 	 *
 	 */
-    public static String getStringTotalProjectsFromBackEnd(){
-        try {
-        	AppController.getInstance();
-			InputStream totalProjectsStream = AppController.httpRequest("http://localhost:8080/trips/amount-of-projects/user/" +
-			Controller.appController.getCurrentUser().getUserId(), "GET");
-        	
-             String result = IOUtils.toString(totalProjectsStream, StandardCharsets.UTF_8);
-             return result;
-          
-            }catch(IOException ex) {
-            ex.printStackTrace();
-            }
-        return null;
+    public   String getStringTotalProjectsFromBackEnd(){
+    	ProjectController projectController = new ProjectController();
+    	projectController.fetchProjectsFromBackEnd();
+    	Map<Integer, ProjectModel> projectsMap = projectController.getProjects();
+    	Integer projectId = 0;
+ 
+    	for (ProjectModel project : projectsMap.values()) {
+    		projectId++;
+    	}
+//    	projectId  = 
+    	return Integer.toString(projectId);
     }
     
     /**
