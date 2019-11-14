@@ -43,15 +43,18 @@ public class DashboardController implements Controller {
 	 *
 	 */
     public   String getStringTotalProjectsFromBackEnd(){
+    	//Mike va Es
     	ProjectController projectController = new ProjectController();
     	projectController.fetchProjectsFromBackEnd();
     	Map<Integer, ProjectModel> projectsMap = projectController.getProjects();
+    	
+    	//Fifi
     	Integer projectId = 0;
  
     	for (ProjectModel project : projectsMap.values()) {
     		projectId++;
     	}
-//    	projectId  = 
+
     	return Integer.toString(projectId);
     }
     

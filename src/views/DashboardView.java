@@ -83,7 +83,7 @@ public class DashboardView implements View {
 		
 		Pane addTripPane = new Pane();
 		addTripPane.setStyle("-fx-background-color: #3A4F62");
-		//addTripPane.setBorder(blackBorder);
+		
 		addTripPane.setMinSize((1075/1.5), (300/1.5));
 		addTripPane.setTranslateX((550/1.5));
 		addTripPane.setTranslateY((700/1.5));
@@ -109,7 +109,7 @@ public class DashboardView implements View {
 		this.dashboardController.setMenuPane(createLeftBoardViewPane());
 		
 		Scene scene = new Scene(rootPane, (1920/1.5), (1080/1.5));
-		scene = scene;
+		//scene = scene;
 		return scene;
 	}
 	
