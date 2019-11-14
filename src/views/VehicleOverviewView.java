@@ -17,7 +17,6 @@ import javafx.scene.layout.Pane;
 import javafx.scene.shape.Circle;
 import javafx.scene.text.Font;
 import javafx.util.Callback;
-import models.TripModel;
 import models.VehicleModel;
 
 /**

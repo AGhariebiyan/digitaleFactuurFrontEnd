@@ -1,5 +1,6 @@
 package views;
 
+import controllers.TripController;
 import javafx.scene.Scene;
 import javafx.scene.chart.PieChart.Data;
 import javafx.scene.control.Button;
@@ -16,8 +17,6 @@ import javafx.scene.layout.Pane;
 import javafx.scene.shape.Circle;
 import javafx.scene.text.Font;
 import javafx.util.Callback;
-import controllers.AppController;
-import controllers.TripController;
 import models.TripModel;
 
 /**
@@ -142,8 +141,8 @@ public class TripOverviewView implements View {
         
         addDeleteButtonToTable();
         
-        for (int i = 0; i < tripController.fetchTrips().size(); i++){
-            tableView.getItems().add(tripController.fetchTrips().get(i));
+        for (TripModel trip : tripController.fetchTrips()) {
+        	 tableView.getItems().add(trip);
         }
         
         tableView.setMinSize((1245/1.5), (450/1.5));
